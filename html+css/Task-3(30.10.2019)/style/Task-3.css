@@ -1,0 +1,86 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}
+
+table, td {
+    border: 1px solid black;
+}
+
+tr {
+    height: 25px
+}
+
+figure {
+    width: 435px;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 36px;
+    color: blue;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 700px;
+    margin-top: 55px;
+}
+
+.imt-index {
+  margin-bottom: 20px;
+}
+
+.sport-motivation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.motivational {
+    display: flex;
+    flex-direction: column;
+}
+
+.motivational-group {
+    display: flex;
+    flex-direction: row;
+    width: 880px;
+}
+
+.motivation-title {
+    display: block;
+    width: 300px;
+    margin-right: 0;
+}
+
+.rank-system {
+    display: flex;
+    flex-direction: column;
+}
+
+.type-rang {
+    margin-bottom: 20px;
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    margin: 0 400px 0 400px;
+}
