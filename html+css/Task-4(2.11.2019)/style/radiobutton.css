@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'PT Sans';
+    src: url('../fonts/opensans.woff2') format('woff2');
+    url('../fonts/opensans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PT Gilroy';
+    src: url('../fonts/gilroyextrabold.woff2') format('woff2'),
+    url('../fonts/gilroyextrabold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.visually-hidden:not(:focus):not(:active),
+input[type='checkbox'].visually-hidden,
+input[type='radio'].visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: none;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.radiobutton {
+    font-family: 'PT Gilroy', Arial, sans-serif;
+}
+
+.radiobutton-item {
+    font-family: 'PT Sans', Arial, sans-serif;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 10px;
+}
+
+.input-radio + label::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #017f04;
+    border-radius: 50%;
+    background-color: #fafafa;
+}
+
+.input-radio + label::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: -19px;
+    width: 8px;
+    height: 8px;
+    background-color: #d2d2d2;
+    border-radius: 50%;
+}
+
+.input-radio:checked + label::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: -19px;
+    width: 8px;
+    height: 8px;
+    background-color: #017f04;
+    border-radius: 50%;
+}
+
+.input-radio:checked + label::before {
+    background-color: #d2d2d2;
+}

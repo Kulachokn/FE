@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'PT Sans';
+    src: url('../fonts/opensans.woff2') format('woff2');
+         url('../fonts/opensans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PT Gilroy';
+    src: url('../fonts/gilroyextrabold.woff2') format('woff2'),
+         url('../fonts/gilroyextrabold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.breadcrumbs {
+    font-family: 'PT Gilroy', Arial, sans-serif;
+}
+
+.breadcrumbs-list {
+    font-family: 'PT Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    background-color: #caf4fb;
+    padding: 3px;
+    width: 360px;
+}
+
+.breadcrumbs-item {
+    list-style-type: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    position: relative;
+    background-color: #00bddb;
+    border-radius: 3px;
+    justify-content: center;
+}
+
+.breadcrumbs-item:not(:last-child) {
+    margin-right: 5px;
+}
+
+.breadcrumbs-item a {
+    color: #ffffff;
+    display: inline-block;
+}
+
+.breadcrumbs-item:not(:first-child)::after {
+    content: "";
+    position: absolute;
+    left: -1px;
+    border-left: 20px solid #caf4fb;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 0;
+}
+
+.breadcrumbs-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    right: -19px;
+    border-left: 20px solid #00bddb;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 0;
+    z-index: 1;
+}
+
+.breadcrumbs-item:hover {
+    background-color: #1d3e8b;
+}
+
+.breadcrumbs-item:hover:before {
+    border-left: 20px solid #1d3e8b;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+}
+
+
