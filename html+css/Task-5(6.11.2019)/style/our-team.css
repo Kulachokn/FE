@@ -1,0 +1,50 @@
+.our-team-container {
+    max-width: 1440px;
+    width: 100%;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin: 0 auto;
+    min-height: 550px;
+}
+
+.our-team-title {
+    font-size: 35px;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Oswald", "Arial", sans-serif;
+    letter-spacing: 2px;
+}
+
+.our-team-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 40px;
+    margin: 0 40px 30px;
+}
+
+.our-team-item {
+    margin-right: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.our-team-item:before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    bottom: -7px;
+    left: 7px;
+    right: 7px;
+    border: 2px solid #ff1b25;
+    visibility: hidden;
+    transition: all .1s ease;
+    cursor: pointer;
+}
+
+.our-team-item:hover:before {
+    visibility: visible;
+}

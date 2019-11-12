@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crossfit</title>
+    <link rel="stylesheet" href="style/task-5.css">
+    <script src="https://kit.fontawesome.com/a71ca43433.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <nav class="navigation">
+        <div class="navigation-container">
+            <a href="#">
+                <div class="header-img">
+                    <picture>
+                        <source srcset="img/logo-header.png" media="(min-width: 960px)">
+                        <img src="img/logo-header-small.png" width="60" height="40" alt="logo">
+                    </picture>
+                </div>
+            </a>
+            <div class="hamburger-container">
+                <input type="checkbox" id="checkbox3" class="checkbox3 visually-hidden">
+                <label for="checkbox3">
+                    <div class="hamburger hamburger3">
+                        <span class="bar bar1"></span>
+                        <span class="bar bar2"></span>
+                        <span class="bar bar3"></span>
+                        <span class="bar bar4"></span>
+                    </div>
+                </label>
+            </div>
+            <ul class="navigation-list">
+                <li class="navigation-item"><a href="#">Тренировки</a></li>
+                <li class="navigation-item"><a href="#">Наша команда</a></li>
+                <li class="navigation-item open-services"><a href="#">Услуги</a>
+                    <ul class="services-menu">
+                        <li class="navigation-item service"><a href="#">Клубные карты</a></li>
+                        <li class="navigation-item service"><a href="#">Персональные тренировки</a></li>
+                        <li class="navigation-item service"><a href="#">Классы</a></li>
+                    </ul>
+                </li>
+                <li class="navigation-item"><a href="#">О нас</a></li>
+            </ul>
+            </label>
+        </div>
+    </nav>
+</header>
+<main>
+    <section class="slider">
+        <h2 class="visually-hidden">О нас</h2>
+        <div class="slider-container">
+            <input class="visually-hidden" type="radio" id="product-1" name="toggle">
+            <input class="visually-hidden" type="radio" id="product-2" name="toggle">
+            <input class="visually-hidden" type="radio" id="product-3" name="toggle" checked>
+            <div class="slider-controls">
+                <label class="slider-controls-item slider-controls-item--1" for="product-1">Первый</label>
+                <label class="slider-controls-item slider-controls-item--2" for="product-2">Второй</label>
+                <label class="slider-controls-item slider-controls-item--3" for="product-3">Третий</label>
+            </div>
+            <ul class="slider-list">
+                <li class="slider-item">
+                    <div class="slider-img">
+                        <picture>
+                            <source srcset="img/weightlifting.jpg" media="(min-width: 960px)">
+                            <img src="img/weightlifting-small.jpg" width="320" height="212" alt="weightlifting">
+                        </picture>
+                    </div>
+                    <div class="slider-item-container">
+                        <h3 class="slider-title">Тяжёлая атлетика</h3>
+                        <p class="slider-text">Тяжёлая атлетика — королева силовых видов спорта. Всего 2 снаряда, штанга
+                            и гиря; всего 2
+                            основных упражнения, толчок и рывок, дают каждому атлету неограниченное пространство для
+                            развития.</p>
+                        <a class="slider-item-button button" href="#">Записаться на тренировку</a>
+                    </div>
+                </li>
+                <li class="slider-item">
+                    <div class="slider-img">
+                        <picture>
+                            <source srcset="img/crossfit.jpg" media="(min-width: 960px)">
+                            <img src="img/crossfit-small.jpg" width="320" height="212" alt="crossfit">
+                        </picture>
+                    </div>
+                    <div class="slider-item-container">
+                        <h3 class="slider-title">Кроссфит</h3>
+                        <p class="slider-text">Основной формат занятий — это круговые тренировки, в рамках которых вы
+                            выполняете заданный
+                            комплекс упражнений и стремитесь сделать его за минимальное время.</p>
+                        <a class="slider-item-button button" href="#">Записаться на тренировку</a>
+                    </div>
+                </li>
+                <li class="slider-item">
+                    <div class="slider-img">
+                        <picture>
+                            <source srcset="img/gymnastics.jpg" media="(min-width: 960px)">
+                            <img src="img/gymnastics-small.jpg" width="320" height="212" alt="gymnastics">
+                        </picture>
+                    </div>
+                    <div class="slider-item-container">
+                        <h3 class="slider-title">Кроссфит гимнастика</h3>
+                        <p class="slider-text">Кроссфит гимнастика – это специализированный класс для начинающих и
+                            продвинутых атлетов по
+                            гимнастике, ориентированный на прогрессию в рамках Кроссфит-направления. </p>
+                        <a class="slider-item-button button" href="#">Записаться на тренировку</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="advantages">
+        <div class="advantages-container">
+            <h2 class="advantages-title">Почему <span>мы</span> ?</h2>
+            <ul class="advantages-list">
+                <li class="advantages-item">
+                    <p class="advantages-item-icon">#1</p>
+                    <p class="advantages-item-text">Crossfit Reebok – это аффилированные кроссфит-залы №1 в Украине</p>
+                </li>
+                <li class="advantages-item">
+                    <img src="img/child.png">
+                    <p class="advantages-item-text">Авторские программы, разработанные нашими тренерами</p>
+                </li>
+                <li class="advantages-item">
+                    <img src="img/kolba.png">
+                    <p class="advantages-item-text">Собственная лаборатория функционального и медицинского
+                        тестирования</p>
+                </li>
+                <li class="advantages-item">
+                    <p class="advantages-item-icon">70%</p>
+                    <p class="advantages-item-text">тренеров - выступающие атлеты, сертифицированы CrossFit Level 1</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="our-team">
+        <div class="our-team-container">
+            <h2 class="our-team-title">Наша команда</h2>
+            <ul class="our-team-list">
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Директор клуба">
+                    <h3>Главный енот</h3>
+                    <p>Директор клуба</p>
+                </li>
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Менеджер по продажам">
+                    <h3>Енот-скидка</h3>
+                    <p>Менеджер по продажам</p>
+                </li>
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Администратор">
+                    <h3></h3>
+                    <p>Администратор</p>
+                </li>
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Администратор">
+                    <h3></h3>
+                    <p>Администратор</p>
+                </li>
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
+                    <h3>Енот-прыгун</h3>
+                    <p>Тренер по crossfit</p>
+                </li>
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
+                    <h3></h3>
+                    <p>Тренер по crossfit</p>
+                </li>
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
+                    <h3></h3>
+                    <p>Тренер по crossfit</p>
+                </li>
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
+                    <h3></h3>
+                    <p>Тренер по crossfit</p>
+                </li>
+                <li class="our-team-item">
+                    <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
+                    <h3></h3>
+                    <p>Тренер по crossfit</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="contacts">
+        <div class="contacts-container">
+            <div class="map-wrapper">
+                <h2 class="contacts-title">Контакты</h2>
+                <p>Вы можете найти нас по адресу: ул. Оболонская набережная, 9</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4062.8191784583937!2d30.499280515709604!3d50.50149251680966!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x198b866a86b96a9d!2zQ3Jvc3NGaXQgQkFOREEgViDQntCR0J7Qm9Ce0J3QrA!5e0!3m2!1sru!2sua!4v1573496690385!5m2!1sru!2sua"
+                        width="450" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+            <form class="contacts-form" action="#" method="post" novalidate>
+                <h2 class="contacts-form-title">Записаться на побную тренировку</h2>
+                <p class="contacts-group">
+                    <label for="fullname">Ваше имя:</label>
+                    <input type="text" name="fullname" id="fullname" required placeholder="Имя Фамилия">
+                </p>
+                <p class="contacts-group">
+                    <label for="email">Ваш e-mail:</label>
+                    <input type="email" name="email" id="email" required placeholder="email@example.com">
+                </p>
+                <p class="contacts-group">
+                    <label for="tel">Введите номер:</label>
+                    <input name="tel" id="tel" placeholder="+38(000)000-00-00" required>
+                </p>
+                <p class="contacts-options">Выберите направление тренировок:</p>
+                <p>
+                    <input list="character">
+                    <datalist id="character">
+                        <option value="Тяжёлая атлетика"></option>
+                        <option value="Кроссфит"></option>
+                        <option value="Кроссфит гимнастика"></option>
+                    </datalist>
+                </p>
+                <button class="contacts-button" type="submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+</main>
+<footer class="main-footer">
+    <div class="footer-container">
+        <img src="img/logo-footer.png">
+
+        <div class="social">
+            <ul class="social">
+                <li class="social-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li class="social-item"><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href="#"><i class="fab fa-vk"></i></a></li>
+            </ul>
+        </div>
+        <div class="tel-address">
+            <address>ул. Маршала Малиновского, 24/10</address>
+            <h3 class="visually-hidden">Телефон</h3>
+            <a class="phone-number" href="tel:+38008888888">Тел.: +3 (800) 888-88-88</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

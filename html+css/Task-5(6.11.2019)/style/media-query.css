@@ -1,0 +1,20 @@
+@media (min-width: 320px) {
+    .header {
+        min-height: 20px;
+    }
+
+    .navigation-list {
+        display: none;
+    }
+
+    .hamburger-container {
+        display: block;
+    }
+}
+
+@media (min-width: 960px) {
+    .header-img img {
+        width: 125px;
+        height: 83px;
+    }
+}

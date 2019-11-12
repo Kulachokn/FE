@@ -1,0 +1,70 @@
+.contacts {
+    background: #1C2833;
+}
+
+.contacts-container {
+    max-width: 1440px;
+    width: 100%;
+    padding-right: 40px;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+
+.map-wrapper p {
+    color: #ffffff;
+    font-family: "Oswald", "Arial", sans-serif;
+    font-size: 20px;
+}
+
+.contacts-form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 40px;
+    margin-bottom: 30px;
+}
+
+.contacts-form-title, .contacts-title {
+    color: #ffffff;
+    font-family: "Oswald", "Arial", sans-serif;
+    font-size: 30px;
+}
+
+.contacts-group {
+    color: #ffffff;
+    display: flex;
+    /*justify-content: space-around;*/
+}
+
+.contacts-group label {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.contacts-group input {
+    flex-grow: 1;
+}
+
+.contacts-options {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.contacts-button {
+    display: block;
+    background: #ff1b25;
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    vertical-align: middle;
+    padding: 10px 0;
+    width: 50%;
+    font-family: 'PT Sans', Arial, sans-serif;
+}

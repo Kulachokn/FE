@@ -1,0 +1,44 @@
+.main-footer {
+    background: #000000;
+    min-height: 60px;
+}
+
+.footer-container {
+    max-width: 1440px;
+    width: 100%;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 30px 0 0 55px;
+}
+
+.social-item {
+    margin-right: 15px;
+}
+
+.fab {
+    color: #ff1b25;
+    font-size: 30px;
+}
+
+.tel-address {
+    margin-top: 50px;
+    margin-right: 40px;
+}
+
+.tel-address, .phone-number {
+    color: #ffffff;
+    font-size: 20px;
+    font-family: "Arial", "Helvetica", sans-serif;
+}
