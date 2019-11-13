@@ -7,13 +7,6 @@
     box-sizing: border-box;
 }
 
-/*.visually-hidden {*/
-/*position: absolute;*/
-/*width: 1px;*/
-/*height: 1px;*/
-/*clip: rect(0, 0, 0, 0);*/
-/*}*/
-
 .slider {
     position: relative;
 
@@ -105,7 +98,6 @@
 }
 
 .slider-img {
-    /*margin-right: 20px;*/
     margin: 0 auto;
 }
 
@@ -160,9 +152,3 @@
     box-shadow: 0 3px rgba(0, 0, 0, 0.1) inset;
 }
 
-@media (min-width: 960px) {
-    .slider-img img {
-        width: 600px;
-        height: 410px;
-    }
-}

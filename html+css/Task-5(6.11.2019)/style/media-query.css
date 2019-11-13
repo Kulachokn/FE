@@ -207,4 +207,10 @@
         width: 125px;
         height: 83px;
     }
+
+    .slider-img img {
+        width: 600px;
+        height: 410px;
+    }
 }
+
