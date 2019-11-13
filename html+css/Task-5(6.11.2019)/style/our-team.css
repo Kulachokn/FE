@@ -26,10 +26,23 @@
 
 .our-team-item {
     margin-right: 40px;
-    padding: 10px;
+    padding: 15px;
     box-sizing: border-box;
     position: relative;
     margin-bottom: 20px;
+}
+
+.our-team-item h3, p {
+    text-align: center;
+}
+
+.our-team-item h3 {
+    font-size: 24px;
+    color: #ff1b25;
+}
+
+.our-team-item p {
+    font-size: 20px;
 }
 
 .our-team-item:before {

@@ -13,6 +13,12 @@
     box-sizing: border-box;
 }
 
+.contacts-map {
+    width: 450px;
+    height: 300px;
+    border: none;
+}
+
 .map-wrapper p {
     color: #ffffff;
     font-family: "Oswald", "Arial", sans-serif;
@@ -66,5 +72,6 @@
     vertical-align: middle;
     padding: 10px 0;
     width: 50%;
+    min-width: 170px;
     font-family: 'PT Sans', Arial, sans-serif;
 }

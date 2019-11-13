@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Crossfit</title>
     <link rel="stylesheet" href="style/task-5.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a71ca43433.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -18,30 +19,27 @@
                     </picture>
                 </div>
             </a>
-            <div class="hamburger-container">
-                <input type="checkbox" id="checkbox3" class="checkbox3 visually-hidden">
-                <label for="checkbox3">
-                    <div class="hamburger hamburger3">
-                        <span class="bar bar1"></span>
-                        <span class="bar bar2"></span>
-                        <span class="bar bar3"></span>
-                        <span class="bar bar4"></span>
-                    </div>
-                </label>
-            </div>
+            <input type="checkbox" id="checkbox" class="checkbox visually-hidden">
+            <label class="label-burger" for="checkbox">
+                <div class="hamburger hamburger3">
+                    <span class="bar bar1"></span>
+                    <span class="bar bar2"></span>
+                    <span class="bar bar3"></span>
+                    <span class="bar bar4"></span>
+                </div>
+            </label>
             <ul class="navigation-list">
                 <li class="navigation-item"><a href="#">Тренировки</a></li>
                 <li class="navigation-item"><a href="#">Наша команда</a></li>
                 <li class="navigation-item open-services"><a href="#">Услуги</a>
                     <ul class="services-menu">
-                        <li class="navigation-item service"><a href="#">Клубные карты</a></li>
+                        <li class="navigation-item service"><a href="https://crossfitbanda.com/abonement">Клубные карты</a></li>
                         <li class="navigation-item service"><a href="#">Персональные тренировки</a></li>
                         <li class="navigation-item service"><a href="#">Классы</a></li>
                     </ul>
                 </li>
                 <li class="navigation-item"><a href="#">О нас</a></li>
             </ul>
-            </label>
         </div>
     </nav>
 </header>
@@ -62,7 +60,7 @@
                     <div class="slider-img">
                         <picture>
                             <source srcset="img/weightlifting.jpg" media="(min-width: 960px)">
-                            <img src="img/weightlifting-small.jpg" width="320" height="212" alt="weightlifting">
+                            <img src="img/weightlifting-small.jpg" width="281" height="193" alt="weightlifting">
                         </picture>
                     </div>
                     <div class="slider-item-container">
@@ -78,7 +76,7 @@
                     <div class="slider-img">
                         <picture>
                             <source srcset="img/crossfit.jpg" media="(min-width: 960px)">
-                            <img src="img/crossfit-small.jpg" width="320" height="212" alt="crossfit">
+                            <img src="img/crossfit-small.jpg" width="280" height="186" alt="crossfit">
                         </picture>
                     </div>
                     <div class="slider-item-container">
@@ -93,7 +91,7 @@
                     <div class="slider-img">
                         <picture>
                             <source srcset="img/gymnastics.jpg" media="(min-width: 960px)">
-                            <img src="img/gymnastics-small.jpg" width="320" height="212" alt="gymnastics">
+                            <img src="img/gymnastics-small.jpg" width="280" height="186" alt="gymnastics">
                         </picture>
                     </div>
                     <div class="slider-item-container">
@@ -147,12 +145,12 @@
                 </li>
                 <li class="our-team-item">
                     <img src="img/unit.jpg" width="202" height="209" alt="Администратор">
-                    <h3></h3>
+                    <h3>Енот-помошник</h3>
                     <p>Администратор</p>
                 </li>
                 <li class="our-team-item">
                     <img src="img/unit.jpg" width="202" height="209" alt="Администратор">
-                    <h3></h3>
+                    <h3>Енот-помошник</h3>
                     <p>Администратор</p>
                 </li>
                 <li class="our-team-item">
@@ -162,22 +160,22 @@
                 </li>
                 <li class="our-team-item">
                     <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
-                    <h3></h3>
+                    <h3>Енот-бегун</h3>
                     <p>Тренер по crossfit</p>
                 </li>
                 <li class="our-team-item">
                     <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
-                    <h3></h3>
+                    <h3>Енот-гимнаст</h3>
                     <p>Тренер по crossfit</p>
                 </li>
                 <li class="our-team-item">
                     <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
-                    <h3></h3>
+                    <h3>Енот-борец</h3>
                     <p>Тренер по crossfit</p>
                 </li>
                 <li class="our-team-item">
                     <img src="img/unit.jpg" width="202" height="209" alt="Тренер по crossfit">
-                    <h3></h3>
+                    <h3>Енот-силач</h3>
                     <p>Тренер по crossfit</p>
                 </li>
             </ul>
@@ -188,8 +186,8 @@
             <div class="map-wrapper">
                 <h2 class="contacts-title">Контакты</h2>
                 <p>Вы можете найти нас по адресу: ул. Оболонская набережная, 9</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4062.8191784583937!2d30.499280515709604!3d50.50149251680966!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x198b866a86b96a9d!2zQ3Jvc3NGaXQgQkFOREEgViDQntCR0J7Qm9Ce0J3QrA!5e0!3m2!1sru!2sua!4v1573496690385!5m2!1sru!2sua"
-                        width="450" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                <iframe class="contacts-map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4062.8191784583937!2d30.499280515709604!3d50.50149251680966!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x198b866a86b96a9d!2zQ3Jvc3NGaXQgQkFOREEgViDQntCR0J7Qm9Ce0J3QrA!5e0!3m2!1sru!2sua!4v1573496690385!5m2!1sru!2sua"
+                         frameborder="0" allowfullscreen=""></iframe>
             </div>
             <form class="contacts-form" action="#" method="post" novalidate>
                 <h2 class="contacts-form-title">Записаться на побную тренировку</h2>
