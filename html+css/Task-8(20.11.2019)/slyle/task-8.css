@@ -1,0 +1,86 @@
+@import "outfit.css";
+
+body {
+    /*background-image: url("img/back-big.png");*/
+    /*background-size: cover;*/
+    /*background-position: center center;*/
+    /*background-size: contain;*/
+    /*background-repeat: no-repeat;*/
+    margin: 0 auto;
+    /*width: 1332px;*/
+    /*width: 1190px;*/
+    /*height: 978px;*/
+    /*height: 600px;*/
+    background-color: #39393b;
+}
+
+.main {
+    background-image: url("../img/back-big.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0 auto;
+    /*min-width: 968px;*/
+    display: flex;
+
+}
+
+.bar {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-self: center;
+    padding-top: 45px;
+    padding-bottom: 102px;
+}
+
+.field-left {
+    background-image: url("../img/bg_item.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 326px;
+    height: 433px;
+    position: relative;
+}
+
+.field-left p {
+    margin: 10px 20px;
+    /*width: 300px;*/
+}
+
+.field-right {
+    background-image: url("../img/bg_item-right.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 325px;
+    height: 434px;
+    position: relative;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    grid-gap: 10px;
+    grid-auto-rows: 60px;
+}
+
+.field-left::after {
+    content: "";
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    left: -45px;
+    bottom: -102px;
+    background: url("../img/circle-red.png") no-repeat 0 0;
+}
+
+.field-right::after {
+    content: "";
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    right: -53px;
+    bottom: -102px;
+    background: url("../img/circle-blue.png") no-repeat 0 0;
+}

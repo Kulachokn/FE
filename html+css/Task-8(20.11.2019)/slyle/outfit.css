@@ -1,0 +1,109 @@
+.button-number {
+    display: flex;
+    padding-top: 1px;
+}
+
+.button-one {
+    background-color: #787b75;
+    border-color: #a99e8d;
+    padding: 1px 12px;
+
+}
+
+.button-two {
+    background-color: #524b4d;
+    border-color: #a99e8d;
+    padding: 0 11px;
+}
+
+.resources {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.resources-left {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    align-items: center;
+}
+
+.stick-left {
+    border: 2px solid #cbc7b7;
+    background-color: #2d2c33;
+    padding: 0 14px;
+    border-top: 1px solid #cbc7b7;
+}
+
+.gloves {
+    border: 2px solid #cbc7b7;
+    border-top: none;
+    background-color: #2d2c33;
+    /*padding: 0 8px;*/
+}
+
+.resources-left-middle {
+    display: flex;
+    align-items: flex-end;
+}
+
+.resources-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.circlet {
+    border: 2px solid #cbc7b7;
+    background-color: #2d2c33;
+    padding: 0 4px;
+}
+
+.armor {
+    border: 2px solid #cbc7b7;
+    background-color: #2d2c33;
+    padding: 2px 4px;
+}
+
+.belt {
+    border: 2px solid #cbc7b7;
+    background-color: #2d2c33;
+    padding: 0 4px;
+}
+
+.resources-right-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+}
+
+.resources-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stick-right {
+    border: 2px solid #cbc7b7;
+    background-color: #531a12;
+    padding: 0 14px;
+    border-top: 1px solid #cbc7b7;
+}
+
+.amulet,
+.ring {
+    border: 2px solid #cbc7b7;
+    background-color: #2d2c33;
+    padding: 2px 4px;
+}
+
+.boots {
+    border: 2px solid #cbc7b7;
+    border-top: none;
+    background-color: #2d2c33;
+}
