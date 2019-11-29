@@ -42,6 +42,7 @@
     border-top: none;
     background-color: #2d2c33;
     /*padding: 0 8px;*/
+    /*box-shadow: 0 0 10px gold;*/
 }
 
 .resources-left-middle {
@@ -62,7 +63,7 @@
     padding: 0 4px;
 }
 
-.armor {
+.armor-choose {
     border: 2px solid #cbc7b7;
     background-color: #2d2c33;
     padding: 2px 4px;
@@ -96,7 +97,7 @@
 }
 
 .amulet,
-.ring {
+.ring-choose {
     border: 2px solid #cbc7b7;
     background-color: #2d2c33;
     padding: 2px 4px;
