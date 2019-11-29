@@ -1,0 +1,54 @@
+.bottom-panel {
+    display: flex;
+    align-items: center;
+}
+
+.add-button {
+    margin: 0 15px 0 30px;
+}
+
+.button-add {
+    margin: 0 30px 0 15px;
+}
+
+.progress {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.scale {
+    height: 4px;
+    background-color: #000000;
+    width: 115px;
+    border: 1px solid #c1bcb9;
+    margin-bottom: 10px;
+}
+
+.bar {
+    width: 30%;
+    height: 4px;
+    background: #f6f8ef;
+}
+
+.meter {
+    padding-left: 17px;
+    height: 21px;
+    width: 115px;
+}
+
+.meter::before {
+    content: "";
+    width: 17px;
+    height: 23px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background: url("../img/man.png") no-repeat 0 0;
+}
+
+.elixir {
+    box-sizing: border-box;
+    border: 1px solid #f7eff2;
+    background: #242426;
+}
