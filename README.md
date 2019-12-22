@@ -14,6 +14,7 @@ https://kulachokn.github.io/FE/
     - [task-7](https://github.com/Kulachokn/FE/tree/task7)
     - [task-8](https://github.com/Kulachokn/FE/tree/master/html%2Bcss/Task-8(20.11.2019))
 3. JS
-    - task-1
+    - [task-1](https://github.com/Kulachokn/FE/tree/master/js/task-1)
     - [task-2](https://github.com/Kulachokn/FE/tree/master/js/task-2)
     - [task-3](https://github.com/Kulachokn/FE/tree/master/js/task-3)
+    - [task-4](https://github.com/Kulachokn/FE/tree/master/js/task-4)
