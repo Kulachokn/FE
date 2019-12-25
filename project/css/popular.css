@@ -1,0 +1,30 @@
+.popular-categories-list {
+    padding: 0;
+    display: flex;
+    /*justify-content: space-between;*/
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 0 20px;
+}
+
+.popular-category-item {
+    padding: 15px 20px;
+    background: #392e5c;;
+    min-width: 212px;
+    min-height: 60px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.popular-category-name {
+    width: 120px;
+    display: block;
+    text-align: center;
+}
+
+.popular-category-item a {
+    color: #dad8de;
+}
+
+

@@ -3,169 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/a71ca43433.js" crossorigin="anonymous"></script>
+
     <title>Title</title>
 </head>
 <body class="theme_dark">
 <header class="header">
-    <a href="index.html">YourLib</a>
-    <nav class="navigation">
-        <ul class="navigation-list">
-            <li class="navigation-item">Аудиоконтент
-                <ul class="sub-menu">
-                    <li class="sub-item">Frontend
-                        <ul class="sub-menu-child">
-                            <li class="sub-item">React.js</li>
-                            <li class="sub-item">Angular</li>
-                            <li class="sub-item">Vue</li>
-                        </ul>
-                    </li>
-                    <li class="sub-item">Backend</li>
-                </ul>
-            </li>
-            <li class="navigation-item">Видеоконтент
-                <ul class="sub-menu-child">
-                    <li class="sub-item">PHP</li>
-                    <li class="sub-item">Python</li>
-                </ul>
-            </li>
-            <li class="navigation-item">Книги
-                <ul class="sub-menu-child">
-                    <li class="sub-item">React Native</li>
-                    <li class="sub-item">Swift</li>
-                    <li class="sub-item">Core Data</li>
-                </ul>
-            </li>
-        </ul>
-        <div class="user-nav">
-            <form class="site-search" action="#" method="post">
-                <label for="search"></label>
-                <input type="search" name="search" id="search" placeholder="Поиск по сайту">
-                <button class="search-form-submit" type="submit">Найти</button>
-            </form>
-            <button type="button">ADD</button>
-            <button type="button">SING IN</button>
-        </div>
-    </nav>
-</header>
-<main class="main-content">
-    <section class="slider">
-        <ul class="slider-list">
-            <li class="video">
-                <img src="#">
-                <h3 class="slider-title">ES6 для всех</h3>
-                <p>Цель этого курса проста: значительно укрепить основные навыки JavaScript и подготовить вас до
-                    написания современного JavaScript.</p>
-                <p>icon</p>
-            </li>
-            <li class="audio">
-                <img src="#">
-                <h3>WEB стандарты</h3>
-                <p>Еженедельный подкаст, посвящённый обсуждению свежих новостей из мира фронтенд-разработки.</p>
-                <p>icon</p>
-            </li>
-            <li class="book">
-                <img src="#">
-                <h3>​​​​Machine Learning Systems</h3>
-                <p>Если вы разрабатываете проекты, основанные на машинном обучении, и вам нужна надёжность и хороший
-                    пользовательский опыт, эта книга для вас.</p>
-                <p>icon</p>
-            </li>
-        </ul>
-    </section>
-    <section class="popular-categories">
-        <ul class="popular-categories-list">
-            <li class="popular-categories-item">React.js</li>
-            <li class="popular-categories-item">Angular</li>
-            <li class="popular-categories-item">Vue</li>
-            <li class="popular-categories-item">Node.js</li>
-            <li class="popular-categories-item">Python</li>
-            <li class="popular-categories-item">Jav</li>
-        </ul>
-    </section>
-    <div class="sort-goods-by">
-        <h2>Сортировка:</h2>
-        <ul class="sort">
-            <li class="sort-by sort-by_price" data-sort-by="byPrice"><a href="#">По дате добавления</a></li>
-            <li class="sort-by sort-by_type" data-sort-by="byType"><a href="#">По типу</a></li>
-            <li class="sort-by sort-by_popularity selected-sort" data-sort-by="byPopular"><a href="#">По
-                популярности</a></li>
-        </ul>
-        <ul class="sort-function">
-            <li class="ascending selected-mode" data-sort-order="ascending"><a href="#">
-                <span class="visually-hidden">По возрастанию</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10">
-                    <path fill="#231f20" d="M5.5 0L0 10h11z"></path>
-                </svg>
-            </a></li>
-            <li class="descending" data-sort-order="descending"><a href="#">
-                <span class="visually-hidden">По убыванию</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10">
-                    <path fill="#231f20" d="M5.5 10L0 0h11"></path>
-                </svg>
-            </a></li>
-        </ul>
-    </div>
-    <section class="filter-catalog">
-        <div class="filters">
-            <form class="filter-form" method="get" action="#">
-                <fieldset>
-                    <legend class="language">Язык контента</legend>
-                    <ul>
-                        <li class="option-language">
-                            <input class="visually-hidden language-input filter-input-checkbox" type="checkbox"
-                                   name="russian" id="rus" checked>
-                            <label class="selected-language" for="rus">Русский</label>
+    <div class="header-nav container">
+        <nav class="navigation">
+            <a class="main-logo" href="index.html">YourLib</a>
+            <ul class="navigation-list">
+                <li class="navigation-item">Аудиоконтент
+                    <ul class="sub-menu">
+                        <li class="sub-item">Frontend
+                            <ul class="sub-menu-child">
+                                <li class="sub-item">React.js</li>
+                                <li class="sub-item">Angular</li>
+                                <li class="sub-item">Vue</li>
+                            </ul>
                         </li>
-                        <li class="option-language">
-                            <input class="visually-hidden language-input filter-input-checkbox" type="checkbox"
-                                   name="english" id="eng" checked>
-                            <label class="selected-language" for="eng">Английский</label>
-                        </li>
+                        <li class="sub-item">Backend</li>
                     </ul>
-                </fieldset>
-                <fieldset>
-                    <legend class="level">Уровень сложности/доступности</legend>
-                    <ul>
-                        <li class="option-level">
-                            <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
-                                   name="beginner" id="beginner" checked>
-                            <label class="selected-level" for="rus">beginner</label>
-                        </li>
-                        <li class="option-level">
-                            <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
-                                   name="middle" id="middle" checked>
-                            <label class="selected-level" for="eng">middle</label>
-                        </li>
-                        <li class="option-level">
-                            <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
-                                   name="advanced" id="advanced" checked>
-                            <label class="selected-level" for="eng">advanced</label>
-                        </li>
+                </li>
+                <li class="navigation-item">Видеоконтент
+                    <ul class="sub-menu-child">
+                        <li class="sub-item">PHP</li>
+                        <li class="sub-item">Python</li>
                     </ul>
-                </fieldset>
-            </form>
-        </div>
-        <div class="catalog">
-            <h1 class="visually-hidden">Список контента</h1>
-            <ul class="goods-list">
-                <li class="stock-keeping-unit">
-                    <div class="stock-keeping-unit__inner">
-                        <img src="#" width="" height="" alt="">
-                        <a href="#">
-                            <h3>Разрабатывайте доступное веб-приложениес React</h3>
-                        </a>
-                        <p>Автор или описание</p>
-                        <p>Язык: русский</p>
-                        <p>Дата добавления: 01/04/2018</p>
-                        <p>icon</p>
-                    </div>
-                    <div class="stock-keeping-unit__mask">
-                        <a class="add-to-favorites mask" href="#">Добавить в избранное</a>
-                    </div>
+                </li>
+                <li class="navigation-item">Книги
+                    <ul class="sub-menu-child">
+                        <li class="sub-item">React Native</li>
+                        <li class="sub-item">Swift</li>
+                        <li class="sub-item">Core Data</li>
+                    </ul>
                 </li>
             </ul>
+        </nav>
+        <div class="user-nav">
+            <form class="site-search" action="#" method="post">
+                <label class="visually-hidden" for="search">Поиск по сайту</label>
+                <input class="search-field" type="search" name="search" id="search" placeholder="Поиск">
+            </form>
+            <button class="add-content button-decoration" type="button">ADD</button>
+            <button class="sing-in" type="button">SING IN</button>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <section class="slider container">
+        <ul class="slider-list">
+            <li class="slide slide-video">
+                <img src="img/slide1.jpg" width="320" height="214" alt="Слайд 1">
+                <div class="about-product about-video">
+                    <h3 class="slide-title">ES6 для всех</h3>
+                    <p class="slide-description">Цель этого курса проста: значительно укрепить основные навыки JavaScript и подготовить вас до
+                        написания современного JavaScript.</p>
+                    <!--<p><i class="fas fa-video"></i></p>-->
+                    <div class="feature">
+                        <p class="language">Русский</p>
+                        <p class="date">06/10/2018</p>
+                        <!--<div class="rating-area">-->
+                            <!--<input type="radio" id="star-1" name="rating" value="1">-->
+                            <!--<label for="star-1" title="Оценка «1»"></label>-->
+                            <!--<input type="radio" id="star-2" name="rating" value="2">-->
+                            <!--<label for="star-2" title="Оценка «2»"></label>-->
+                            <!--<input type="radio" id="star-3" name="rating" value="3">-->
+                            <!--<label for="star-3" title="Оценка «4»"></label>-->
+                            <!--<input type="radio" id="star-4" name="rating" value="4">-->
+                            <!--<label for="star-4" title="Оценка «4»"></label>-->
+                            <!--<input type="radio" id="star-5" name="rating" value="5">-->
+                            <!--<label for="star-5" title="Оценка «5»"></label>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </li>
+            <li class="slide slide-audio">
+                <img src="img/slide2.jpg" width="320" height="196" alt="Слайд 2">
+                <div class="about-product about-audio">
+                    <h3 class="slide-title">WEB стандарты</h3>
+                    <p class="slide-description">Еженедельный подкаст, посвящённый обсуждению свежих новостей из мира фронтенд-разработки.</p>
+                    <p><i class="fas fa-headphones"></i></p>
+                    <div class="feature">
+                        <p>Русский</p>
+                        <p>12/03/2019</p>
+                        <!--<div class="rating-area">-->
+                            <!--<input type="radio" id="star-1" name="rating" value="1">-->
+                            <!--<label for="star-1" title="Оценка «1»"></label>-->
+                            <!--<input type="radio" id="star-2" name="rating" value="2">-->
+                            <!--<label for="star-2" title="Оценка «2»"></label>-->
+                            <!--<input type="radio" id="star-3" name="rating" value="3">-->
+                            <!--<label for="star-3" title="Оценка «4»"></label>-->
+                            <!--<input type="radio" id="star-4" name="rating" value="4">-->
+                            <!--<label for="star-4" title="Оценка «4»"></label>-->
+                            <!--<input type="radio" id="star-5" name="rating" value="5">-->
+                            <!--<label for="star-5" title="Оценка «5»"></label>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </li>
+            <li class="slide slide-book">
+                <img src="img/slide3.jpg" width="320" height="214" alt="Слайд 3">
+                <div class="about-product about-book">
+                    <h3 class="slide-title">​​​​Machine Learning Systems</h3>
+                    <p class="slide-description">Если вы разрабатываете проекты, основанные на машинном обучении, и вам
+                        нужна надёжность и хороший
+                        пользовательский опыт, эта книга для вас.</p>
+                    <p><i class="fas fa-book"></i></p>
+                    <div class="feature">
+                        <p>Английский</p>
+                        <p>28/02/2018</p>
+                        <div class="rating-area">
+                            <input type="radio" id="star-1" name="rating" value="1">
+                            <label for="star-1" title="Оценка «1»"></label>
+                            <input type="radio" id="star-2" name="rating" value="2">
+                            <label for="star-2" title="Оценка «2»"></label>
+                            <input type="radio" id="star-3" name="rating" value="3">
+                            <label for="star-3" title="Оценка «4»"></label>
+                            <input type="radio" id="star-4" name="rating" value="4">
+                            <label for="star-4" title="Оценка «4»"></label>
+                            <input type="radio" id="star-5" name="rating" value="5">
+                            <label for="star-5" title="Оценка «5»"></label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="popular-categories container">
+        <ul class="popular-categories-list">
+            <li class="popular-category-item"><a href="#"><img src="#"><span
+                    class="popular-category-name">React.js</span></a></li>
+            <li class="popular-category-item"><a href="#"><img src="#"><span
+                    class="popular-category-name">Angular</span></a></li>
+            <li class="popular-category-item "><a href="#"><img src="#"><span
+                    class="popular-category-name">Vue</span></a></li>
+            <li class="popular-category-item"><a href="#"><img src="#"><span
+                    class="popular-category-name">Node.js</span></a></li>
+            <li class="popular-category-item"><a href="#"><img src="#"><span class="popular-category-name">Python</span></a>
+            </li>
+            <li class="popular-category-item"><a href="#"><img src="#"><span
+                    class="popular-category-name">Java</span></a></li>
+            <li class="popular-category-item"><a href="#"><img src="#"><span
+                    class="popular-category-name">Graphic</span></a></li>
+        </ul>
+    </section>
+    <section class="content-title">
+        <div class="filter-title-sort container">
+            <h3 class="filter-title">Фильтр:</h3>
+            <div class="sort-content-by">
+                <h3>Сортировка:</h3>
+                <ul class="sort">
+                    <li class="sort-by sort-by_date" data-sort-by="byDate"><a href="#">По дате</a></li>
+                    <li class="sort-by sort-by_type" data-sort-by="byType"><a href="#">По типу</a></li>
+                    <li class="sort-by sort-by_popularity selected-sort" data-sort-by="byPopular"><a href="#">По
+                        популярности</a></li>
+                </ul>
+                <ul class="sort-function">
+                    <li class="ascending selected-mode" data-sort-order="ascending"><a href="#">
+                        <span class="visually-hidden">По возрастанию</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10">
+                            <path fill="#392e5c;" d="M5.5 0L0 10h11z"></path>
+                        </svg>
+                    </a></li>
+                    <li class="descending" data-sort-order="descending"><a href="#">
+                        <span class="visually-hidden">По убыванию</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10">
+                            <path fill="#392e5c;" d="M5.5 10L0 0h11"></path>
+                        </svg>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="main-content">
+        <div class="filter-catalog container">
+            <div class="filters">
+                <form class="filter-form" method="get" action="#">
+                    <fieldset>
+                        <legend class="language">Язык</legend>
+                        <ul class="available-language">
+                            <li class="option-language">
+                                <input class="visually-hidden language-input filter-input-radio" type="radio"
+                                       name="russian" id="rus" checked>
+                                <label class="selected-language" for="rus">Русский</label>
+                            </li>
+                            <li class="option-language">
+                                <input class="visually-hidden language-input filter-input-radio" type="radio"
+                                       name="english" id="eng">
+                                <label class="selected-language" for="eng">Английский</label>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="level">Уровень</legend>
+                        <ul class="available-level">
+                            <li class="option-level">
+                                <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
+                                       name="beginner" id="beginner">
+                                <label class="selected-level" for="rus">beginner</label>
+                            </li>
+                            <li class="option-level">
+                                <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
+                                       name="middle" id="middle" checked>
+                                <label class="selected-level" for="eng">middle</label>
+                            </li>
+                            <li class="option-level">
+                                <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
+                                       name="advanced" id="advanced">
+                                <label class="selected-level" for="eng">advanced</label>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <button class="filter-form-button button-decoration" type="submit">Показать</button>
+                </form>
+            </div>
+            <div class="catalog">
+                <h1 class="visually-hidden">Список контента</h1>
+                <ul class="items-list">
+                    <li class="stock-keeping-unit">
+                        <div class="stock-keeping-unit__inner">
+                            <img src="img/item-1.jpg" width="320" height="214" alt="item-1">
+                            <a href="#">
+                                <h3>Разрабатывайте доступное веб-приложениес React</h3>
+                            </a>
+                            <p>icon</p>
+                            <p>Автор или описание</p>
+                            <p>Язык: русский</p>
+                            <p>Дата добавления: 01/04/2018</p>
+                            <a class="open-resource button-decoration" href="#">Посмотреть</a>
+                        </div>
+                        <div class="stock-keeping-unit__mask">
+                            <a class="add-to-favorites mask" href="#">Добавить в избранное</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 </main>
+<footer class="footer">
+    <div class="container">
+        <a class="main-logo" href="index.html">YourLib</a>
+        <div class="social">
+            <ul class="social-list">
+                <li class="social-item"><a class="facebook" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512">
+                        <path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/>
+                    </svg>
+                </a></li>
+                <li class="social-item"><a class="twitter" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512">
+                        <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/>
+                    </svg>
+                </a></li>
+                <li class="social-item"><a class="telefram" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 496 512">
+                        <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/>
+                    </svg>
+                </a></li>
+            </ul>
+        </div>
+        <div class="change-theme">
+            <h3>Темы:</h3>
+            <button class="light" type="button">Белая</button>
+            <button class="dark" type="button">Темная</button>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

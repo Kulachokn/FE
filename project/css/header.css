@@ -1,0 +1,99 @@
+.header {
+    background: #201c2b;
+    padding: 15px 0;
+    /*min-height: 50px;*/
+}
+
+.header-nav {
+    /*padding: 15px 0;*/
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+.main-logo {
+    font-family: "Oswald", "Arial", sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    /*flex-wrap: nowrap;*/
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 20px;
+}
+
+.navigation-item {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.sub-menu-child,
+.sub-menu {
+    display: none;
+}
+
+.user-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.site-search {
+    position: relative;
+}
+
+.site-search::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -25px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: url("../img/svg/search.svg");
+}
+
+.search-field {
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.search-field:focus,
+.search-field:active {
+    width: 300px;
+    padding: 16px 16px 16px 60px;
+    box-shadow: -10px 9px 21px rgba(128,152,213,.075);
+    outline: 1px solid #7f1cac;
+    color: #dad8de;
+    background-color: #201c2b;
+    /*outline: none;*/
+    margin-right: 10px;
+}
+
+.add-content {
+    margin-right: 20px;
+    padding: 13px 9px;
+}
+
+.sing-in {
+    color: #dad8de;
+    background-color: transparent;
+}
