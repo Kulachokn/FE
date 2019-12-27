@@ -135,3 +135,69 @@
 .stock-keeping-unit {
     width: 270px;
 }
+
+
+.pagination {
+    background-color: #392e5c;
+    padding: 18px 0 20px;
+    margin: 0 0 79px 75px;
+    width: 760px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pagination a {
+    font-family: 'PT Gilroy', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.pagination-number-page {
+    /*color: #201c2b;*/
+    color: #bababa;
+}
+
+.pagination-page-prev {
+    padding: 20px 33px 23px;
+    width: 125px;
+    margin-left: 0;
+    margin-right: 180px;
+    color: #ffffff;
+}
+
+.pagination-page-next {
+    padding: 20px 33px 23px;
+    width: 125px;
+    margin-right: 0;
+    margin-left: 171px;
+    color: #ffffff;
+}
+
+.selected {
+    color: #ffffff;
+}
+
+.pagination-number-page:hover,
+.pagination-number-page:focus {
+    color: #bababa;
+}
+
+.pagination-number-page:active {
+    color: #ffffff;
+}
+
+.pagination-page-next:hover,
+.pagination-page-prev:hover,
+.pagination-page-next:focus,
+.pagination-page-prev:focus {
+    background-color: #562D84;
+}
+
+.pagination-page-prev:active,
+.pagination-page-next:active {
+    color: #acacac;
+    background-color: #562D84;
+}

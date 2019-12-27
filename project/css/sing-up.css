@@ -1,0 +1,19 @@
+.sing-up {
+    background: #392e5c;
+    padding-top: 50px;
+}
+
+.registration-title {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.registration-form {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 380px;
+    padding-bottom: 20px;
+}

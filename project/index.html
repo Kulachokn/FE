@@ -5,9 +5,32 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/a71ca43433.js" crossorigin="anonymous"></script>
 
-    <title>Title</title>
+    <title>YourLib</title>
 </head>
 <body class="theme_dark">
+<section class="modal-sing-in">
+    <h2 class="modal-sing-in_title">Личный кабинет</h2>
+    <button class="close-button close-sing-in">
+        <img src="img/modal-close.svg" width="55" height="55" alt="Закрыть">
+    </button>
+    <p class="modal-sing-in-description">Введите пожалуйста свой логин и пароль</p>
+    <form class="modal-sing-in_login-form" action="https://echo.htmlacademy.ru" method="post">
+        <label class="modal-sing-in_group"><span class="visually-hidden">Логин</span>
+            <input type="text" name="login" placeholder="Логин">
+        </label>
+        <label class="modal-sing-in_group"><span class="visually-hidden">Пароль</span>
+            <input type="password" name="password" placeholder="Пароль">
+        </label>
+        <p class="login-help">
+            <label class="login-checkbox">
+                <input type="checkbox" name="remember" class="visually-hidden">
+                <span class="checkbox-indicator"></span>Запомните меня
+            </label>
+            <!--<a class="restore" href="#">Я забыл пароль!</a>-->
+        </p>
+        <button class="modal-sing-in_button" type="submit">Войти</button>
+    </form>
+</section>
 <header class="header">
     <div class="header-nav container">
         <nav class="navigation">
@@ -185,12 +208,12 @@
                         <ul class="available-language">
                             <li class="option-language">
                                 <input class="visually-hidden language-input filter-input-radio" type="radio"
-                                       name="russian" id="rus" checked>
+                                       name="language" id="rus" checked>
                                 <label class="selected-language" for="rus">Русский</label>
                             </li>
                             <li class="option-language">
                                 <input class="visually-hidden language-input filter-input-radio" type="radio"
-                                       name="english" id="eng">
+                                       name="language" id="eng">
                                 <label class="selected-language" for="eng">Английский</label>
                             </li>
                         </ul>
@@ -201,29 +224,29 @@
                             <li class="option-level">
                                 <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
                                        name="beginner" id="beginner">
-                                <label class="selected-level" for="rus">beginner</label>
+                                <label class="selected-level" for="beginner">beginner</label>
                             </li>
                             <li class="option-level">
                                 <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
                                        name="middle" id="middle" checked>
-                                <label class="selected-level" for="eng">middle</label>
+                                <label class="selected-level" for="middle">middle</label>
                             </li>
                             <li class="option-level">
                                 <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
                                        name="advanced" id="advanced">
-                                <label class="selected-level" for="eng">advanced</label>
+                                <label class="selected-level" for="advanced">advanced</label>
                             </li>
                         </ul>
                     </fieldset>
                     <button class="filter-form-button button-decoration" type="submit">Показать</button>
                 </form>
             </div>
-            <div class="catalog">
+            <div class="catalog-pagination">
                 <h1 class="visually-hidden">Список контента</h1>
                 <ul class="items-list">
                     <li class="stock-keeping-unit">
                         <div class="stock-keeping-unit__inner">
-                            <img src="img/item-1.jpg" width="320" height="214" alt="item-1">
+                            <!--<img src="img/item-1.jpg" width="320" height="214" alt="item-1">-->
                             <a href="#">
                                 <h3>Разрабатывайте доступное веб-приложениес React</h3>
                             </a>
@@ -238,13 +261,20 @@
                         </div>
                     </li>
                 </ul>
+                <ul class="pagination">
+                    <li class="page-prev"><a class="pagination-page pagination-page-prev" href="#prev">Назад</a></li>
+                    <li><a class="pagination-page pagination-number-page selected" href="#1">1</a></li>
+                    <li><a class="pagination-page pagination-number-page" href="#3">2</a></li>
+                    <li><a class="pagination-page pagination-number-page" href="#3">3</a></li>
+                    <li class="page-next"><a class="pagination-page pagination-page-next" href="#next">Вперёд</a></li>
+                </ul>
             </div>
         </div>
     </section>
 </main>
 <footer class="footer">
-    <div class="container">
-        <a class="main-logo" href="index.html">YourLib</a>
+    <div class="footer-main container">
+        <a class="main-logo logo-footer" href="index.html">YourLib</a>
         <div class="social">
             <ul class="social-list">
                 <li class="social-item"><a class="facebook" href="#">
@@ -267,9 +297,13 @@
         <div class="change-theme">
             <h3>Темы:</h3>
             <button class="light" type="button">Белая</button>
-            <button class="dark" type="button">Темная</button>
+            <button class="button-decoration dark" type="button">Темная</button>
         </div>
     </div>
 </footer>
+<script src="scripts/pouchdb/pouchdb.js"></script>
+<script src="scripts/pouchdb/pouchdb.find.js"></script>
+<script src="scripts/date-fns.js"></script>
+<script src="scripts/scripts.js"></script>
 </body>
 </html>

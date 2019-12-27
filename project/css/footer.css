@@ -1,0 +1,26 @@
+.footer {
+    background: #201c2b;;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.logo-footer {
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.social-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-top: 10px;
+}
+
+.social-item:not(last-child) {
+    margin-right: 20px;
+}
