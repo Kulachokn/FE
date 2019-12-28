@@ -39,11 +39,16 @@
 .navigation-item {
     padding: 5px;
     cursor: pointer;
+    color: #ffffff;
 }
 
 .sub-menu-child,
 .sub-menu {
     display: none;
+}
+
+.sub-item {
+    color: #ffffff;
 }
 
 .user-nav {
@@ -59,7 +64,7 @@
 .site-search::before {
     content: "";
     position: absolute;
-    top: 10px;
+    top: 15px;
     left: -25px;
     width: 20px;
     height: 20px;
@@ -73,7 +78,7 @@
     border: none;
     background: transparent;
     cursor: pointer;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .search-field:focus,
@@ -93,7 +98,7 @@
     padding: 13px 9px;
 }
 
-.sing-in {
+.sing-in-button {
     color: #dad8de;
     background-color: transparent;
 }

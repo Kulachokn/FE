@@ -9,7 +9,6 @@
     margin: 0;
     padding: 0;
     font-size: 36px;
-    /*color: #ffffff;*/
     color: #dad8de;
 }
 
@@ -93,11 +92,12 @@
 .registration-additional-link {
     color: #dad8de;
     font-size: .75rem;
+    text-decoration: underline;
 }
 
 .registration-additional-link:hover {
     color: #5d38db;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 
 .registration-button-group {

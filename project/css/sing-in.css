@@ -1,0 +1,29 @@
+.main-sing-in {
+    background: #392e5c;
+    padding-top: 50px;
+}
+
+.sing-in_title {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 36px;
+    color: #dad8de;
+}
+
+.further-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    margin-bottom: 55px;
+}
+
+.registration-link-sing-in {
+    color: #dad8de;
+    font-size: .75rem;
+    text-decoration: underline;
+}
+
+.registration-link-sing-in:hover {
+    color: #5d38db;
+}
