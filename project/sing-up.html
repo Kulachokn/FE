@@ -54,27 +54,32 @@
         <form class="registration-form" action="#" method="get">
             <div class="registration_plot">
                 <label class="registration_group">Имя</label>
-                <input type="text" name="fullname" required placeholder="Ваше имя">
+                <input class="registration-input" type="text" name="fullname" required>
                 <span class="registration-bar"></span>
             </div>
             <div class="registration_plot">
                 <label class="registration_group">Ваш e-mail:</label>
-                <input type="email" name="email" required placeholder="email@example.com">
+                <input class="registration-input" type="email" name="email" required>
                 <span class="registration-bar"></span>
             </div>
             <div class="registration_plot">
                 <label class="registration_group">Пароль</label>
-                <input type="password" name="password" pattern="[0-9]{7,}" placeholder="Введите пароль">
+                <input class="registration-input" type="password" name="password" pattern="[0-9]{7,}">
                 <span class="registration-bar"></span>
             </div>
             <div class="registration_plot">
-                <label class="registration_group">Пароль</label>
-                <input type="password" name="confirmation-password" pattern="[0-9]{7,}"
-                       placeholder="Повторите пароль">
+                <label class="registration_group">Подтвердите пароль</label>
+                <input class="registration-input" type="password" name="confirmation-password" pattern="[0-9]{7,}">
                 <span class="registration-bar"></span>
-
             </div>
-            <button class="button-decoration" type="submit">Создать</button>
+            <div class="registration-additional">
+                <span class="registration-additional-message">Уже зарегистрированы?</span>
+                <a class="registration-additional-link" href="#">Sing in</a>
+            </div>
+            <div class="registration-button-group">
+                <a class="registration-cancel" href="index.html">Cancel</a>
+                <button class="registration-button button-decoration" type="submit">Создать</button>
+            </div>
         </form>
     </section>
 </main>

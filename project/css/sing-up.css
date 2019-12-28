@@ -4,11 +4,13 @@
 }
 
 .registration-title {
+    /*font-family: "Oswald", "Arial", sans-serif;*/
     text-align: center;
     margin: 0;
     padding: 0;
     font-size: 36px;
-    color: #ffffff;
+    /*color: #ffffff;*/
+    color: #dad8de;
 }
 
 .registration-form {
@@ -16,4 +18,122 @@
     margin: 0 auto;
     max-width: 380px;
     padding-bottom: 20px;
+}
+
+.registration_plot {
+    position: relative;
+    padding: 20px 0 0;
+    margin-bottom: 10px;
+}
+
+.registration-input {
+    color: #dad8de;
+    background: #392e5c;
+    font-size: .875rem;
+    font-weight: 700;
+    padding: 9px 10px 7px 0;
+    display: block;
+    max-width: 380px;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.registration-input:focus {
+    outline: none;
+}
+
+.registration-bar {
+    position: relative;
+    display: block;
+    max-width: 380px;
+}
+
+.registration-input:focus~.registration-bar::before {
+    content: "";
+    height: 2px;
+    width: 103%;
+    bottom: 0;
+    position: absolute;
+    background: #7f00ac;
+    transition: all .3s ease;
+    left: 0;
+    /*outline: none;*/
+}
+
+.registration_group {
+    color: #969494;
+    font-weight: 400;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    transition: all .3s ease;
+    font-size: .875rem;
+    line-height: normal;
+    top: 30px;
+    margin: auto;
+    height: 20px;
+}
+
+.registration-additional {
+    padding: 6px 0;
+    margin-bottom: 55px;
+    text-align: center;
+}
+
+.registration-additional-message {
+    font-size: .75rem;
+    color: #757575;
+    line-height: normal;
+    font-weight: 400;
+    margin-right: 5px;
+}
+
+.registration-additional-link {
+    color: #dad8de;
+    font-size: .75rem;
+}
+
+.registration-additional-link:hover {
+    color: #5d38db;
+    text-decoration: underline;
+}
+
+.registration-button-group {
+    text-align: center;
+}
+
+.registration-cancel {
+    border: 1px solid #969494;
+    border-radius: 2px;
+    color: #dad8de;
+    font-size: .9375rem;
+    line-height: 16px;
+    padding: 11px 20px;
+    /*min-width: 130px;*/
+    min-width: 80px;
+    display: inline-block;
+    text-decoration: none;
+    background: transparent;
+    margin-right: 10px;
+}
+
+.registration-button {
+    border-radius: 2px;
+    background: #7f00ac;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    border: none;
+    line-height: 1;
+    font-size: .875rem;
+    padding: 14px 31px;
+    /*min-width: 130px;*/
+    display: inline-block;
+    text-decoration: none;
+}
+
+.registration-cancel:hover {
+    border: 1px solid #7f00ac;
 }
