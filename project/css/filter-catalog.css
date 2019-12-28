@@ -27,6 +27,7 @@
     border: none;
 }
 
+.type,
 .language,
 .level {
     margin: 0;
@@ -43,6 +44,7 @@
     color: #ffffff;
 }
 
+.available-type,
 .available-language {
     padding: 0 0 33px;
     border-bottom: 2px solid #ffffff;
@@ -52,6 +54,7 @@
     padding: 0;
 }
 
+.option-type,
 .option-language,
 .option-level {
     font-size: 14px;
@@ -63,6 +66,8 @@
     padding: 13px 16px;
 }
 
+
+.option-type label,
 .option-language label,
 .option-level label {
     position: relative;
@@ -70,6 +75,7 @@
     cursor: pointer;
 }
 
+.filter-input-type + label::before,
 .filter-input-checkbox + label::before {
     content: '';
     position: absolute;
@@ -80,6 +86,7 @@
     background: url('../img/svg/checkbox-off.svg') no-repeat 0 0;
 }
 
+.filter-input-type:checked + label::after,
 .filter-input-checkbox:checked + label::after {
     content: '';
     position: absolute;
@@ -110,6 +117,8 @@
     background: url('../img/svg/radio-on.svg') no-repeat 0 0;
 }
 
+.filter-input-type + label:hover::before,
+.filter-input-type:checked + label:hover::before,
 .filter-input-checkbox + label:hover::before,
 .filter-input-checkbox:checked + label:hover::after,
 .filter-input-radio + label:hover::before,
@@ -117,6 +126,8 @@
     opacity: 0.6;
 }
 
+.filter-input-type + label:active::before,
+.filter-input-type:checked + label:active::before,
 .filter-input-checkbox + label:active::before,
 .filter-input-checkbox:checked + label:active::after,
 .filter-input-radio + label:active::before,

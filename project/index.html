@@ -57,23 +57,24 @@
                 <img src="img/slide1.jpg" width="320" height="214" alt="Слайд 1">
                 <div class="about-product about-video">
                     <h3 class="slide-title">ES6 для всех</h3>
-                    <p class="slide-description">Цель этого курса проста: значительно укрепить основные навыки JavaScript и подготовить вас до
+                    <p class="slide-description">Цель этого курса проста: значительно укрепить основные навыки
+                        JavaScript и подготовить вас до
                         написания современного JavaScript.</p>
                     <!--<p><i class="fas fa-video"></i></p>-->
                     <div class="feature">
                         <p class="language">Русский</p>
                         <p class="date">06/10/2018</p>
                         <!--<div class="rating-area">-->
-                            <!--<input type="radio" id="star-1" name="rating" value="1">-->
-                            <!--<label for="star-1" title="Оценка «1»"></label>-->
-                            <!--<input type="radio" id="star-2" name="rating" value="2">-->
-                            <!--<label for="star-2" title="Оценка «2»"></label>-->
-                            <!--<input type="radio" id="star-3" name="rating" value="3">-->
-                            <!--<label for="star-3" title="Оценка «4»"></label>-->
-                            <!--<input type="radio" id="star-4" name="rating" value="4">-->
-                            <!--<label for="star-4" title="Оценка «4»"></label>-->
-                            <!--<input type="radio" id="star-5" name="rating" value="5">-->
-                            <!--<label for="star-5" title="Оценка «5»"></label>-->
+                        <!--<input type="radio" id="star-1" name="rating" value="1">-->
+                        <!--<label for="star-1" title="Оценка «1»"></label>-->
+                        <!--<input type="radio" id="star-2" name="rating" value="2">-->
+                        <!--<label for="star-2" title="Оценка «2»"></label>-->
+                        <!--<input type="radio" id="star-3" name="rating" value="3">-->
+                        <!--<label for="star-3" title="Оценка «4»"></label>-->
+                        <!--<input type="radio" id="star-4" name="rating" value="4">-->
+                        <!--<label for="star-4" title="Оценка «4»"></label>-->
+                        <!--<input type="radio" id="star-5" name="rating" value="5">-->
+                        <!--<label for="star-5" title="Оценка «5»"></label>-->
                         <!--</div>-->
                     </div>
                 </div>
@@ -82,22 +83,23 @@
                 <img src="img/slide2.jpg" width="320" height="196" alt="Слайд 2">
                 <div class="about-product about-audio">
                     <h3 class="slide-title">WEB стандарты</h3>
-                    <p class="slide-description">Еженедельный подкаст, посвящённый обсуждению свежих новостей из мира фронтенд-разработки.</p>
+                    <p class="slide-description">Еженедельный подкаст, посвящённый обсуждению свежих новостей из мира
+                        фронтенд-разработки.</p>
                     <p><i class="fas fa-headphones"></i></p>
                     <div class="feature">
                         <p>Русский</p>
                         <p>12/03/2019</p>
                         <!--<div class="rating-area">-->
-                            <!--<input type="radio" id="star-1" name="rating" value="1">-->
-                            <!--<label for="star-1" title="Оценка «1»"></label>-->
-                            <!--<input type="radio" id="star-2" name="rating" value="2">-->
-                            <!--<label for="star-2" title="Оценка «2»"></label>-->
-                            <!--<input type="radio" id="star-3" name="rating" value="3">-->
-                            <!--<label for="star-3" title="Оценка «4»"></label>-->
-                            <!--<input type="radio" id="star-4" name="rating" value="4">-->
-                            <!--<label for="star-4" title="Оценка «4»"></label>-->
-                            <!--<input type="radio" id="star-5" name="rating" value="5">-->
-                            <!--<label for="star-5" title="Оценка «5»"></label>-->
+                        <!--<input type="radio" id="star-1" name="rating" value="1">-->
+                        <!--<label for="star-1" title="Оценка «1»"></label>-->
+                        <!--<input type="radio" id="star-2" name="rating" value="2">-->
+                        <!--<label for="star-2" title="Оценка «2»"></label>-->
+                        <!--<input type="radio" id="star-3" name="rating" value="3">-->
+                        <!--<label for="star-3" title="Оценка «4»"></label>-->
+                        <!--<input type="radio" id="star-4" name="rating" value="4">-->
+                        <!--<label for="star-4" title="Оценка «4»"></label>-->
+                        <!--<input type="radio" id="star-5" name="rating" value="5">-->
+                        <!--<label for="star-5" title="Оценка «5»"></label>-->
                         <!--</div>-->
                     </div>
                 </div>
@@ -155,7 +157,6 @@
                 <h3>Сортировка:</h3>
                 <ul class="sort">
                     <li class="sort-by sort-by_date" data-sort-by="byDate"><a href="#">По дате</a></li>
-                    <li class="sort-by sort-by_type" data-sort-by="byType"><a href="#">По типу</a></li>
                     <li class="sort-by sort-by_popularity selected-sort" data-sort-by="byPopular"><a href="#">По
                         популярности</a></li>
                 </ul>
@@ -180,6 +181,26 @@
         <div class="filter-catalog container">
             <div class="filters">
                 <form class="filter-form" method="get" action="#">
+                    <fieldset>
+                        <legend class="type">Контент</legend>
+                        <ul class="available-type">
+                            <li class="option-type">
+                                <input class="visually-hidden content-input filter-input-type" type="checkbox"
+                                       name="video" id="video" checked>
+                                <label class="selected-type" for="video">Видео</label>
+                            </li>
+                            <li class="option-type">
+                                <input class="visually-hidden content-input filter-input-type" type="checkbox"
+                                       name="audio" id="audio">
+                                <label class="selected-type" for="audio">Аудио</label>
+                            </li>
+                            <li class="option-type">
+                                <input class="visually-hidden content-input filter-input-type" type="checkbox"
+                                       name="book" id="book">
+                                <label class="selected-type" for="book">Книги</label>
+                            </li>
+                        </ul>
+                    </fieldset>
                     <fieldset>
                         <legend class="language">Язык</legend>
                         <ul class="available-language">
