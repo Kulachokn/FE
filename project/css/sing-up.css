@@ -139,8 +139,7 @@
 }
 
 .registration-error {
-    display: none;
-    /*display: block;*/
+    display: block;
     width: 100%;
     margin-top: .25rem;
     font-size: 80%;
@@ -148,5 +147,12 @@
 }
 
 .registration-input.error~.registration-bar::before {
+    content: "";
+    height: 2px;
+    width: 103%;
+    bottom: 0;
+    position: absolute;
+    transition: all .3s ease;
+    left: 0;
     background: #dc3545;
 }

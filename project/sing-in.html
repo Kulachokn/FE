@@ -43,24 +43,36 @@
                 <label class="visually-hidden" for="search">Поиск по сайту</label>
                 <input class="search-field" type="search" name="search" id="search" placeholder="Поиск">
             </form>
-            <button class="add-content button-decoration" type="button">ADD</button>
-            <button class="sing-in-button" type="button">SING IN</button>
+            <button class="add-content button-decoration" type="button">Добавить</button>
+            <a class="sing-in-button" href="sing-in.html" type="button">Войти</a>
+            <div class="user-profile-menu">
+                <button type="button" class="user-button">
+                    <i class="far fa-user"></i>
+                    <span class="user-setting">Профиль</span>
+                </button>
+                <ul class="user-menu">
+                    <li class="user-item"><a class="user-favorites" href="#">Избранное</a></li>
+                    <li class="user-item">
+                        <button class="user-logout" type="button">Выйти</button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
 <main class="main-sing-in">
     <section class="sing-in">
         <h1 class="sing-in_title">Войдите чтобы продолжить</h1>
-        <form class="registration-form" action="#" method="get">
+        <form class="registration-form login-form" action="#" method="get">
             <div class="registration_plot">
-                <label class="registration_group">Ваш e-mail:</label>
-                <input class="registration-input" type="email" name="email" required>
+                <label class="registration_group visually-hidden">Ваш e-mail:</label>
+                <input class="registration-input" type="email" name="email" placeholder="Ваш e-mail:" required>
                 <span class="registration-bar"></span>
                 <div class="registration-error"></div>
             </div>
             <div class="registration_plot">
-                <label class="registration_group">Пароль</label>
-                <input class="registration-input" type="password" name="password" pattern="[0-9]{7,}">
+                <label class="registration_group visually-hidden">Пароль</label>
+                <input class="registration-input" type="password" name="password" placeholder="Пароль">
                 <span class="registration-bar"></span>
                 <div class="registration-error"></div>
             </div>
@@ -70,7 +82,7 @@
             </div>
             <div class="registration-button-group">
                 <a class="registration-cancel" href="index.html">Отмена</a>
-                <button class="registration-button button-decoration" type="submit">Создать</button>
+                <button class="registration-button button-decoration" type="submit">Войти</button>
             </div>
         </form>
     </section>

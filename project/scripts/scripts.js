@@ -31,6 +31,8 @@ class UserController {
   constructor() {
     this.userRepository = new UserRepository();
     this.singUp = this.singUp.bind(this);
+    this.logOut = this.logOut.bind(this);
+    this.logIn = this.logIn.bind(this);
   }
 
   async singUp(event) {
@@ -57,20 +59,90 @@ class UserController {
     passwordField.value = '';
     passwordConfirmationField.value = '';
 
-    localStorage.setItem('user', JSON.stringify({name, email, id: response.id}));
+    localStorage.setItem('user', JSON.stringify({
+      name: response.name,
+      email: response.email,
+      id: response.id
+    }));
     document.location = 'index.html';
   }
 
   logOut() {
     localStorage.removeItem('user');
+    this.readCurrentUser();
+  }
+
+
+  readCurrentUser() {
+    const user = localStorage.getItem('user');
+    const signInButton = document.querySelector('.sing-in-button');
+    const userProfileBlock = document.querySelector('.user-profile-menu');
+    if (!user) {
+      signInButton.classList.remove('hidden');
+      userProfileBlock.classList.add('hidden');
+    } else {
+      signInButton.classList.add('hidden');
+      userProfileBlock.classList.remove('hidden');
+    }
+  }
+
+  async logIn(event) {
+    event.preventDefault();
+    const emailField = document.querySelector('.registration-form input[name=email]');
+    const email = emailField.value;
+    const passwordField = document.querySelector('.registration-form input[name=password]');
+    const password = passwordField.value;
+    const emailErrorBlock = document.querySelector('.registration-form input[name=email]~.registration-error');
+    emailField.classList.remove('error');
+    emailErrorBlock.textContent = '';
+    const passwordErrorBlock = document.querySelector('.registration-form input[name=password]~.registration-error');
+    passwordField.classList.remove('error');
+    passwordErrorBlock.textContent = '';
+
+    const response = await this.userRepository.getOne(email);
+
+
+
+    if (!response) {
+      emailField.classList.add('error');
+      emailErrorBlock.textContent = 'Неверный email';
+      return;
+    }
+
+    if (btoa(password) !== response.password) {
+      passwordField.classList.add('error');
+      passwordErrorBlock.textContent = 'Неверный пароль';
+      return;
+    }
+
+    localStorage.setItem('user', JSON.stringify({
+      name: response.name,
+      email: response.email,
+      id: response.id
+    }));
+
+    emailField.value = '';
+    passwordField.value = '';
+
+    document.location = 'index.html';
   }
 }
 
 const userController = new UserController();
 
-const registrationForm = document.querySelector('.registration-form');
+userController.readCurrentUser();
+
+const registrationForm = document.querySelector('.sing-up .registration-form');
 
 if (registrationForm) {
   const registrationButton = document.querySelector('.registration-button');
   registrationButton.onclick = userController.singUp;
+}
+
+const logoutButton = document.querySelector('.user-logout');
+logoutButton.onclick = userController.logOut;
+
+const logInForm = document.querySelector('.sing-in .registration-form');
+if (logInForm) {
+  logInForm.onsubmit = userController.logIn;
 }

@@ -43,8 +43,20 @@
                 <label class="visually-hidden" for="search">Поиск по сайту</label>
                 <input class="search-field" type="search" name="search" id="search" placeholder="Поиск">
             </form>
-            <button class="add-content button-decoration" type="button">ADD</button>
-            <button class="sing-in-button" type="button">SING IN</button>
+            <button class="add-content button-decoration" type="button">Добавить</button>
+            <a class="sing-in-button" href="sing-in.html" type="button">Войти</a>
+            <div class="user-profile-menu">
+                <button type="button" class="user-button">
+                    <i class="far fa-user"></i>
+                    <span class="user-setting">Профиль</span>
+                </button>
+                <ul class="user-menu">
+                    <li class="user-item"><a class="user-favorites" href="#">Избранное</a></li>
+                    <li class="user-item">
+                        <button class="user-logout" type="button">Выйти</button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
