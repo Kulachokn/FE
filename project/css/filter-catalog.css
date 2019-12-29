@@ -141,12 +141,34 @@
     display: flex;
     flex-wrap: wrap;
     width: 760px;
+    /*font-family: 'PT Sans', Arial, sans-serif;*/
+    /*font-family: 'PT Gilroy', Arial, sans-serif;*/
 }
 
-.stock-keeping-unit {
+.item-title {
+    font-family: 'PT Gilroy', Arial, sans-serif;
+    color: #dad8de;
+    text-align: center;
+}
+
+.stock-keeping-unit__inner {
+    box-sizing: border-box;
+    background: #392e5c;
     width: 270px;
+
+
 }
 
+.item-description {
+    padding-top: 0;
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-bottom: 18px;
+}
+
+.stock-keeping-unit p {
+    font-family: 'PT Sans', Arial, sans-serif;
+}
 
 .pagination {
     background-color: #392e5c;

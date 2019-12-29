@@ -27,9 +27,10 @@ class UserRepository {
   }
 }
 
-class UserControl {
+class UserController {
   constructor() {
     this.userRepository = new UserRepository();
+    this.singUp = this.singUp.bind(this);
   }
 
   async singUp(event) {
@@ -57,5 +58,19 @@ class UserControl {
     passwordConfirmationField.value = '';
 
     localStorage.setItem('user', JSON.stringify({name, email, id: response.id}));
+    document.location = 'index.html';
   }
+
+  logOut() {
+    localStorage.removeItem('user');
+  }
+}
+
+const userController = new UserController();
+
+const registrationForm = document.querySelector('.registration-form');
+
+if (registrationForm) {
+  const registrationButton = document.querySelector('.registration-button');
+  registrationButton.onclick = userController.singUp;
 }

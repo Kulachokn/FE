@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/a71ca43433.js" crossorigin="anonymous"></script>
-
+    <!--<script src="https://kit.fontawesome.com/a71ca43433.js" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="fontawesome/css/all.css">
     <title>YourLib</title>
 </head>
 <body class="theme_dark">
@@ -46,7 +46,7 @@
                 <input class="search-field" type="search" name="search" id="search" placeholder="Поиск">
             </form>
             <button class="add-content button-decoration" type="button">ADD</button>
-            <button class="sing-in-button" type="button">SING IN</button>
+            <a class="sing-in-button" href="sing-in.html" type="button">SING IN</a>
         </div>
     </div>
 </header>
@@ -60,7 +60,7 @@
                     <p class="slide-description">Цель этого курса проста: значительно укрепить основные навыки
                         JavaScript и подготовить вас до
                         написания современного JavaScript.</p>
-                    <!--<p><i class="fas fa-video"></i></p>-->
+                    <p><i class="fas fa-video"></i></p>
                     <div class="feature">
                         <p class="language">Русский</p>
                         <p class="date">06/10/2018</p>
@@ -244,15 +244,17 @@
                 <ul class="items-list">
                     <li class="stock-keeping-unit">
                         <div class="stock-keeping-unit__inner">
-                            <!--<img src="img/item-1.jpg" width="320" height="214" alt="item-1">-->
-                            <a href="#">
-                                <h3>Разрабатывайте доступное веб-приложениес React</h3>
-                            </a>
-                            <p>icon</p>
-                            <p>Автор или описание</p>
-                            <p>Язык: русский</p>
-                            <p>Дата добавления: 01/04/2018</p>
-                            <a class="open-resource button-decoration" href="#">Посмотреть</a>
+                            <img src="img/item-1.jpg" width="270" height="214" alt="item-1">
+                            <div class="item-description">
+                                <a href="#">
+                                    <h3 class="item-title">Разрабатывайте доступные веб-приложения с React</h3>
+                                </a>
+                                <p><i class="fas fa-video"></i></p>
+                                <p>Автор: egghead</p>
+                                <p>Язык: английский</p>
+                                <p>Дата добавления: 01/04/2018</p>
+                                <a class="open-resource button-decoration" href="#">Посмотреть</a>
+                            </div>
                         </div>
                         <div class="stock-keeping-unit__mask">
                             <a class="add-to-favorites mask" href="#">Добавить в избранное</a>

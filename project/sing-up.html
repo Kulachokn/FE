@@ -53,32 +53,36 @@
         <h1 class="registration-title">Регистрация</h1>
         <form class="registration-form" action="#" method="get">
             <div class="registration_plot">
-                <label class="registration_group">Имя</label>
-                <input class="registration-input" type="text" name="fullname" required>
+                <label class="registration_group visually-hidden">Имя</label>
+                <input class="registration-input" type="text" name="fullname" placeholder="Имя" required>
                 <span class="registration-bar"></span>
+                <div class="registration-error"></div>
             </div>
             <div class="registration_plot">
-                <label class="registration_group">Ваш e-mail:</label>
-                <input class="registration-input" type="email" name="email" required>
+                <label class="registration_group visually-hidden">Ваш e-mail:</label>
+                <input class="registration-input" type="email" name="email" placeholder="Ваш e-mail:" required>
                 <span class="registration-bar"></span>
+                <div class="registration-error"></div>
             </div>
             <div class="registration_plot">
-                <label class="registration_group">Пароль</label>
-                <input class="registration-input" type="password" name="password" pattern="[0-9]{7,}">
+                <label class="registration_group visually-hidden">Пароль</label>
+                <input class="registration-input" type="password" name="password" placeholder="Пароль">
                 <span class="registration-bar"></span>
+                <div class="registration-error"></div>
             </div>
             <div class="registration_plot">
-                <label class="registration_group">Подтвердите пароль</label>
-                <input class="registration-input" type="password" name="confirmation-password" pattern="[0-9]{7,}">
+                <label class="registration_group visually-hidden">Подтвердите пароль</label>
+                <input class="registration-input" type="password" name="confirmation-password" placeholder="Подтвердите пароль">
                 <span class="registration-bar"></span>
+                <div class="registration-error"></div>
             </div>
             <div class="registration-additional">
                 <span class="registration-additional-message">Уже зарегистрированы?</span>
-                <a class="registration-additional-link" href="#">Sing in</a>
+                <a class="registration-additional-link" href="sing-in.html">Войти</a>
             </div>
             <div class="registration-button-group">
-                <a class="registration-cancel" href="index.html">Cancel</a>
-                <button class="registration-button button-decoration" type="submit">Sing-up</button>
+                <a class="registration-cancel" href="index.html">Отмена</a>
+                <button class="registration-button button-decoration" type="submit">Создать</button>
             </div>
         </form>
     </section>
