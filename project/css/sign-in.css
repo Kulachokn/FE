@@ -1,9 +1,9 @@
-.main-sing-in {
+.main-sign-in {
     background: #392e5c;
     padding-top: 50px;
 }
 
-.sing-in_title {
+.sign-in_title {
     text-align: center;
     margin: 0;
     padding: 0;
@@ -18,12 +18,12 @@
     margin-bottom: 55px;
 }
 
-.registration-link-sing-in {
+.registration-link-sign-in {
     color: #dad8de;
     font-size: .75rem;
     text-decoration: underline;
 }
 
-.registration-link-sing-in:hover {
+.registration-link-sign-in:hover {
     color: #5d38db;
 }

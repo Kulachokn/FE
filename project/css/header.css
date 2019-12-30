@@ -98,7 +98,7 @@
     padding: 13px 9px;
 }
 
-.sing-in-button {
+.sign-in-button {
     color: #dad8de;
     background-color: transparent;
     font-weight: 600;
@@ -109,7 +109,7 @@
     padding-top: 15px;
 }
 
-.sing-in-button:hover {
+.sign-in-button:hover {
     text-decoration: underline;
 }
 
@@ -133,19 +133,40 @@
 }
 
 .user-menu {
+    display: none;
     margin: 0;
     background: #201c2b;
     position: absolute;
-    /*top: calc(100% + 18px);*/
-    top: 80px;
-    right: 25px;
+    top: calc(100% + 13px);
+    /*top: 58px;*/
+    right: 20px;
     box-shadow: 0 3px 21px hsla(0,0%,46%,.08);
     padding-top: 8px;
     padding-right: 0;
     padding-left: 0;
     padding-bottom: 5px;
     z-index: 1;
-    min-width: 145px;
+    min-width: 125px;
+}
+
+.user-profile-menu {
+    position: relative;
+}
+
+.user-profile-menu::after {
+    content: "";
+    bottom: -18px;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    position: absolute;
+    display: block;
+    z-index: 2;
+}
+
+.user-profile-menu:focus .user-menu,
+.user-profile-menu:hover .user-menu {
+    display: block;
 }
 
 .user-item {
@@ -155,6 +176,10 @@
     display: block;
     color: #ffffff;
     padding: 10px;
+}
+
+.user-item:hover {
+    opacity: 0.5;
 }
 
 .user-favorites {

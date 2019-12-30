@@ -30,12 +30,12 @@ class UserRepository {
 class UserController {
   constructor() {
     this.userRepository = new UserRepository();
-    this.singUp = this.singUp.bind(this);
+    this.signUp = this.signUp.bind(this);
     this.logOut = this.logOut.bind(this);
     this.logIn = this.logIn.bind(this);
   }
 
-  async singUp(event) {
+  async signUp(event) {
     event.preventDefault();
     const nameField = document.querySelector('.registration-form input[name=fullname]');
     const name = nameField.value;
@@ -75,7 +75,7 @@ class UserController {
 
   readCurrentUser() {
     const user = localStorage.getItem('user');
-    const signInButton = document.querySelector('.sing-in-button');
+    const signInButton = document.querySelector('.sign-in-button');
     const userProfileBlock = document.querySelector('.user-profile-menu');
     if (!user) {
       signInButton.classList.remove('hidden');
@@ -132,17 +132,17 @@ const userController = new UserController();
 
 userController.readCurrentUser();
 
-const registrationForm = document.querySelector('.sing-up .registration-form');
+const registrationForm = document.querySelector('.sign-up .registration-form');
 
 if (registrationForm) {
   const registrationButton = document.querySelector('.registration-button');
-  registrationButton.onclick = userController.singUp;
+  registrationButton.onclick = userController.signUp;
 }
 
 const logoutButton = document.querySelector('.user-logout');
 logoutButton.onclick = userController.logOut;
 
-const logInForm = document.querySelector('.sing-in .registration-form');
+const logInForm = document.querySelector('.sign-in .registration-form');
 if (logInForm) {
   logInForm.onsubmit = userController.logIn;
 }
