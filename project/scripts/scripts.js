@@ -39,16 +39,55 @@ class UserController {
     event.preventDefault();
     const nameField = document.querySelector('.registration-form input[name=fullname]');
     const name = nameField.value;
+    const nameErrorBlock = document.querySelector('.registration-form input[name=fullname]~.registration-error');
+    nameField.classList.remove('error');
+    nameErrorBlock.textContent = '';
     const emailField = document.querySelector('.registration-form input[name=email]');
     const email = emailField.value;
+    const emailErrorBlock = document.querySelector('.registration-form input[name=email]~.registration-error');
+    emailField.classList.remove('error');
+    emailErrorBlock.textContent = '';
     const passwordField = document.querySelector('.registration-form input[name=password]');
     const password = passwordField.value;
+    const passwordErrorBlock = document.querySelector('.registration-form input[name=password]~.registration-error');
+    passwordField.classList.remove('error');
+    passwordErrorBlock.textContent = '';
     const passwordConfirmationField = document.querySelector('.registration-form input[name=confirmation-password]');
     const passwordConfirmation = passwordConfirmationField.value;
+    const passwordConfirmationErrorBlock = document.querySelector('.registration-form input[name=confirmation-password]~.registration-error');
+    passwordConfirmationField.classList.remove('error');
+    passwordConfirmationErrorBlock.textContent = '';
 
+
+    let hasError = false;
+
+    if (name.length < 3) {
+      nameField.classList.add('error');
+      nameErrorBlock.textContent = 'Имя должно содержать более 3-х символов';
+      hasError = true;
+    }
 
     if (password !== passwordConfirmation) {
-      console.error('password mismatched!');
+      passwordConfirmationField.classList.add('error');
+      passwordConfirmationErrorBlock.textContent = 'Пароли не совпадают';
+      hasError = true;
+    }
+
+    if (password.length < 3) {
+      passwordField.classList.add('error');
+      passwordErrorBlock.textContent = 'Пароль должен содержать более 2-х символов';
+      hasError = true;
+    }
+
+    const userWithSameEmail = await this.userRepository.getOne(email);
+
+    if (userWithSameEmail) {
+      emailField.classList.add('error');
+      emailErrorBlock.textContent = 'Email уже используется';
+      hasError = true;
+    }
+
+    if (hasError) {
       return;
     }
 
