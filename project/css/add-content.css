@@ -1,0 +1,25 @@
+.add-content-main {
+    background: #392e5c;
+}
+
+.add-content-title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 36px;
+    color: #dad8de;
+    padding-top: 20px;
+}
+
+.add-content-form {
+    width: 100%;
+    margin: 0 auto;
+    /*max-width: 380px;*/
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-content {
+    margin-bottom: 20px;
+}

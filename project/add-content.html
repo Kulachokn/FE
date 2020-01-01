@@ -60,44 +60,67 @@
         </div>
     </div>
 </header>
-<main class="sign-up">
-    <section class="registration container">
-        <h1 class="registration-title">Регистрация</h1>
-        <form class="registration-form" action="#" method="post">
-            <div class="registration_plot">
-                <label class="registration_group visually-hidden">Имя</label>
-                <input class="registration-input" type="text" name="fullname" placeholder="Имя" required>
-                <span class="registration-bar"></span>
-                <div class="registration-error"></div>
-            </div>
-            <div class="registration_plot">
-                <label class="registration_group visually-hidden">Ваш e-mail:</label>
-                <input class="registration-input" type="email" name="email" placeholder="Ваш e-mail:" required>
-                <span class="registration-bar"></span>
-                <div class="registration-error"></div>
-            </div>
-            <div class="registration_plot">
-                <label class="registration_group visually-hidden">Пароль</label>
-                <input class="registration-input" type="password" name="password" placeholder="Пароль" required>
-                <span class="registration-bar"></span>
-                <div class="registration-error"></div>
-            </div>
-            <div class="registration_plot">
-                <label class="registration_group visually-hidden">Подтвердите пароль</label>
-                <input class="registration-input" type="password" name="confirmation-password" placeholder="Подтвердите пароль" required>
-                <span class="registration-bar"></span>
-                <div class="registration-error"></div>
-            </div>
-            <div class="registration-additional">
-                <span class="registration-additional-message">Уже зарегистрированы?</span>
-                <a class="registration-additional-link" href="sign-in.html">Войти</a>
-            </div>
-            <div class="registration-button-group">
-                <a class="registration-cancel" href="index.html">Отмена</a>
-                <button class="registration-button button-decoration" type="submit">Создать</button>
-            </div>
-        </form>
-    </section>
+<main class="add-content-main container">
+    <h2 class="add-content-title">Загрузить контент</h2>
+    <form class="add-content-form" action="#" method="post" enctype="multipart/form-data">
+        <div class="form-content">
+            <label class="add-content-name">Название</label>
+            <input type="text" name="title">
+        </div>
+        <div class="form-content">
+            <p>Описание контента</p>
+            <textarea class="add-content-description" rows="8" cols="35" name="description"></textarea>
+        </div>
+        <fieldset>
+            <legend class="level">Уровень</legend>
+            <ul class="available-level">
+                <li class="option-level">
+                    <input class="visually-hidden level-input filter-input-checkbox" type="radio"
+                           name="level" id="beginner" value="beginner">
+                    <label class="selected-level" for="beginner">beginner</label>
+                </li>
+                <li class="option-level">
+                    <input class="visually-hidden level-input filter-input-checkbox" type="radio"
+                           name="level" id="middle" checked value="middle">
+                    <label class="selected-level" for="middle">middle</label>
+                </li>
+                <li class="option-level">
+                    <input class="visually-hidden level-input filter-input-checkbox" type="radio"
+                           name="level" id="advanced" value="advanced">
+                    <label class="selected-level" for="advanced">advanced</label>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend class="language">Язык</legend>
+            <ul class="available-language">
+                <li class="option-language">
+                    <input class="visually-hidden language-input filter-input-radio" type="radio"
+                           name="language" id="rus" checked value="rus">
+                    <label class="selected-language" for="rus">Русский</label>
+                </li>
+                <li class="option-language">
+                    <input class="visually-hidden language-input filter-input-radio" type="radio"
+                           name="language" id="eng" value="eng">
+                    <label class="selected-language" for="eng">Английский</label>
+                </li>
+            </ul>
+        </fieldset>
+        <div class="form-content">
+            <label class="add-content-tag">Теги</label>
+            <input type="text" name="tags">
+        </div>
+        <div class="form-content">
+            <label class="add-content-file"></label>
+            <input type="file" name="file" accept="video/mp4,video/x-m4v,video/*,audio/ogg,audio/mp3,audio/*;capture=microphone, application/vnd.ms-powerpoint,
+text/plain, application/pdf, .epub, .mobi">
+        </div>
+        <div class="form-content">
+            <label class="add-content-img"></label>
+            <input type="file" name="thumbnail" accept="image/x-png,image/gif,image/jpeg">
+        </div>
+        <input type="submit" value="Загрузить">
+    </form>
 </main>
 <footer class="footer">
     <div class="footer-main container">
