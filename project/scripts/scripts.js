@@ -130,6 +130,11 @@ class AssetController {
     const assetId = params.get('id');
     let asset;
     try {
+      if (!assetId) {
+        console.error(`Not found asset with id "${assetId}"`);
+        contentNotFound.classList.remove('hidden');
+        return;
+      }
       asset = await this.assetRepository.getOne(assetId);
 
       this._renderContentMetadata(asset);
