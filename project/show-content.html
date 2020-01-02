@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
     <title>YourLib</title>
 </head>
 <body>
@@ -60,10 +61,102 @@
         </div>
     </div>
 </header>
-<main class="show-content-audio">
-
+<main class="show-content container">
+    <section class="video">
+        <div class="wrapper">
+            <picture class="show-content-img">
+                <source>
+                <source>
+                <img src="img/item-1.jpg" width="270" height="214" alt="item-1">
+            </picture>
+            <div class="show-content-about">
+                <h2 class="show-content-title">Современный JavaScript с самого начала</h2>
+                <p class="show-content-description">Научитесь создавать проекты с использованием чистого JavaScript (без
+                    фреймворков или библиотек). Это курс JavaScript предназначен абсолютно для всех. Мы начинаем с
+                    основных
+                    принципов и проработаем наш путь к продвинутому программированию, не полагаясь на фреймворки или
+                    библиотеки.
+                    Вы узнаете тонну JavaScript, будь вы новичок или уже программист JS. Здесь каждый найдет что-то для
+                    себя.</p>
+                <p class="show-content-icon"><i class="fas fa-video"></i></p>
+                <div class="show-content-feature">
+                    <p class="show-content-language">Русский</p>
+                    <p class="show-content-date">06/10/2019</p>
+                    <p class="show-content-stars">Звезды</p>
+                </div>
+            </div>
+        </div>
+        <video controls width="400" height="300">
+            <source src="video.mp4" type="video/mp4">
+            <!-- MP4 для Safari, IE9, iPhone, iPad, Android, и Windows Phone 7 -->
+            <source src="video.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+            <source src="video.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+            <object data="video.swf" type="application/x-shockwave-flash">
+                <!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+                <param name="movie" value="video.swf">
+            </object>
+        </video>
+    </section>
 </main>
-<div id="area"></div>
+<main class="show-content container">
+    <section class="audio">
+        <div class="wrapper">
+            <picture class="show-content-img">
+                <source>
+                <source>
+                <img src="img/item-1.jpg" width="270" height="214" alt="item-1">
+            </picture>
+            <div class="show-content-about">
+                <h2 class="show-content-title">Web стандарты</h2>
+                <p class="show-content-description">Объединение «Веб-стандарты» — это сообщество веб-разработчиков,
+                    использующих
+                    открытые стандарты: HTML, CSS, SVG, JavaScript и другие. Основа сообщества была сформирована из
+                    активных
+                    участников форума проекта Webmascon в 2006-м году.</p>
+                <p class="show-content-icon"><i class="fas fa-headphones"></i></p>
+                <div class="show-content-feature">
+                    <p class="show-content-language">Русский</p>
+                    <p class="show-content-date">10/10/2018</p>
+                    <p class="show-content-stars">Звезды</p>
+                </div>
+            </div>
+        </div>
+        <audio controls>
+            <source src="audio.ogg" type="audio/ogg">
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </section>
+</main>
+<main class="show-content container">
+    <section class="book">
+        <div class="wrapper">
+            <picture class="show-content-img">
+                <source>
+                <source>
+                <img src="img/item-1.jpg" width="270" height="214" alt="item-1">
+            </picture>
+            <div class="show-content-about">
+                <h2 class="show-content-title">​Java. The Complete Reference, 11 edition.</h2>
+                <p class="show-content-description">Руководство, обновленное после выхода Java SE 11, показывает, как
+                    разрабатывать, компилировать, отлаживать и запускать программы на Java. Автор бестселлеров по
+                    программированию покрывает все темы языка, включая синтаксис, ключевые слова и основные принципы
+                    программирования. Вы также найдете информацию о Java API, фреймворке Collections, библиотеке
+                    многопоточности
+                    и параллелизме. Эта книга предлагает полное введение в Java для начинающих.
+                </p>
+                <p class="show-content-icon"><i class="fas fa-book"></i></p>
+                <div class="show-content-feature">
+                    <p class="show-content-language">Английский</p>
+                    <p class="show-content-date">10/07/2019</p>
+                    <p class="show-content-stars">Звезды</p>
+                </div>
+            </div>
+        </div>
+        <div id="area"></div>
+    </section>
+</main>
+<!--<div id="area"></div>-->
 <footer class="footer">
     <div class="footer-main container">
         <a class="main-logo logo-footer" href="index.html">YourLib</a>
@@ -96,12 +189,12 @@
 <script src="scripts/pouchdb/pouchdb.js"></script>
 <script src="scripts/pouchdb/pouchdb.find.js"></script>
 <script src="scripts/date-fns.js"></script>
-<script src="scripts/epub/epub.js"></script>
-<script>
-  var book = ePub("alice.epub");
-  var rendition = book.renderTo("area", {width: 600, height: 400});
-  var displayed = rendition.display();
-</script>
+<!--<script src="scripts/epub/epub.js"></script>-->
+<!--<script>-->
+<!--  var book = ePub("alice.epub");-->
+<!--  var rendition = book.renderTo("area", {width: 600, height: 400});-->
+<!--  var displayed = rendition.display();-->
+<!--</script>-->
 <script src="scripts/scripts.js"></script>
 </body>
 </html>

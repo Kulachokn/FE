@@ -1,0 +1,31 @@
+.show-content {
+    background: #392e5c;
+    padding-top: 25px;
+    color: #ffffff;
+}
+
+.video,
+.audio,
+.book {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.show-content-about {
+    width: 70%;
+}
+
+.show-content-feature {
+    display: flex;
+    justify-content: space-around;
+}
+
+.show-content-description {
+    font-family: 'PT Gilroy', Arial, sans-serif;
+}
