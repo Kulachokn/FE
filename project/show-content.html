@@ -67,7 +67,7 @@
     </div>
 </header>
 <main class="show-content container">
-    <section class="video">
+    <section class="video hidden">
         <div class="wrapper">
             <picture class="show-content-img">
                 <source>
@@ -94,19 +94,8 @@
                 </div>
             </div>
         </div>
-        <video controls width="1000" height="900">
-            <source src="video/SampleVideo_1280x720_10mb.mp4" type="video/mp4">
-            <!-- MP4 для Safari, IE9, iPhone, iPad, Android, и Windows Phone 7 -->
-            <source src="video/1280.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
-            <source src="video/1280.ogv" type="video/ogg">
-            <!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
-            <object data="video/Car-speakers-590x90.swf" type="application/x-shockwave-flash">
-                <!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
-                <param name="movie" value="video.swf">
-            </object>
-        </video>
     </section>
-    <section class="audio">
+    <section class="audio hidden">
         <div class="wrapper">
             <picture class="show-content-img">
                 <source>
@@ -131,13 +120,8 @@
                 </div>
             </div>
         </div>
-        <audio controls>
-            <source src="audio/file_example_OOG_2MG.ogg" type="audio/ogg">
-            <source src="audio/SampleAudio_0.4mb.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
     </section>
-    <section class="book">
+    <section class="book hidden">
         <div class="wrapper">
             <picture class="show-content-img">
                 <source>
@@ -164,13 +148,16 @@
                 </div>
             </div>
         </div>
-        <div id="area"></div>
+        <select id="toc"></select>
+        <div id="viewer" class="spreads"></div>
+        <div id="prev" class="arrow">‹</div>
+        <div id="next" class="arrow">›</div>
     </section>
     <section class="loading">
         <p class="loader"></p>
     </section>
-    <section class="content-not-found">
-        <p>По вашему запросу ничего не найдено.</p>
+    <section class="content-not-found hidden">
+        <p class="content-not-found-message">По вашему запросу ничего не найдено.</p>
         <i class="far fa-frown-open not-found"></i>
     </section>
 </main>
@@ -207,12 +194,8 @@
 <script src="scripts/pouchdb/pouchdb.js"></script>
 <script src="scripts/pouchdb/pouchdb.find.js"></script>
 <script src="scripts/date-fns.js"></script>
-<!--<script src="scripts/epub/epub.js"></script>-->
-<!--<script>-->
-<!--  var book = ePub("alice.epub");-->
-<!--  var rendition = book.renderTo("area", {width: 600, height: 400});-->
-<!--  var displayed = rendition.display();-->
-<!--</script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+<script src="scripts/epub/epub.js"></script>
 <script src="scripts/scripts.js"></script>
 </body>
 </html>

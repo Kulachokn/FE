@@ -12,52 +12,53 @@ class AssetRepository {
   }
 
   async create(asset) {
-    console.log(asset);
-
-    const draftAsset = {
+    const response = await this.db.post({
       title: asset.title,
       level: asset.level,
       language: asset.language,
       createdAt: Date.now(),
       tags: asset.tags,
+      thumbnail: asset.thumbnail,
       description: asset.description,
       rating: [],
       contentType: asset.contentType,
       createdBy: asset.user,
+      fileName: asset.content.name,
       _attachments: {
-        [asset.content.name]: {
+        content: {
           content_type: asset.content.type,
           data: asset.content
         }
       }
-    };
-
-    if (asset.thumbnail.isDefault) {
-      draftAsset.thumbnail = asset.thumbnail.url;
-    } else {
-      draftAsset._attachments.thumbnail = {
-        data: asset.thumbnail.url,
-        content_type: asset.thumbnail.contentType
-      }
-    }
-
-    const response = await this.db.post(draftAsset);
+    });
     console.log(response);
     return response;
   }
 
   async getOne(id) {
-    const response = await this.db.getAttachment(id, 'План_тренувань_CF_Banda.pdf');
+    const asset = await this.db.get(id);
+    asset.content = await this.db.getAttachment(id, 'content');
+    console.log(asset);
+    return asset;
+  }
+
+  async remove(id) {
+    const response = await this.db.remove(id);
     console.log(response);
-    return response;
   }
 }
 
+// a909f676-c35c-4f61-b339-668167a54b18
 class AssetController {
 
   constructor() {
     this.assetRepository = new AssetRepository();
     this.addAsset = this.addAsset.bind(this);
+
+    this.SUPPORTED_LANGUAGES = {
+      rus: 'Русский',
+      eng: 'Ангельский'
+    }
   }
 
   async addAsset(event) {
@@ -67,8 +68,12 @@ class AssetController {
     const tagsField = document.querySelector('.add-content-form input[name=tags]');
     const contentField = document.querySelector('.add-content-form input[name=file]');
     const thumbnailField = document.querySelector('.add-content-form input[name=thumbnail]');
-    const levelField = [].filter.call(document.querySelectorAll('.add-content-form input[name=level]'), function (node) { return node.checked })[0];
-    const languageField = [].filter.call(document.querySelectorAll('.add-content-form input[name=language]'), function (node) { return node.checked })[0];
+    const levelField = [].filter.call(document.querySelectorAll('.add-content-form input[name=level]'), function (node) {
+      return node.checked
+    })[0];
+    const languageField = [].filter.call(document.querySelectorAll('.add-content-form input[name=language]'), function (node) {
+      return node.checked
+    })[0];
 
     const title = titleField.value;
     const description = descriptionField.value;
@@ -97,7 +102,7 @@ class AssetController {
       };
     } else {
       thumbnail = {
-        url: this._readThumbnail(thumbnail),
+        url: await this._readThumbnail(thumbnail),
         contentType: thumbnail.type,
         isDefault: false
       };
@@ -118,13 +123,61 @@ class AssetController {
   }
 
   async showContent() {
-    const response = await this.assetRepository.getOne('d3184b00-64bf-4bdf-8dc8-0253fbbc0ef3');
-    const url = window.URL.createObjectURL(response);
-    const iframe = document.createElement('iframe');
-    iframe.width = 600;
-    iframe.height = 800;
-    iframe.src = url;
-    document.body.appendChild(iframe);
+    const spinner = document.querySelector('.loading');
+    const contentNotFound = document.querySelector('.content-not-found');
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const assetId = params.get('id');
+    let asset;
+    try {
+      asset = await this.assetRepository.getOne(assetId);
+
+      this._renderContentMetadata(asset);
+      switch (asset.contentType) {
+        case this.assetRepository.CONTENT_TYPES.VIDEO:
+          this._showVideoContent(asset);
+          break;
+        case this.assetRepository.CONTENT_TYPES.AUDIO:
+          this._showAudioContent(asset);
+          break;
+        case this.assetRepository.CONTENT_TYPES.BOOK:
+          this._showBookContent(asset);
+          break;
+      }
+
+    } catch (err) {
+      if (err.status === 404) {
+        console.error(`Not found asset with id "${assetId}"`);
+        contentNotFound.classList.remove('hidden');
+        return;
+      }
+      console.error(err);
+    } finally {
+      spinner.classList.add('hidden');
+      console.log(asset);
+    }
+  }
+
+  _renderContentMetadata(asset) {
+    const mediaType = asset.contentType.toLowerCase();
+
+    const thumbnail = document.querySelector(`.${mediaType} picture img`);
+    const title = document.querySelector(`.${mediaType} .show-content-title`);
+    const description = document.querySelector(`.${mediaType} .show-content-description`);
+    const language = document.querySelector(`.${mediaType} .show-content-language`);
+    const createdAt = document.querySelector(`.${mediaType} .show-content-date`);
+    const createdBy = document.querySelector(`.${mediaType} .show-content-author`);
+    const tags = document.querySelector(`.${mediaType} .show-content-tags`);
+    const level = document.querySelector(`.${mediaType} .show-content-level`);
+
+    createdBy.textContent = asset.createdBy.name;
+    tags.textContent = asset.tags || '-';
+    level.textContent = asset.level;
+    thumbnail.src = asset.thumbnail.url;
+    title.textContent = asset.title;
+    description.textContent = asset.description;
+    language.textContent = this.SUPPORTED_LANGUAGES[asset.language];
+    createdAt.textContent = dateFns.format(new Date(), 'DD/MM/YYYY HH:MM:SSS');
   }
 
   _identifyContentType(content) {
@@ -142,13 +195,13 @@ class AssetController {
   }
 
   _chooseDefaultThumbnail(contentType) {
-    switch(contentType) {
+    switch (contentType) {
       case this.assetRepository.CONTENT_TYPES.BOOK:
-        return '/img/default-book-thumbnail.jpg';
+        return 'img/default-book-thumbnail.jpg';
       case this.assetRepository.CONTENT_TYPES.AUDIO:
-        return '/img/default-audio-thumbnail.jpg';
+        return 'img/default-audio-thumbnail.jpg';
       case this.assetRepository.CONTENT_TYPES.VIDEO:
-        return '/img/default-video-thumbnail.jpg';
+        return 'img/default-video-thumbnail.jpg';
       default:
         throw new Error(`Doesn't have thumbnail for provided content type "${contentType}"`);
     }
@@ -157,11 +210,111 @@ class AssetController {
   _readThumbnail(file) {
     return new Promise((ok, fail) => {
       const reader = new FileReader();
-      reader.onloadend = function() {
+      reader.onloadend = function () {
         ok(reader.result);
       };
       reader.onerror = fail;
       reader.readAsDataURL(file);
+    });
+  }
+
+  _showVideoContent(asset) {
+    return this._showMediaContent(asset, 'video', {preload: 'auto', controls: true, width: 1000, height: 900});
+  }
+
+  _showAudioContent(asset) {
+    return this._showMediaContent(asset, 'audio', {controls: true});
+  }
+
+  _showMediaContent(asset, type, options) {
+    const mediaSection = document.querySelector(`.${type}`);
+    const media = document.createElement(type);
+
+    Object.keys(options).forEach(function (option) {
+      media[option] = options[option];
+    });
+
+    const source = document.createElement('source');
+    source.src = URL.createObjectURL(asset.content);
+    source.type = asset.content.type;
+    media.appendChild(source);
+    mediaSection.appendChild(media);
+    mediaSection.classList.remove('hidden');
+  }
+
+  _showBookContent(asset) {
+    if (asset.content.type.includes('epub')) {
+      return this._renderEpubBook(asset);
+    }
+    if (asset.content.type.includes('pdf')) {
+      return this._renderPdfBook(asset);
+    }
+
+    throw new Error(`Unsupported book type "${asset.content.type}"`);
+
+  }
+
+  _renderPdfBook(asset) {
+
+  }
+
+  _renderEpubBook(asset) {
+    const book = ePub(asset.content);
+    const rendition = book.renderTo("viewer", {
+      manager: "continuous",
+      flow: "paginated",
+      width: "100%",
+      height: 600
+    });
+
+    rendition.display();
+
+    book.ready.then(() => {
+      const next = document.getElementById("next");
+      next.addEventListener("click", function (e) {
+        book.package.metadata.direction === "rtl" ? rendition.prev() : rendition.next();
+        e.preventDefault();
+      }, false);
+      const prev = document.getElementById("prev");
+      prev.addEventListener("click", function (e) {
+        book.package.metadata.direction === "rtl" ? rendition.next() : rendition.prev();
+        e.preventDefault();
+      }, false);
+
+      const bookSection = document.querySelector('.book');
+      bookSection.classList.remove('hidden');
+    });
+    rendition.on("layout", function (layout) {
+      let viewer = document.getElementById("viewer");
+
+      if (layout.spread) {
+        viewer.classList.remove('single');
+      } else {
+        viewer.classList.add('single');
+      }
+    });
+
+    book.loaded.navigation.then(function (toc) {
+      const $select = document.getElementById("toc"),
+        docfrag = document.createDocumentFragment();
+
+      toc.forEach(function (chapter) {
+        const option = document.createElement("option");
+        option.textContent = chapter.label;
+        option.ref = chapter.href;
+
+        docfrag.appendChild(option);
+      });
+
+      $select.appendChild(docfrag);
+
+      $select.onchange = function () {
+        const index = $select.selectedIndex,
+          url = $select.options[index].ref;
+        rendition.display(url);
+        return false;
+      };
+
     });
   }
 }
@@ -306,8 +459,6 @@ class UserController {
 
     const response = await this.userRepository.getOne(email);
 
-
-
     if (!response) {
       emailField.classList.add('error');
       emailErrorBlock.textContent = 'Неверный email';
@@ -385,7 +536,7 @@ function initializePage() {
   }
 
   function initializeShowContentPage() {
-    return undefined;
+    assetController.showContent()
   }
 
   function initializeAddContentPage() {
