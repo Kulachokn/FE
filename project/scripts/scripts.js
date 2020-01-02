@@ -433,6 +433,7 @@ class UserController {
   logOut() {
     localStorage.removeItem('user');
     this.readCurrentUser();
+    document.location = 'index.html';
   }
 
 
@@ -447,6 +448,10 @@ class UserController {
       signInButton.classList.add('hidden');
       userProfileBlock.classList.remove('hidden');
     }
+  }
+
+  isUserAuthenticated() {
+    return !!localStorage.getItem('user');
   }
 
   async logIn(event) {
@@ -545,6 +550,9 @@ function initializePage() {
   }
 
   function initializeAddContentPage() {
+    if (!userController.isUserAuthenticated()) {
+      document.location = 'index.html';
+    }
     const addAssetForm = document.querySelector('.add-content-form');
     if (addAssetForm) {
       addAssetForm.onsubmit = assetController.addAsset;
