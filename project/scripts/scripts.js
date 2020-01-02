@@ -333,27 +333,67 @@ class UserController {
   }
 }
 
-const userController = new UserController();
-const assetController = new AssetController();
 
-userController.readCurrentUser();
+function initializePage() {
+  const page = window.location.pathname;
+  const userController = new UserController();
+  const assetController = new AssetController();
 
-const registrationForm = document.querySelector('.sign-up .registration-form');
+  userController.readCurrentUser();
 
-if (registrationForm) {
-  const registrationButton = document.querySelector('.registration-button');
-  registrationButton.onclick = userController.signUp;
+  const logoutButton = document.querySelector('.user-logout');
+  logoutButton.onclick = userController.logOut;
+
+  if (page.includes('index.html')) {
+    return initializeIndexPage();
+  }
+
+  if (page.includes('sign-in.html')) {
+    return initializeSignInPage();
+  }
+
+  if (page.includes('sign-up.html')) {
+    return initializeSignUpPage();
+  }
+
+  if (page.includes('show-content.html')) {
+    return initializeShowContentPage();
+  }
+
+  if (page.includes('add-content.html')) {
+    return initializeAddContentPage();
+  }
+
+  function initializeIndexPage() {
+    return undefined;
+  }
+
+  function initializeSignInPage() {
+    const logInForm = document.querySelector('.sign-in .registration-form');
+    if (logInForm) {
+      logInForm.onsubmit = userController.logIn;
+    }
+  }
+
+  function initializeSignUpPage() {
+    const registrationForm = document.querySelector('.sign-up .registration-form');
+
+    if (registrationForm) {
+      const registrationButton = document.querySelector('.registration-button');
+      registrationButton.onclick = userController.signUp;
+    }
+  }
+
+  function initializeShowContentPage() {
+    return undefined;
+  }
+
+  function initializeAddContentPage() {
+    const addAssetForm = document.querySelector('.add-content-form');
+    if (addAssetForm) {
+      addAssetForm.onsubmit = assetController.addAsset;
+    }
+  }
 }
 
-const logoutButton = document.querySelector('.user-logout');
-logoutButton.onclick = userController.logOut;
-
-const logInForm = document.querySelector('.sign-in .registration-form');
-if (logInForm) {
-  logInForm.onsubmit = userController.logIn;
-}
-
-const addAssetForm = document.querySelector('.add-content-form');
-if (addAssetForm) {
-  addAssetForm.onsubmit = assetController.addAsset;
-}
+initializePage();
