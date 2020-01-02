@@ -33,27 +33,9 @@
     justify-content: space-between;
 }
 
-
-
-    /*content: '★';*/
-
-    /*text-shadow: 1px 1px #c60;*/
-
-    /*color: gold;*/
-    /*text-shadow: 1px 1px goldenrod;*/
-/**{*/
-/*    box-sizing: border-box;*/
-/*}*/
-
 .rating {
     display: flex;
 }
-
-/*.rating-item::before {*/
-/*    content: '★';*/
-/*    top: 1px;*/
-/*    left: 1px;*/
-/*}*/
 
 .rating-item {
     width: 25px;

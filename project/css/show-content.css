@@ -7,7 +7,8 @@
 .video,
 .audio,
 .book {
-    display: flex;
+    display: none;
+    /*display: flex;*/
     flex-direction: column;
 }
 
@@ -28,6 +29,32 @@
 
 .show-content-description {
     font-family: 'PT Gilroy', Arial, sans-serif;
+}
+
+.content-not-found {
+    background: #392e5c;
+    height: 375px;
+}
+
+.content-not-found p {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-family: 'PT Sans', Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.loading {
+    display: none;
+    background: #392e5c;
+    height: 300px;
+    padding-top: 80px;
+}
+
+.loading p {
+    margin: 0 auto;
+
 }
 
 .loader {

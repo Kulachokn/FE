@@ -1,5 +1,6 @@
 .modal-error {
-    display: flex;
+    display: none;
+    /*display: flex;*/
     flex-direction: column;
     width: 500px;
     margin: 50px auto;
