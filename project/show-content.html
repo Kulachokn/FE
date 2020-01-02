@@ -7,6 +7,11 @@
     <title>YourLib</title>
 </head>
 <body>
+<section class="modal-error">
+    <p class="modal-error-text">Упс, что-то пошло не так</p>
+    <i class="far fa-frown-open"></i>
+    <button class="modal-error-button" type="button">Ok</button>
+</section>
 <header class="header">
     <div class="header-nav container">
         <nav class="navigation">
@@ -81,24 +86,26 @@
                 <p class="show-content-icon"><i class="fas fa-video"></i></p>
                 <div class="show-content-feature">
                     <p class="show-content-language">Русский</p>
+                    <p class="show-content-level">beginner</p>
+                    <p class="show-content-author">udemy</p>
+                    <p class="show-content-tags">#front-end, #react</p>
                     <p class="show-content-date">06/10/2019</p>
                     <p class="show-content-stars">Звезды</p>
                 </div>
             </div>
         </div>
-        <video controls width="400" height="300">
-            <source src="video.mp4" type="video/mp4">
+        <video controls width="1000" height="900">
+            <source src="video/SampleVideo_1280x720_10mb.mp4" type="video/mp4">
             <!-- MP4 для Safari, IE9, iPhone, iPad, Android, и Windows Phone 7 -->
-            <source src="video.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
-            <source src="video.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
-            <object data="video.swf" type="application/x-shockwave-flash">
+            <source src="video/1280.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+            <source src="video/1280.ogv" type="video/ogg">
+            <!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+            <object data="video/Car-speakers-590x90.swf" type="application/x-shockwave-flash">
                 <!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
                 <param name="movie" value="video.swf">
             </object>
         </video>
     </section>
-</main>
-<main class="show-content container">
     <section class="audio">
         <div class="wrapper">
             <picture class="show-content-img">
@@ -116,19 +123,20 @@
                 <p class="show-content-icon"><i class="fas fa-headphones"></i></p>
                 <div class="show-content-feature">
                     <p class="show-content-language">Русский</p>
+                    <p class="show-content-level">beginner</p>
+                    <p class="show-content-author">web-стандарты</p>
+                    <p class="show-content-tags">#front-end, #web-стандарты, #html</p>
                     <p class="show-content-date">10/10/2018</p>
                     <p class="show-content-stars">Звезды</p>
                 </div>
             </div>
         </div>
         <audio controls>
-            <source src="audio.ogg" type="audio/ogg">
-            <source src="audio.mp3" type="audio/mpeg">
+            <source src="audio/file_example_OOG_2MG.ogg" type="audio/ogg">
+            <source src="audio/SampleAudio_0.4mb.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </section>
-</main>
-<main class="show-content container">
     <section class="book">
         <div class="wrapper">
             <picture class="show-content-img">
@@ -148,6 +156,9 @@
                 <p class="show-content-icon"><i class="fas fa-book"></i></p>
                 <div class="show-content-feature">
                     <p class="show-content-language">Английский</p>
+                    <p class="show-content-level">middle</p>
+                    <p class="show-content-author">egghead</p>
+                    <p class="show-content-tags">#java</p>
                     <p class="show-content-date">10/07/2019</p>
                     <p class="show-content-stars">Звезды</p>
                 </div>
