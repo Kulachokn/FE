@@ -7,8 +7,7 @@
 .video,
 .audio,
 .book {
-    display: none;
-    /*display: flex;*/
+    display: flex;
     flex-direction: column;
 }
 
@@ -32,7 +31,6 @@
 }
 
 .content-not-found {
-    display: none;
     background: #392e5c;
     height: 375px;
 }
@@ -51,7 +49,6 @@
 }
 
 .loading {
-    /*display: none;*/
     background: #392e5c;
     height: 300px;
     padding-top: 80px;
@@ -117,4 +114,12 @@
     40% {
         box-shadow: 0 2.5em 0 0;
     }
+}
+
+.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none;
 }
