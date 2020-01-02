@@ -12,12 +12,14 @@
     font-family: 'PT Gilroy', Arial, sans-serif;
     font-size: 20px;
     text-align: center;
+    color: #ffffff;
 }
 
 .fa-frown-open {
     font-size: 50px;
     text-align: center;
     display: block;
+    color: #ffffff;
 }
 
 .modal-error-button {
