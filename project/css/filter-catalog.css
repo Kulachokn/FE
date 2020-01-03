@@ -45,8 +45,7 @@
     color: #ffffff;
 }
 
-.available-type,
-.available-language {
+.separator {
     padding: 0 0 33px;
     border-bottom: 2px solid #ffffff;
 }
@@ -75,6 +74,12 @@
     display: block;
     cursor: pointer;
 }
+
+/*.option-type,*/
+/*.option-language,*/
+/*.option-level {*/
+/*    position: relative;*/
+/*}*/
 
 .filter-input-type + label::before,
 .filter-input-checkbox + label::before {
