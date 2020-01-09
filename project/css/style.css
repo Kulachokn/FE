@@ -65,7 +65,7 @@ body {
     color: #fff;
     text-align: center;
     border: none;
-    line-height: 1;
+    /*line-height: 1;*/
     font-size: 14px;
     min-width: 80px;
     display: inline-block;
