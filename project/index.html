@@ -45,7 +45,7 @@
             </ul>
         </nav>
         <div class="user-nav">
-            <form class="site-search" action="#" method="post">
+            <form class="site-search" method="get">
                 <label class="visually-hidden" for="search">Поиск по сайту</label>
                 <input class="search-field" type="search" name="search" id="search" placeholder="Поиск">
             </form>
@@ -187,17 +187,17 @@
                         <ul class="available-type separator">
                             <li class="option-type">
                                 <input class="visually-hidden content-input filter-input-type" type="checkbox"
-                                       name="video" id="video" checked>
+                                       name="type" value="VIDEO" id="video">
                                 <label class="selected-type" for="video">Видео</label>
                             </li>
                             <li class="option-type">
                                 <input class="visually-hidden content-input filter-input-type" type="checkbox"
-                                       name="audio" id="audio">
+                                       name="type" value="AUDIO" id="audio">
                                 <label class="selected-type" for="audio">Аудио</label>
                             </li>
                             <li class="option-type">
                                 <input class="visually-hidden content-input filter-input-type" type="checkbox"
-                                       name="book" id="book">
+                                       name="type" value="VIDEO" id="book">
                                 <label class="selected-type" for="book">Книги</label>
                             </li>
                         </ul>
@@ -206,13 +206,13 @@
                         <legend class="language">Язык</legend>
                         <ul class="available-language separator">
                             <li class="option-language">
-                                <input class="visually-hidden language-input filter-input-radio" type="radio"
-                                       name="language" id="rus" checked>
+                                <input class="visually-hidden language-input filter-input-checkbox" type="checkbox"
+                                       name="lang" value="rus" id="rus">
                                 <label class="selected-language" for="rus">Русский</label>
                             </li>
                             <li class="option-language">
-                                <input class="visually-hidden language-input filter-input-radio" type="radio"
-                                       name="language" id="eng">
+                                <input class="visually-hidden language-input filter-input-checkbox" type="checkbox"
+                                       name="lang" value="eng" id="eng">
                                 <label class="selected-language" for="eng">Английский</label>
                             </li>
                         </ul>
@@ -222,17 +222,17 @@
                         <ul class="available-level separator">
                             <li class="option-level">
                                 <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
-                                       name="beginner" id="beginner">
+                                       name="level" value="beginner" id="beginner">
                                 <label class="selected-level" for="beginner">beginner</label>
                             </li>
                             <li class="option-level">
                                 <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
-                                       name="middle" id="middle" checked>
+                                       name="level" id="middle" value="middle">
                                 <label class="selected-level" for="middle">middle</label>
                             </li>
                             <li class="option-level">
                                 <input class="visually-hidden level-input filter-input-checkbox" type="checkbox"
-                                       name="advanced" id="advanced">
+                                       name="level" value="advanced" id="advanced">
                                 <label class="selected-level" for="advanced">advanced</label>
                             </li>
                         </ul>
@@ -454,8 +454,8 @@
 </footer>
 <script src="scripts/pouchdb/pouchdb.js"></script>
 <script src="scripts/pouchdb/pouchdb.find.js"></script>
+<script src="scripts/pouchdb/pouchdb.quick-search.js"></script>
 <script src="scripts/date-fns.js"></script>
 <script src="scripts/scripts.js"></script>
-<script src="scripts/stars.js"></script>
 </body>
 </html>

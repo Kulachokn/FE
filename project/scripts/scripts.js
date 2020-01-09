@@ -8,7 +8,46 @@ class AssetRepository {
       BOOK: 'BOOK',
       VIDEO: 'VIDEO',
       AUDIO: 'AUDIO'
+    };
+
+    if (this.db.search) {
+      this.db.search({
+        fields: ['title', 'description', 'tags'],
+        build: true
+      }).then(function (info) {
+        console.log(info);
+      }).catch(function (err) {
+        console.error(err);
+      });
     }
+
+    this.db.createIndex({
+      index: {
+        fields: ['contentType']
+      }
+    }).then(function (info) {
+      console.log(info);
+    }).catch(function (err) {
+      console.error(err);
+    });
+    this.db.createIndex({
+      index: {
+        fields: ['level']
+      }
+    }).then(function (info) {
+      console.log(info);
+    }).catch(function (err) {
+      console.error(err);
+    });
+    this.db.createIndex({
+      index: {
+        fields: ['language']
+      }
+    }).then(function (info) {
+      console.log(info);
+    }).catch(function (err) {
+      console.error(err);
+    });
   }
 
   async create(asset) {
@@ -50,14 +89,70 @@ class AssetRepository {
     const response = await this.db.remove(id);
     console.log(response);
   }
+
+  async search(request) {
+    request.perPage = request.perPage || 10;
+    request.page = request.page || 0;
+
+    let reply;
+    if (request.query) {
+      reply = await this.db.search({
+        query: request.query,
+        fields: ['title', 'description', 'tags'],
+        filter: function (doc) {
+          if (request.types && !request.types.includes(doc.contentType)) return false;
+          if (request.levels && !request.levels.includes(doc.level)) return false;
+          if (request.languages && !request.languages.includes(doc.language)) return false;
+
+          return true;
+        },
+        include_docs: true,
+        skip: request.page * request.perPage,
+        limit: request.perPage
+      });
+    } else {
+      const query = {selector: {}};
+      if (request.languages.length) {
+        query.selector.language = {$in: request.languages};
+      }
+      if (request.types.length) {
+        query.selector.contentType = {$in: request.types};
+      }
+      if (request.levels.length) {
+        query.selector.level = {$in: request.level};
+      }
+
+      if (request.sortBy) {
+        query.sort = [{[request.sortBy]: request.sortDir || 'asc'}]
+      }
+
+      reply = await this.db.find(query);
+      const totalCount = reply.docs.length;
+      const left = request.page * request.perPage;
+      const right = request.page * request.perPage + request.perPage;
+      reply.docs = reply.docs.slice(left, right);
+
+      reply = {
+        total_rows: totalCount,
+        rows: reply.docs
+      }
+    }
+    reply.page = request.page;
+    reply.perPage = request.perPage;
+
+    console.log(reply);
+    return reply;
+  }
 }
 
-// a909f676-c35c-4f61-b339-668167a54b18
 class AssetController {
 
   constructor() {
     this.assetRepository = new AssetRepository();
     this.addAsset = this.addAsset.bind(this);
+    this.search = this.search.bind(this);
+    this.applyFilters = this.applyFilters.bind(this);
+    this._renderSearchResultItem = this._renderSearchResultItem.bind(this);
 
     this.SUPPORTED_LANGUAGES = {
       rus: 'Русский',
@@ -126,6 +221,22 @@ class AssetController {
 
   }
 
+  async search(event) {
+    event.preventDefault();
+    const searchParams = this._parseSearchForm();
+    this._updateUrl(searchParams);
+    const searchResult = await this.assetRepository.search(this._searchParamsToSearchRequest(searchParams));
+    this._renderSearchResult(searchResult);
+  }
+
+  async applyFilters(event) {
+    event.preventDefault();
+    const searchParams = this._parseFilterForm();
+    this._updateUrl(searchParams);
+    const searchResult = await this.assetRepository.search(this._searchParamsToSearchRequest(searchParams));
+    this._renderSearchResult(searchResult);
+  }
+
   async showContent(user) {
     const spinner = document.querySelector('.loading');
     const contentNotFound = document.querySelector('.content-not-found');
@@ -184,6 +295,109 @@ class AssetController {
     } catch (err) {
       console.error(err);
     }
+  }
+
+  _renderSearchResult(searchResult) {
+    this._cleanList();
+    this._renderAssetList(searchResult.rows);
+
+    this._renderPagination(searchResult);
+  }
+
+  _renderAssetList(assets) {
+    const assetList = document.querySelector('.items-list');
+    assets.map(this._renderSearchResultItem).forEach(function (node) {
+      assetList.appendChild(node);
+    })
+  }
+
+  _cleanList() {
+    const assetList = document.querySelector('.items-list');
+    while (assetList.firstChild) {
+      assetList.removeChild(assetList.firstChild);
+    }
+  }
+
+  _renderSearchResultItem(asset) {
+    const li = document.createElement('li');
+    li.classList.add('stock-keeping-unit');
+    const innerWrapper = document.createElement('div');
+    innerWrapper.classList.add('stock-keeping-unit__inner');
+    li.appendChild(innerWrapper);
+    const thumbnail = document.createElement('img');
+    thumbnail.alt = asset.title;
+    thumbnail.width = 270;
+    thumbnail.height = 214;
+    thumbnail.classList.add('item-img');
+    thumbnail.src = asset.thumbnail.url;
+    innerWrapper.appendChild(thumbnail);
+
+    const metadataContainer = document.createElement('div');
+    innerWrapper.appendChild(metadataContainer);
+    metadataContainer.classList.add('item-description');
+    const showContentLink = document.createElement('a');
+    showContentLink.href = `show-content.html?id=${asset._id}`;
+    metadataContainer.appendChild(showContentLink);
+    const title = document.createElement('h3');
+    title.classList.add('item-title');
+    title.innerText = asset.title;
+    showContentLink.appendChild(title);
+    const icon = this._renderContentTypeIcon(asset.contentType);
+    metadataContainer.appendChild(icon);
+    const author = document.createElement('p');
+    metadataContainer.appendChild(author);
+    author.textContent = `Автор: ${asset.createdBy.name}`;
+    const language = document.createElement('p');
+    metadataContainer.appendChild(language);
+    language.textContent = `Язык: ${this.SUPPORTED_LANGUAGES[asset.language]}`;
+    const level = document.createElement('p');
+    metadataContainer.appendChild(level);
+    level.textContent = `Уровень: ${asset.level}`;
+    const createdAt = document.createElement('p');
+    metadataContainer.appendChild(createdAt);
+    createdAt.textContent = `Дата добавления: ${dateFns.format(asset.createdAt, 'DD/MM/YYYY')}`;
+
+    const mask = document.createElement('div');
+    innerWrapper.appendChild(mask);
+    mask.classList.add('stock-keeping-unit__mask');
+    const addToFavoriteLink = document.createElement('a');
+    mask.appendChild(addToFavoriteLink);
+    addToFavoriteLink.classList.add('add-to-favorites');
+    addToFavoriteLink.classList.add('mask');
+    addToFavoriteLink.textContent = 'Добавить в избранное';
+    const showContentMaskLink = document.createElement('a');
+    mask.appendChild(showContentMaskLink);
+    showContentMaskLink.textContent = 'Открыть';
+    showContentMaskLink.classList.add('show-content-button');
+    showContentMaskLink.classList.add('button-decoration');
+    showContentMaskLink.href = `show-content.html?id=${asset._id}`;
+
+    return li;
+  }
+
+  _renderContentTypeIcon(type) {
+    const contentType = document.createElement('p');
+    const contentTypeIcon = document.createElement('i');
+    contentType.appendChild(contentTypeIcon);
+    contentTypeIcon.classList.add('fas');
+
+    switch (type) {
+      case this.assetRepository.CONTENT_TYPES.AUDIO:
+        contentTypeIcon.classList.add('fa-headphones');
+        break;
+      case this.assetRepository.CONTENT_TYPES.VIDEO:
+        contentTypeIcon.classList.add('fa-video');
+        break;
+      case this.assetRepository.CONTENT_TYPES.BOOK:
+        contentTypeIcon.classList.add('fa-book');
+        break;
+    }
+
+    return contentType;
+  }
+
+  _renderPagination(searchResult) {
+
   }
 
   _renderContentMetadata(asset) {
@@ -430,7 +644,7 @@ class AssetController {
   }
 
   _getUserPreviousScore(user, asset) {
-    const previousScore = asset.rating.find(function(rating) {
+    const previousScore = asset.rating.find(function (rating) {
       return user.id === rating.userId;
     });
     if (!previousScore) {
@@ -438,6 +652,62 @@ class AssetController {
     }
 
     return previousScore.score;
+  }
+
+  _updateUrl(urlParams) {
+    const nextUrl = location.protocol + "//" + location.host + location.pathname + `?${urlParams}`;
+    history.pushState({path: nextUrl}, '', nextUrl);
+  }
+
+  _collectFilterValues(selector) {
+    return []
+      .map
+      .call(document.querySelectorAll(`.filter-form .${selector} input[type=checkbox]:checked`), function (node) {
+        return node.value
+      });
+  }
+
+  _searchParamsToSearchRequest(searchParams) {
+    const request = {};
+    request.types = searchParams.getAll('type');
+    request.levels = searchParams.getAll('level');
+    request.languages = searchParams.getAll('lang');
+    request.query = searchParams.get('query');
+    request.page = searchParams.get('page');
+    request.perPage = searchParams.get('perPage');
+    request.sortBy = searchParams.get('sortBy');
+    request.sortDir = searchParams.get('sortDir');
+
+    return request;
+  }
+
+  _parseFilterForm() {
+    const contentTypes = this._collectFilterValues('available-type');
+    const languages = this._collectFilterValues('available-language');
+    const levels = this._collectFilterValues('available-level');
+
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.delete('type');
+    searchParams.delete('lang');
+    searchParams.delete('level');
+    contentTypes.forEach(function (type) {
+      searchParams.append('type', type);
+    });
+    languages.forEach(function (language) {
+      searchParams.append('lang', language);
+    });
+    levels.forEach(function (level) {
+      searchParams.append('level', level);
+    });
+
+    return searchParams;
+  }
+
+  _parseSearchForm() {
+    const queryField = document.querySelector('.site-search .search-field');
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set('query', queryField.value);
+    return searchParams;
   }
 }
 
@@ -650,7 +920,10 @@ function initializePage() {
   }
 
   function initializeIndexPage() {
-    return undefined;
+    const searchForm = document.querySelector('.site-search');
+    const filterForm = document.querySelector('.filter-form');
+    searchForm.onsubmit = assetController.search;
+    filterForm.onsubmit = assetController.applyFilters;
   }
 
   function initializeSignInPage() {
