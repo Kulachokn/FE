@@ -42,6 +42,10 @@ class AssetRepository {
     return asset;
   }
 
+  update(asset) {
+    return this.db.put(asset, {force: true});
+  }
+
   async remove(id) {
     const response = await this.db.remove(id);
     console.log(response);
@@ -122,7 +126,7 @@ class AssetController {
 
   }
 
-  async showContent() {
+  async showContent(user) {
     const spinner = document.querySelector('.loading');
     const contentNotFound = document.querySelector('.content-not-found');
     const search = window.location.search;
@@ -149,6 +153,7 @@ class AssetController {
           this._showBookContent(asset);
           break;
       }
+      this._initializeRating(user, asset);
 
     } catch (err) {
       if (err.status === 404) {
@@ -160,6 +165,24 @@ class AssetController {
     } finally {
       spinner.classList.add('hidden');
       console.log(asset);
+    }
+  }
+
+  async rateAsset(user, asset, score) {
+    if (!user) return;
+
+    const userPreviousScore = asset.rating.find(function (rating) {
+      return rating.userId === user.id;
+    });
+    if (userPreviousScore) {
+      userPreviousScore.score = score;
+    } else {
+      asset.rating.push({userId: user.id, score});
+    }
+    try {
+      await this.assetRepository.update(asset);
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -322,6 +345,100 @@ class AssetController {
 
     });
   }
+
+  _initializeRating(user, asset) {
+    const self = this;
+    const contentType = asset.contentType.toLowerCase();
+    const ratings = document.querySelectorAll(`.${contentType} .rating`);
+    if (!user) {
+      ratings.forEach(function (rating) {
+        rating.classList.add('hidden');
+      });
+      return;
+    }
+
+    const userPreviousScore = this._getUserPreviousScore(user, asset);
+
+    ratings.forEach(function (rating) {
+      const ratingItem = rating.querySelectorAll('.rating-item');
+
+      for (let i = 0; i < userPreviousScore; i++) {
+        ratingItem[i].classList.add('active');
+        if (i + 1 === userPreviousScore) {
+          ratingItem[i].classList.add('current-active');
+        }
+      }
+
+      rating.onclick = async function (event) {
+        if (event.target.classList.contains('rating-item')) {
+          const score = Number(event.target.getAttribute('data-rate'));
+          await self.rateAsset(user, asset, score);
+          removeClass(ratingItem, 'current-active');
+          event.target.classList.add('active');
+          event.target.classList.add('current-active');
+        }
+      };
+
+      rating.onmouseover = function (event) {
+        if (event.target.classList.contains('rating-item')) {
+          removeClass(ratingItem, 'active');
+          event.target.classList.add('active');
+          mouseOverActiveClass(ratingItem)
+        }
+      };
+      rating.onmouseout = function () {
+        addClass(ratingItem, 'active');
+        mouseOutActiveClass(ratingItem);
+      };
+
+      function removeClass(arr) {
+        for (let i = 0, iLen = arr.length; i < iLen; i++) {
+          for (let j = 1; j < arguments.length; j++) {
+            ratingItem[i].classList.remove(arguments[j]);
+          }
+        }
+      }
+
+      function addClass(arr) {
+        for (let i = 0, iLen = arr.length; i < iLen; i++) {
+          for (let j = 1; j < arguments.length; j++) {
+            ratingItem[i].classList.add(arguments[j]);
+          }
+        }
+      }
+
+      function mouseOverActiveClass(arr) {
+        for (let i = 0, iLen = arr.length; i < iLen; i++) {
+          if (arr[i].classList.contains('active')) {
+            break;
+          } else {
+            arr[i].classList.add('active');
+          }
+        }
+      }
+
+      function mouseOutActiveClass(arr) {
+        for (let i = arr.length - 1; i >= 1; i--) {
+          if (arr[i].classList.contains('current-active')) {
+            break;
+          } else {
+            arr[i].classList.remove('active');
+          }
+        }
+      }
+    });
+  }
+
+  _getUserPreviousScore(user, asset) {
+    const previousScore = asset.rating.find(function(rating) {
+      return user.id === rating.userId;
+    });
+    if (!previousScore) {
+      return null;
+    }
+
+    return previousScore.score;
+  }
 }
 
 class UserRepository {
@@ -454,6 +571,13 @@ class UserController {
     return !!localStorage.getItem('user');
   }
 
+  getCurrentUser() {
+    const user = localStorage.getItem('user');
+    if (!user) return null;
+
+    return JSON.parse(user);
+  }
+
   async logIn(event) {
     event.preventDefault();
     const emailField = document.querySelector('.registration-form input[name=email]');
@@ -546,7 +670,8 @@ function initializePage() {
   }
 
   function initializeShowContentPage() {
-    assetController.showContent()
+    const user = userController.getCurrentUser();
+    assetController.showContent(user);
   }
 
   function initializeAddContentPage() {
