@@ -56,6 +56,36 @@
     /*border: none;*/
 }
 
+.filter-input-add-content + label::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -37px;
+    width: 25px;
+    height: 25px;
+    background: url('../img/svg/radio-off.svg') no-repeat 0 0;
+}
+
+.filter-input-add-content:checked + label::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -37px;
+    width: 25px;
+    height: 25px;
+    background: url('../img/svg/radio-on.svg') no-repeat 0 0;
+}
+
+.filter-input-add-content + label:hover::before,
+.filter-input-add-content:checked + label:hover::before {
+    opacity: 0.6;
+}
+
+.filter-input-add-content + label:active::before,
+.filter-input-add-content:checked + label:active::before {
+    opacity: 1;
+}
+
 .add-content-name,
 .add-content-text,
 .add-content-tag {
