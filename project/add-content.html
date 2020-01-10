@@ -121,18 +121,17 @@
 <!--                <input type="file" name="file" accept="video/mp4,video/x-m4v,video/*,audio/ogg,audio/mp3,audio/*;capture=microphone, application/vnd.ms-powerpoint,-->
 <!--text/plain, application/pdf, .epub, .mobi">-->
 <!--                <label class="add-content-file"></label>-->
-
-                <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-                <label for="file"><span></span><strong>Choose a file</strong></label>
+                <input type="file" name="file" id="file" class="inputfile input-type-file" accept="video/mp4,video/x-m4v,video/*,audio/ogg,audio/mp3,audio/*;capture=microphone, application/vnd.ms-powerpoint,-->
+<!--text/plain, application/pdf, .epub, .mobi">
+                <label for="file"><span></span><strong>Выбрать файл</strong></label>
             </div>
             <div class="form-content input-load">
-                <input type="file" name="thumbnail" accept="image/x-png,image/gif,image/jpeg">
-                <label class="add-content-img"></label>
+<!--                <input type="file" name="thumbnail" accept="image/x-png,image/gif,image/jpeg">-->
+<!--                <label class="add-content-img"></label>-->
+                <input type="file" name="thumbnail" id="thumbnail" class="inputimg input-type-file" accept="image/x-png,image/gif,image/jpeg">
+                <label class="add-content-img" for="thumbnail"><span></span><strong>Выбрать изображение</strong></label>
             </div>
             <input class="button-decoration add-content-button" type="submit" value="Загрузить">
-
-<!--            <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />-->
-<!--            <label for="file"><strong>Choose a file</strong></label>-->
         </form>
     </section>
 </main>

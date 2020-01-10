@@ -50,6 +50,7 @@
 .form-content textarea {
     background: #392e5c;
     border: 1px solid #d8d8d8;
+    color: #ffffff;
 }
 
 .form-content-fieldset {
@@ -128,7 +129,8 @@
 
 
 
-.inputfile {
+.inputfile,
+.inputimg {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -137,7 +139,8 @@
     z-index: -1;
 }
 
-.inputfile + label {
+.inputfile + label,
+.inputimg + label {
     font-size: 14px;
     font-weight: 700;
     color: white;
@@ -152,25 +155,28 @@
 }
 
 .inputfile:focus + label,
-.inputfile + label:hover {
+.inputfile + label:hover,
+.inputimg:focus + label,
+.inputimg + label:hover {
     /*background-color: #5d38db;*/
     border-color: #5d38db;
-}
-
-.inputfile:focus + label strong,
-.inputfile + label:hover strong {
-    background-color: #5d38db;
-}
-
-.inputfile:focus + label {
     outline: 1px dotted #7f00ac;
 }
 
-.inputfile + label * {
+.inputfile:focus + label strong,
+.inputfile + label:hover strong,
+.inputimg:focus + label strong,
+.inputimg + label:hover strong {
+    background-color: #5d38db;
+}
+
+.inputfile + label *,
+.inputimg + label * {
     pointer-events: none;
 }
 
-.inputfile + label span {
+.inputfile + label span,
+.inputimg + label span {
     width: 200px;
     min-height: 20px;
     display: inline-block;
@@ -179,12 +185,18 @@
     overflow: hidden;
     vertical-align: top;
     padding: 10px 13px;
+    color: #201c2b;
 }
 
-.inputfile + label strong {
+.inputfile + label strong,
+.inputimg + label strong {
     height: 100%;
     color: #fff;
     background-color: #7f00ac;
     display: inline-block;
     padding: 10px 13px;
+}
+
+.add-content-img {
+    margin-left: 55px;
 }
