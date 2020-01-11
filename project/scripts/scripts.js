@@ -99,17 +99,19 @@ class AssetRepository {
       reply = await this.db.search({
         query: request.query,
         fields: ['title', 'description', 'tags'],
-        filter: function (doc) {
-          if (request.types && !request.types.includes(doc.contentType)) return false;
-          if (request.levels && !request.levels.includes(doc.level)) return false;
-          if (request.languages && !request.languages.includes(doc.language)) return false;
-
-          return true;
-        },
         include_docs: true,
-        skip: request.page * request.perPage,
-        limit: request.perPage
       });
+      reply.rows = reply.rows.map(row => row.doc).filter((doc) => {
+        if (request.types.length && !request.types.includes(doc.contentType)) return false;
+        if (request.levels.length && !request.levels.includes(doc.level)) return false;
+        if (request.languages.length && !request.languages.includes(doc.language)) return false;
+
+        return true;
+      });
+      reply.total_rows = reply.rows.length;
+      const left = request.page * request.perPage;
+      const right = request.page * request.perPage + request.perPage;
+      reply.rows = reply.rows.slice(left, right);
     } else {
       const query = {selector: {}};
       if (request.languages.length) {
@@ -119,7 +121,7 @@ class AssetRepository {
         query.selector.contentType = {$in: request.types};
       }
       if (request.levels.length) {
-        query.selector.level = {$in: request.level};
+        query.selector.level = {$in: request.levels};
       }
 
       if (request.sortBy) {
@@ -152,6 +154,7 @@ class AssetController {
     this.addAsset = this.addAsset.bind(this);
     this.search = this.search.bind(this);
     this.applyFilters = this.applyFilters.bind(this);
+    this.initialIndexPageRender = this.initialIndexPageRender.bind(this);
     this._renderSearchResultItem = this._renderSearchResultItem.bind(this);
 
     this.SUPPORTED_LANGUAGES = {
@@ -235,6 +238,23 @@ class AssetController {
     this._updateUrl(searchParams);
     const searchResult = await this.assetRepository.search(this._searchParamsToSearchRequest(searchParams));
     this._renderSearchResult(searchResult);
+  }
+
+  async initialIndexPageRender() {
+    const searchParams = new URLSearchParams(location.search);
+    this._syncSearchParamsWithPageFilters(searchParams);
+    const searchResult = await this.assetRepository.search(this._searchParamsToSearchRequest(searchParams));
+    this._renderSearchResult(searchResult);
+  }
+
+  _syncSearchParamsWithPageFilters(searchParams) {
+    ['type', 'level', 'lang']
+      .forEach(queryParam => searchParams.getAll(queryParam)
+        .forEach(value => {
+          document.querySelector(`input[value=${value}]`).checked = true;
+        })
+      );
+    document.getElementById('search').value = searchParams.get('query');
   }
 
   async showContent(user) {
@@ -924,6 +944,7 @@ function initializePage() {
     const filterForm = document.querySelector('.filter-form');
     searchForm.onsubmit = assetController.search;
     filterForm.onsubmit = assetController.applyFilters;
+    assetController.initialIndexPageRender();
   }
 
   function initializeSignInPage() {
