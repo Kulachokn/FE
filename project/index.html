@@ -30,13 +30,13 @@
                     </ul>
                 </li>
                 <li class="navigation-item">Видеоконтент
-                    <ul class="sub-menu-child">
+                    <ul class="sub-menu">
                         <li class="sub-item">PHP</li>
                         <li class="sub-item">Python</li>
                     </ul>
                 </li>
                 <li class="navigation-item">Книги
-                    <ul class="sub-menu-child">
+                    <ul class="sub-menu">
                         <li class="sub-item">React Native</li>
                         <li class="sub-item">Swift</li>
                         <li class="sub-item">Core Data</li>
@@ -80,7 +80,7 @@
                     <div class="feature">
                         <p class="feature-language">Русский</p>
                         <p class="feature-date">06/10/2018</p>
-
+                        <p class="rating-massage"><i class="far fa-thumbs-up"></i>4.5</p>
                     </div>
                 </div>
             </li>
@@ -95,7 +95,7 @@
                     <div class="feature">
                         <p class="feature-language">Русский</p>
                         <p class="feature-date">12/03/2019</p>
-
+                        <p class="rating-massage"><i class="far fa-thumbs-up"></i>4.8</p>
                     </div>
                 </div>
             </li>
@@ -111,7 +111,7 @@
                     <div class="feature">
                         <p class="feature-language">Английский</p>
                         <p class="feature-date">06/10/2017</p>
-
+                        <p class="rating-massage"><i class="far fa-thumbs-up"></i>4.4</p>
                     </div>
                 </div>
             </li>
@@ -119,27 +119,27 @@
     </section>
     <section class="popular-categories container">
         <ul class="popular-categories-list">
-            <li class="popular-category-item"><a href="#"><img src="img/icons/react-icon.png" width="36"
-                                                               height="36"><span
+            <li class="popular-category-item"><a href="index.html?query=React"><img src="img/icons/react-icon.png" width="36"
+                                                               height="36" alt="react"><span
                     class="popular-category-name">React.js</span></a></li>
-            <li class="popular-category-item"><a href="#"><img src="img/icons/angular-icon.png" width="36"
-                                                               height="36"><span
+            <li class="popular-category-item"><a href="index.html?query=Angular"><img src="img/icons/angular-icon.png" width="36"
+                                                               height="36" alt="angular"><span
                     class="popular-category-name">Angular</span></a></li>
-            <li class="popular-category-item "><a href="#"><img src="img/icons/vue-icon.png" width="36"
-                                                                height="36"><span
+            <li class="popular-category-item "><a href="index.html?query=Vue"><img src="img/icons/vue-icon.png" width="36"
+                                                                height="36" alt="vue"><span
                     class="popular-category-name">Vue</span></a></li>
-            <li class="popular-category-item"><a href="#"><img src="img/icons/node-icon.png" width="36"
-                                                               height="36"><span
+            <li class="popular-category-item"><a href="index.html?query=Node"><img src="img/icons/node-icon.png" width="36"
+                                                               height="36" alt="node"><span
                     class="popular-category-name">Node.js</span></a></li>
-            <li class="popular-category-item"><a href="#"><img src="img/icons/python-icon.png" width="36"
-                                                               height="36"><span
+            <li class="popular-category-item"><a href="index.html?query=Python"><img src="img/icons/python-icon.png" width="36"
+                                                               height="36" alt="python"><span
                     class="popular-category-name">Python</span></a>
             </li>
-            <li class="popular-category-item"><a href="#"><img src="img/icons/java-icon.png" width="36"
-                                                               height="36"><span
+            <li class="popular-category-item"><a href="index.html?query=java"><img src="img/icons/java-icon.png" width="36"
+                                                               height="36" alt="java"><span
                     class="popular-category-name">Java</span></a></li>
-            <li class="popular-category-item"><a href="#"><img src="img/icons/other-icon.png" width="36"
-                                                               height="36"><span
+            <li class="popular-category-item"><a href="index.html?query=Graphic"><img src="img/icons/other-icon.png" width="36"
+                                                               height="36" alt="other"><span
                     class="popular-category-name">Graphic</span></a></li>
         </ul>
     </section>
@@ -236,12 +236,12 @@
                 <section class="loading hidden">
                     <p class="loader"></p>
                 </section>
-                <section class="content-not-found ">
+                <section class="content-not-found hidden">
                     <p class="content-not-found-message">По вашему запросу ничего не найдено.</p>
                     <i class="far fa-frown-open not-found"></i>
                 </section>
                 <h1 class="visually-hidden">Список контента</h1>
-                <ul class="items-list hidden">
+                <ul class="items-list">
                     <li class="stock-keeping-unit">
                         <div class="stock-keeping-unit__inner">
                             <img class="item-img" src="img/item-1.jpg" width="270" height="214" alt="item-1">

@@ -179,6 +179,7 @@
     margin: 0 0 12px;
     background: #969494;
     height: 155px;
+    width: 100%;
     overflow: hidden;
     cursor: pointer;
 }

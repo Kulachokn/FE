@@ -7,7 +7,7 @@ async function seedData() {
       name: faker.internet.userName(),
       email: faker.internet.email(),
       createdAt: new Date(faker.date.past()).getTime(),
-      pass: btoa('pass'),
+      password: btoa('pass'),
       favorites: []
     })
   }
