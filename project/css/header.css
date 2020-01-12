@@ -79,6 +79,7 @@
     background: transparent;
     cursor: pointer;
     padding-top: 15px;
+    color: #dad8de;
 }
 
 .search-field:focus,
