@@ -15,6 +15,9 @@
     min-height: 60px;
     margin-bottom: 10px;
     margin-right: 20px;
+    color: #dad8de;
+    display: flex;
+    align-items: center;
 }
 
 .popular-category-name {
@@ -23,8 +26,7 @@
     text-align: center;
 }
 
-.popular-category-item a {
-    color: #dad8de;
+.popular-category-item span:hover,
+.popular-category-item span:focus {
+    color: #5d38db;
 }
-
-
