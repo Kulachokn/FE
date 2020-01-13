@@ -143,18 +143,36 @@
     cursor: pointer;
     padding-top: 15px;
     color: #dad8de;
+    /*position: relative;*/
 }
 
 .search-field:focus,
 .search-field:active {
-    width: 300px;
-    padding: 16px 16px 16px 60px;
+    width: 380px;
+    padding-top: 16px;
+    padding-right: 16px;
+    padding-left: 10px;
+    padding-bottom: 16px;
     box-shadow: -10px 9px 21px rgba(128,152,213,.075);
     outline: 1px solid #7f1cac;
     color: #dad8de;
     background-color: #201c2b;
     /*outline: none;*/
     margin-right: 10px;
+}
+
+.search-submit {
+    display: none;
+    position: absolute;
+    right: 12px;
+    top: 2px;
+    padding: 15px 7px;
+}
+
+.search-field:focus ~ .search-submit,
+.search-field:active ~ .search-submit {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .add-content {

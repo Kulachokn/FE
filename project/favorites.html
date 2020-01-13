@@ -30,13 +30,13 @@
                     </ul>
                 </li>
                 <li class="navigation-item">Видеоконтент
-                    <ul class="sub-menu-child">
+                    <ul class="sub-menu">
                         <li class="sub-item">PHP</li>
                         <li class="sub-item">Python</li>
                     </ul>
                 </li>
                 <li class="navigation-item">Книги
-                    <ul class="sub-menu-child">
+                    <ul class="sub-menu">
                         <li class="sub-item">React Native</li>
                         <li class="sub-item">Swift</li>
                         <li class="sub-item">Core Data</li>
@@ -45,9 +45,10 @@
             </ul>
         </nav>
         <div class="user-nav">
-            <form class="site-search" action="#" method="post">
+            <form class="site-search" method="get">
                 <label class="visually-hidden" for="search">Поиск по сайту</label>
                 <input class="search-field" type="search" name="search" id="search" placeholder="Поиск">
+                <button class="search-submit button-decoration" type="submit">Найти</button>
             </form>
             <a class="add-content button-decoration" href="add-content.html">Добавить</a>
             <a class="sign-in-button" href="sign-in.html">Войти</a>
@@ -57,7 +58,7 @@
                     <span class="user-setting">Профиль</span>
                 </button>
                 <ul class="user-menu">
-                    <li class="user-item"><a class="user-favorites" href="#">Избранное</a></li>
+                    <li class="user-item"><a class="user-favorites" href="favorites.html">Избранное</a></li>
                     <li class="user-item">
                         <button class="user-logout" type="button">Выйти</button>
                     </li>
