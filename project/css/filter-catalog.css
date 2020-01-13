@@ -312,7 +312,7 @@
 
 .pagination-number-page:hover,
 .pagination-number-page:focus {
-    color: #bababa;
+    color: #ffffff;
 }
 
 .pagination-number-page:active {
@@ -330,4 +330,10 @@
 .pagination-page-next:active {
     color: #acacac;
     background-color: #562D84;
+}
+
+.disabled {
+    color: #201c2b;
+    pointer-events: none;
+    cursor: default;
 }
