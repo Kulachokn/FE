@@ -74,6 +74,10 @@
     position: relative;
 }
 
+.sub-item:hover {
+    color: #bababa;
+}
+
 .navigation-item:hover .sub-menu,
 .navigation-item:focus .sub-menu {
     display: flex;

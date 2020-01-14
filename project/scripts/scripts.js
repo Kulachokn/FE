@@ -228,7 +228,8 @@ class AssetController {
     event.preventDefault();
     const searchParams = this._parseSearchForm();
     this._updateUrl(searchParams);
-    const searchResult = await this.assetRepository.search(this._searchParamsToSearchRequest(searchParams));
+    const searchRequest = this._searchParamsToSearchRequest(searchParams);
+    const searchResult = await this.assetRepository.search(searchRequest);
     this._renderSearchResult(searchResult);
   }
 
@@ -236,14 +237,16 @@ class AssetController {
     event.preventDefault();
     const searchParams = this._parseFilterForm();
     this._updateUrl(searchParams);
-    const searchResult = await this.assetRepository.search(this._searchParamsToSearchRequest(searchParams));
+    const searchRequest = this._searchParamsToSearchRequest(searchParams);
+    const searchResult = await this.assetRepository.search(searchRequest);
     this._renderSearchResult(searchResult);
   }
 
   async initialIndexPageRender() {
     const searchParams = new URLSearchParams(location.search);
     this._syncSearchParamsWithPageFilters(searchParams);
-    const searchResult = await this.assetRepository.search(this._searchParamsToSearchRequest(searchParams));
+    const searchRequest = this._searchParamsToSearchRequest(searchParams);
+    const searchResult = await this.assetRepository.search(searchRequest);
     this._renderSearchResult(searchResult);
   }
 
@@ -680,11 +683,13 @@ class AssetController {
   }
 
   _collectFilterValues(selector) {
-    return []
-      .map
-      .call(document.querySelectorAll(`.filter-form .${selector} input[type=checkbox]:checked`), function (node) {
-        return node.value
-      });
+    const result = [];
+    const checkboxesList = document.querySelectorAll(`.filter-form .${selector} input[type=checkbox]:checked`);
+    for (const checkbox of checkboxesList) {
+      result.push(checkbox.value);
+    }
+
+    return result;
   }
 
   _searchParamsToSearchRequest(searchParams) {
