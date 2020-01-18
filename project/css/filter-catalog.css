@@ -249,6 +249,12 @@
     padding: 13px;
 }
 
+.stock-keeping-unit__mask .assessment {
+    position: absolute;
+    top: 250px;
+    left: 87px;
+}
+
 .stock-keeping-unit__mask .add-to-favorites:hover {
     color: #7f00ac;
 }

@@ -421,6 +421,16 @@ class AssetController {
     showContentMaskLink.classList.add('show-content-button');
     showContentMaskLink.classList.add('button-decoration');
     showContentMaskLink.href = `show-content.html?id=${asset._id}`;
+    const showRatingOfLikes = document.createElement('p');
+    mask.appendChild(showRatingOfLikes);
+    showRatingOfLikes.classList.add('assessment');
+    const likeIcon = document.createElement('i');
+    showRatingOfLikes.appendChild(likeIcon);
+    likeIcon.classList.add('far');
+    likeIcon.classList.add('fa-thumbs-up');
+    const likesRating = document.createElement('span');
+    showRatingOfLikes.appendChild(likesRating);
+    likesRating.textContent = '4.8';
 
     return li;
   }
