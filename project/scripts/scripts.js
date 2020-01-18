@@ -91,8 +91,10 @@ class AssetRepository {
   }
 
   async search(request) {
-    request.perPage = request.perPage || 10;
-    request.page = request.page || 0;
+    request = this._normalizeSearchRequest(request);
+
+    const left = (request.page - 1) * request.perPage;
+    const right = left + request.perPage;
 
     let reply;
     if (request.query) {
@@ -109,8 +111,7 @@ class AssetRepository {
         return true;
       });
       reply.total_rows = reply.rows.length;
-      const left = request.page * request.perPage;
-      const right = request.page * request.perPage + request.perPage;
+
       reply.rows = reply.rows.slice(left, right);
     } else {
       const query = {selector: {}};
@@ -125,13 +126,11 @@ class AssetRepository {
       }
 
       if (request.sortBy) {
-        query.sort = [{[request.sortBy]: request.sortDir || 'asc'}]
+        query.sort = [{[request.sortBy]: request.sortDir}]
       }
 
       reply = await this.db.find(query);
       const totalCount = reply.docs.length;
-      const left = request.page * request.perPage;
-      const right = request.page * request.perPage + request.perPage;
       reply.docs = reply.docs.slice(left, right);
 
       reply = {
@@ -144,6 +143,27 @@ class AssetRepository {
 
     console.log(reply);
     return reply;
+  }
+
+  _normalizeSearchRequest(request) {
+    if (!validator.isInt(request.page, {min: 1, max:  Number.MAX_SAFE_INTEGER})) {
+      request.page = 1;
+    } else {
+      request.page = Number(request.page);
+    }
+    if (!validator.isInt(request.perPage, {min: 5, max: 50})) {
+      request.perPage = 10;
+    } else {
+      request.perPage = Number(request.perPage);
+    }
+    if (!['asc', 'desc'].includes(request.sortDir)) {
+      request.sortDir = 'asc';
+    }
+    if (['createdAt', 'title'].includes(request.sortBy)) {
+      request.sortBy = 'title';
+    }
+
+    return request
   }
 }
 
@@ -329,13 +349,20 @@ class AssetController {
 
   _renderAssetList(assets) {
     const assetList = document.querySelector('.items-list');
-    assets.map(this._renderSearchResultItem).forEach(function (node) {
+    const assetsNotFound = document.querySelector('.content-not-found');
+    if (!assets.length) {
+      assetList.classList.add('hidden');
+      assetsNotFound.classList.remove('hidden');
+    }
+    assets.map(this._renderSearchResultItem).forEach(node => {
       assetList.appendChild(node);
-    })
+    });
   }
 
   _cleanList() {
     const assetList = document.querySelector('.items-list');
+    const assetsNotFound = document.querySelector('.content-not-found');
+    assetsNotFound.classList.add('hidden');
     while (assetList.firstChild) {
       assetList.removeChild(assetList.firstChild);
     }
@@ -420,13 +447,116 @@ class AssetController {
   }
 
   _renderPagination(searchResult) {
+    const searchParams = new URLSearchParams(location.search);
+    const prevButton = document.querySelector('.pagination-page-prev');
+    const nextButton = document.querySelector('.pagination-page-next');
+    const pagination = this._paginate(searchResult.total_rows, searchResult.page, searchResult.perPage);
+    if (pagination.currentPage === 1) {
+      prevButton.classList.add('disabled');
+    } else {
+      searchParams.set('page', pagination.currentPage - 1);
+      prevButton.href = `index.html?${searchParams.toString()}`;
+      prevButton.onclick = null;
+    }
 
+    if (pagination.currentPage === pagination.totalPages) {
+      nextButton.classList.add('disabled');
+    } else {
+      searchParams.set('page', pagination.currentPage + 1);
+      nextButton.href = `index.html?${searchParams.toString()}`;
+      nextButton.onclick = null;
+    }
+
+    const container = document.querySelector('.pagination');
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+    container.appendChild(prevButton.parentNode);
+
+// <li><a class="pagination-number-page" href="#3">2</a></li>
+    pagination.pages.forEach(page => {
+      const box = document.createElement('li');
+      container.appendChild(box);
+      const link = document.createElement('a');
+      box.appendChild(link);
+      link.classList.add('pagination-number-page');
+      link.innerText = page;
+      searchParams.set('page', page);
+      link.href = `index.html?${searchParams.toString()}`;
+      if (page === pagination.currentPage) {
+        link.classList.add('selected');
+      }
+    });
+    container.appendChild(nextButton.parentNode);
   }
+
+  _paginate(
+    totalItems,
+    currentPage,
+    pageSize
+  ) {
+    // https://jasonwatmore.com/post/2018/08/07/javascript-pure-pagination-logic-in-vanilla-js-typescript
+    const maxPages = 3;
+    // calculate total pages
+    let totalPages = Math.ceil(totalItems / pageSize);
+
+    // ensure current page isn't out of range
+    if (currentPage < 1) {
+      currentPage = 1;
+    } else if (currentPage > totalPages) {
+      currentPage = totalPages;
+    }
+
+    let startPage, endPage;
+    if (totalPages <= maxPages) {
+      // total pages less than max so show all pages
+      startPage = 1;
+      endPage = totalPages;
+    } else {
+      // total pages more than max so calculate start and end pages
+      let maxPagesBeforeCurrentPage = Math.floor(maxPages / 2);
+      let maxPagesAfterCurrentPage = Math.ceil(maxPages / 2) - 1;
+      if (currentPage <= maxPagesBeforeCurrentPage) {
+        // current page near the start
+        startPage = 1;
+        endPage = maxPages;
+      } else if (currentPage + maxPagesAfterCurrentPage >= totalPages) {
+        // current page near the end
+        startPage = totalPages - maxPages + 1;
+        endPage = totalPages;
+      } else {
+        // current page somewhere in the middle
+        startPage = currentPage - maxPagesBeforeCurrentPage;
+        endPage = currentPage + maxPagesAfterCurrentPage;
+      }
+    }
+
+    // calculate start and end item indexes
+    let startIndex = (currentPage - 1) * pageSize;
+    let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
+
+    // create an array of pages to ng-repeat in the pager control
+    let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
+
+    // return object with all pager properties required by the view
+    return {
+      totalItems: totalItems,
+      currentPage: currentPage,
+      pageSize: pageSize,
+      totalPages: totalPages,
+      startPage: startPage,
+      endPage: endPage,
+      startIndex: startIndex,
+      endIndex: endIndex,
+      pages: pages
+    };
+  }
+
 
   _renderContentMetadata(asset) {
     const mediaType = asset.contentType.toLowerCase();
 
-    const thumbnail = document.querySelector(`.${mediaType} picture img`);
+    const thumbnail = document.querySelector(`.${mediaType} .show-content-img`);
     const title = document.querySelector(`.${mediaType} .show-content-title`);
     const description = document.querySelector(`.${mediaType} .show-content-description`);
     const language = document.querySelector(`.${mediaType} .show-content-language`);
@@ -698,10 +828,10 @@ class AssetController {
     request.levels = searchParams.getAll('level');
     request.languages = searchParams.getAll('lang');
     request.query = searchParams.get('query');
-    request.page = searchParams.get('page');
-    request.perPage = searchParams.get('perPage');
-    request.sortBy = searchParams.get('sortBy');
-    request.sortDir = searchParams.get('sortDir');
+    request.page = searchParams.get('page') || '';
+    request.perPage = searchParams.get('perPage') || '';
+    request.sortBy = searchParams.get('sortBy') || '';
+    request.sortDir = searchParams.get('sortDir') || '';
 
     return request;
   }
