@@ -12,6 +12,7 @@
 @import "show-content.css";
 @import "modal-error.css";
 @import "favorites.css";
+@import "media-query.css";
 
 
 a {
@@ -63,38 +64,38 @@ body, html {
     flex-shrink: 0;
 }
 
-.container {
-    max-width: 1440px;
-    /*width: 100%;*/
-    padding-right: 40px;
-    padding-left: 40px;
-    margin: 0 auto;
-}
+/*.container {*/
+/*    max-width: 1440px;*/
+/*    !*width: 100%;*!*/
+/*    padding-right: 40px;*/
+/*    padding-left: 40px;*/
+/*    margin: 0 auto;*/
+/*    box-sizing: border-box;*/
+/*}*/
 
 .theme_dark {
     color: #dad8de;
     background: #201c2b;
 }
 
-.button-decoration {
-    border-radius: 2px;
-    background: #7f00ac;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-    border: none;
-    /*line-height: 1;*/
-    font-size: 14px;
-    min-width: 80px;
-    /*display: inline-block;*/
-    text-decoration: none;
+/*.button-decoration {*/
+/*    border-radius: 2px;*/
+/*    background: #7f00ac;*/
+/*    font-weight: 700;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    border: none;*/
+/*    !*line-height: 1;*!*/
+/*    font-size: 14px;*/
+/*    min-width: 80px;*/
+/*    !*display: inline-block;*!*/
+/*    text-decoration: none;*/
+/*}*/
 
-}
-
-.button-decoration:hover {
-    color: #dad8de;
-    background: #5d38db;
-}
+/*.button-decoration:hover {*/
+/*    color: #dad8de;*/
+/*    background: #5d38db;*/
+/*}*/
 
 .loading {
     background: #392e5c;

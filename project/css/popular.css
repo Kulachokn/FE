@@ -1,3 +1,7 @@
+.popular-category-title {
+    text-align: center;
+}
+
 .popular-categories-list {
     padding: 0;
     display: flex;

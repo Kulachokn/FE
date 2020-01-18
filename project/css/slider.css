@@ -1,3 +1,12 @@
+.container {
+    max-width: 1440px;
+    /*width: 100%;*/
+    padding-right: 40px;
+    padding-left: 40px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
 .slider {
     background: #392e5c;
 }
@@ -61,6 +70,7 @@
 
 .about-product {
     width: 500px;
+    /*min-width: 500px;*/
 }
 
 .slide-title {

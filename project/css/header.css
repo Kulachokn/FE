@@ -1,3 +1,32 @@
+.container {
+    max-width: 1440px;
+    /*width: 100%;*/
+    padding-right: 40px;
+    padding-left: 40px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.button-decoration {
+    border-radius: 2px;
+    background: #7f00ac;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    border: none;
+    /*line-height: 1;*/
+    font-size: 14px;
+    /*min-width: 80px;*/
+    min-width: 50px;
+    /*display: inline-block;*/
+    text-decoration: none;
+}
+
+.button-decoration:hover {
+    color: #dad8de;
+    background: #5d38db;
+}
+
 .header {
     background: #201c2b;
     padding: 15px 0;
@@ -128,17 +157,17 @@
     position: relative;
 }
 
-.site-search::before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: -25px;
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-image: url("../img/svg/search.svg");
-}
+/*.site-search::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 15px;*/
+/*    left: -25px;*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: 0 0;*/
+/*    !*background-image: url("../img/svg/search.svg");*!*/
+/*}*/
 
 .search-field {
     outline: none;
@@ -146,23 +175,43 @@
     background: transparent;
     cursor: pointer;
     padding-top: 15px;
+    padding: 16px 16px 16px 60px;
+    /*width: 60px;*/
+    box-sizing: border-box;
+    z-index: 10;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
     color: #dad8de;
     /*position: relative;*/
+    background-image: url("../img/svg/search.svg");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 21px;
 }
 
 .search-field:focus,
 .search-field:active {
-    width: 380px;
+    /*width: 380px;*/
+    width: 100%;
     padding-top: 16px;
     padding-right: 16px;
-    padding-left: 10px;
+    padding-left: 50px;
     padding-bottom: 16px;
+    /*padding: 16px 16px 16px 60px;*/
     box-shadow: -10px 9px 21px rgba(128,152,213,.075);
     outline: 1px solid #7f1cac;
     color: #dad8de;
-    background-color: #201c2b;
+    background: transparent;
+    /*background-color: #201c2b;*/
     /*outline: none;*/
     margin-right: 10px;
+    background-image: url("../img/svg/search-active.svg");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 21px;
 }
 
 .search-submit {

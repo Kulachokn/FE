@@ -1,3 +1,7 @@
+.show-filters {
+    display: none;
+}
+
 .main-content {
     background: linear-gradient(to right, #562D84 0%, #562D84 30%, #201c2b 30%, #201c2b 100%);
 }
@@ -197,9 +201,9 @@
     font-family: 'PT Gilroy', Arial, sans-serif;
     color: #dad8de;
     text-align: center;
-    /*white-space: nowrap;*/
-    /*text-overflow: ellipsis;*/
-    /*overflow: hidden;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .stock-keeping-unit p {
@@ -271,7 +275,7 @@
     margin-right: 0;
     margin-left: 75px;
     /*margin-bottom: 79px;*/
-    width: 760px;
+    /*width: 760px;*/
     display: flex;
     justify-content: space-between;
 }
@@ -291,19 +295,29 @@
 }
 
 .pagination-page-prev {
-    padding: 20px 33px 23px;
-    width: 125px;
+    padding-top: 20px;
+    padding-right: 33px;
+    padding-left: 33px;
+    padding-bottom: 23px;
+    /*width: 125px;*/
     margin-left: 0;
     margin-right: 180px;
     color: #ffffff;
 }
 
 .pagination-page-next {
-    padding: 20px 33px 23px;
-    width: 125px;
+    padding-top: 20px;
+    padding-right: 33px;
+    padding-left: 33px;
+    padding-bottom: 23px;
+    /*width: 125px;*/
     margin-right: 0;
     margin-left: 171px;
     color: #ffffff;
+}
+
+.page-number {
+    margin-right: 5px;
 }
 
 .selected {
