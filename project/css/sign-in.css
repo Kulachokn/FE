@@ -3,11 +3,16 @@
     padding-top: 50px;
 }
 
+.sign-in {
+    margin-bottom: 20px;
+}
+
 .sign-in_title {
     text-align: center;
     margin: 0;
     padding: 0;
     font-size: 36px;
+    line-height: 36px;
     color: #dad8de;
 }
 

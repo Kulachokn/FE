@@ -316,29 +316,3 @@ input[type='radio'].visually-hidden {
     display: block;
     z-index: 2;
 }
-
-.user-item {
-    font-weight: 600;
-    font-size: .875rem;
-    line-height: normal;
-    display: block;
-    color: #ffffff;
-    padding: 10px;
-}
-
-.user-item:hover {
-    opacity: 0.5;
-}
-
-.user-favorites {
-    color: #ffffff;
-    font-family: 'PT Sans', Arial, sans-serif;
-}
-
-.user-logout {
-    background: inherit;
-    color: #ffffff;
-    font-family: 'PT Sans', Arial, sans-serif;
-    border: none;
-    padding-left: 0;
-}

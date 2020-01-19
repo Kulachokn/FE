@@ -65,13 +65,14 @@
 #prev {
     position: absolute;
     top: 70%;
+    left: 0;
     cursor: pointer;
 }
 
 #next {
     position: absolute;
     top: 70%;
-    right: 10px;
+    right: 0;
     cursor: pointer;
 }
 
@@ -101,4 +102,20 @@ audio {
 video {
     height: 100%;
     align-self: center;
+}
+
+.rating {
+    display: flex;
+}
+
+.rating-item {
+    width: 25px;
+    height: 25px;
+    background-image: url("../img/svg/star.svg");
+    cursor: pointer;
+    position: relative;
+}
+
+.rating-item.active{
+    background-image: url("../img/svg/star-active.svg");
 }
