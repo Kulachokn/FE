@@ -42,7 +42,7 @@ class airSlider {
       prevSlide = this.slider.children[this.length - 1];
     }
     currentSlide.className = 'slide';
-    prevSlide.classList = 'slide active-slide'
+    prevSlide.classList = 'slide active-slide';
   }
   next() {
     let currentSlide = document.querySelector('.active-slide');
@@ -51,7 +51,7 @@ class airSlider {
       nextSlide = this.slider.children[0];
     }
     currentSlide.className = 'slide';
-    nextSlide.classList = 'slide active-slide fadeIn'
+    nextSlide.classList = 'slide active-slide fadeIn';
   }
   // autoPlay(){
   //   slider.next();

@@ -47,10 +47,10 @@
 }
 
 .slider-list .controls {
-    width: 100%;
+    width: 112%;
     height: 50px;
     top: calc(50% - 25px);
-    left: 0;
+    left: -55px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -83,6 +83,11 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
+
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    width: 50%;
 }
 
 .rating-massage i {

@@ -283,8 +283,7 @@ class AssetController {
   async showContent(user) {
     const spinner = document.querySelector('.loading');
     const contentNotFound = document.querySelector('.content-not-found');
-    const search = window.location.search;
-    const params = new URLSearchParams(search);
+    const params = new URLSearchParams(location.search);
     const assetId = params.get('id');
     let asset;
     try {
@@ -466,7 +465,6 @@ class AssetController {
     } else {
       searchParams.set('page', pagination.currentPage - 1);
       prevButton.href = `index.html?${searchParams.toString()}`;
-      prevButton.onclick = null;
     }
 
     if (pagination.currentPage === pagination.totalPages) {
@@ -474,7 +472,6 @@ class AssetController {
     } else {
       searchParams.set('page', pagination.currentPage + 1);
       nextButton.href = `index.html?${searchParams.toString()}`;
-      nextButton.onclick = null;
     }
 
     const container = document.querySelector('.pagination');
@@ -576,7 +573,7 @@ class AssetController {
     const level = document.querySelector(`.${mediaType} .show-content-level`);
 
     createdBy.textContent = asset.createdBy.name;
-    tags.textContent = asset.tags || '-';
+    tags.textContent = asset.tags.join(', ') || '-';
     level.textContent = asset.level;
     thumbnail.src = asset.thumbnail.url;
     title.textContent = asset.title;
@@ -624,6 +621,7 @@ class AssetController {
   }
 
   _showVideoContent(asset) {
+    // TODO change width, height
     return this._showMediaContent(asset, 'video', {preload: 'auto', controls: true, width: 1000, height: 900});
   }
 
