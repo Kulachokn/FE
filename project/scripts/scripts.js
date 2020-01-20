@@ -152,7 +152,7 @@ class AssetRepository {
       request.page = Number(request.page);
     }
     if (!validator.isInt(request.perPage, {min: 5, max: 50})) {
-      request.perPage = 10;
+      request.perPage = 9;
     } else {
       request.perPage = Number(request.perPage);
     }
@@ -722,19 +722,15 @@ class AssetController {
   }
 
   _initializeRating(user, asset) {
-    const self = this;
     const contentType = asset.contentType.toLowerCase();
-    const ratings = document.querySelectorAll(`.${contentType} .rating`);
+    const rating = document.querySelector(`.${contentType} .rating`);
     if (!user) {
-      ratings.forEach(function (rating) {
         rating.classList.add('hidden');
-      });
       return;
     }
 
     const userPreviousScore = this._getUserPreviousScore(user, asset);
 
-    ratings.forEach(function (rating) {
       const ratingItem = rating.querySelectorAll('.rating-item');
 
       for (let i = 0; i < userPreviousScore; i++) {
@@ -744,10 +740,10 @@ class AssetController {
         }
       }
 
-      rating.onclick = async function (event) {
+      rating.onclick = async (event) => {
         if (event.target.classList.contains('rating-item')) {
           const score = Number(event.target.getAttribute('data-rate'));
-          await self.rateAsset(user, asset, score);
+          await this.rateAsset(user, asset, score);
           removeClass(ratingItem, 'current-active');
           event.target.classList.add('active');
           event.target.classList.add('current-active');
@@ -801,7 +797,6 @@ class AssetController {
           }
         }
       }
-    });
   }
 
   _getUserPreviousScore(user, asset) {
