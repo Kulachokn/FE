@@ -3,7 +3,7 @@
 }
 
 .main-content {
-    background: linear-gradient(to right, #562D84 0%, #562D84 30%, #201c2b 30%, #201c2b 100%);
+    /*background: linear-gradient(to right, #562D84 0%, #562D84 30%, #201c2b 30%, #201c2b 100%);*/
 }
 
 .filter-catalog {
@@ -12,17 +12,22 @@
 
 .filters {
     /*width: 328px;*/
-    /*width: 28%;*/
+    width: 30%;
+    max-width: 340px;
     margin: 0;
     padding: 0;
     background: #562D84;
 }
 
 .filter-form {
-    width: 223px;
+    /*width: 223px;*/
     /*width: 75%;*/
-    margin: 0 0 0 60px;
-    margin-right: 60px;
+    margin-top: 0;
+    /*margin-right: 60px;*/
+    /*margin-left: 60px;*/
+    margin-bottom: 0;
+    padding-right: 60px;
+    padding-left: 60px;
     padding-top: 30px;
 }
 
@@ -145,14 +150,24 @@
     opacity: 1;
 }
 
+.catalog-pagination {
+    width: 70%;
+    flex-grow: 1;
+}
+
 .items-list {
     padding: 0;
     margin-top: 50px;
     margin-right: 0;
-    margin-left: 50px;
+    margin-left: 20px;
     /*margin-bottom: -11px;*/
     display: flex;
     flex-wrap: wrap;
+
+    justify-content: space-around;
+    /*padding-left: 25px;*/
+    /*padding-right: 25px;*/
+
     /*width: 760px;*/
     /*font-family: 'PT Sans', Arial, sans-serif;*/
     /*font-family: 'PT Gilroy', Arial, sans-serif;*/
@@ -168,14 +183,14 @@
     /*margin: 10px auto;*/
     position: relative;
     margin-top: 0;
-    margin-right: 45px;
+    margin-right: 20px;
     margin-left: 0;
     margin-bottom: 45px;
     padding-bottom: 20px;
 }
 
 .stock-keeping-unit:nth-child(3n) {
-    margin-right: 0;
+    /*margin-right: 0;*/
 }
 
 .item-img {
@@ -279,7 +294,11 @@
     padding-bottom: 20px;
     margin-top: 0;
     margin-right: 0;
-    margin-left: 75px;
+    /*margin-left: 75px;*/
+
+    max-width: 80%;
+    margin: 0 auto;
+
     /*margin-bottom: 79px;*/
     /*width: 760px;*/
     display: flex;
@@ -298,6 +317,7 @@
 .pagination-number-page {
     /*color: #201c2b;*/
     color: #bababa;
+    margin-right: 7px;
 }
 
 .pagination-page-prev {
@@ -307,7 +327,7 @@
     padding-bottom: 23px;
     /*width: 125px;*/
     margin-left: 0;
-    margin-right: 180px;
+    margin-right: 110px;
     color: #ffffff;
 }
 
@@ -318,7 +338,7 @@
     padding-bottom: 23px;
     /*width: 125px;*/
     margin-right: 0;
-    margin-left: 171px;
+    margin-left: 100px;
     color: #ffffff;
 }
 
