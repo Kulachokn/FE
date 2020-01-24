@@ -20,18 +20,96 @@
 
     .main-logo {
         font-size: 16px;
+        padding-left: 50px;
     }
 
-    .navigation {
-        justify-content: normal;
-    }
+    /*.navigation {*/
+    /*    flex-direction: row-reverse;*/
+    /*}*/
 
     .navigation-list {
         display: none;
         flex-direction: column;
         padding-left: 0;
-        width: 295px;
+        /*width: 295px;*/
         margin: 0 auto;
+        position: absolute;
+        top: 60px;
+        background: #201c2b;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+
+    .navigation-list--show {
+        display: flex;
+    }
+
+    .navigation-tog {
+        display: block;
+        position: absolute;
+        top: 23px;
+        /*right: 20px;*/
+        left: 25px;
+        width: 24px;
+        height: 18px;
+        font-size: 0;
+        background: 0 0;
+        background-image: linear-gradient(180deg,transparent 8px,#fff 8px,#fff 10px,transparent 10px);
+        border: 0;
+        cursor: pointer;
+    }
+
+    .navigation-tog::before {
+        top: 0;
+        transition: top ease .5s,transform ease .5s;
+
+        display: block;
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+    }
+
+    .navigation-tog::after {
+        bottom: 0;
+        transition: top ease .5s,transform ease .5s;
+
+        display: block;
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+    }
+
+    .navigation-tog--close {
+        background-image: none;
+    }
+
+    .navigation-tog--close::before {
+        transform: rotate(315deg);
+        top: 8px;
+    }
+
+    .navigation-tog--close::after {
+        transform: rotate(-315deg);
+        bottom: 8px;
+    }
+
+    .navigation-item:hover .sub-menu,
+    .navigation-item:focus .sub-menu,
+    .sub-item:hover .sub-menu-child,
+    .sub-item:focus .sub-menu-child {
+        display: none;
+    }
+
+    .navigation-item {
+        padding: 10px 0;
     }
 
     .search-field {

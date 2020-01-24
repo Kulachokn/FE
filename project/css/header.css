@@ -1,5 +1,6 @@
 .container {
     max-width: 1440px;
+    /*max-width: 1300px;*/
     /*width: 100%;*/
     padding-right: 40px;
     padding-left: 40px;
@@ -54,6 +55,10 @@
     /*flex-wrap: nowrap;*/
     justify-content: space-between;
     align-items: center;
+}
+
+.navigation-tog {
+    display: none;
 }
 
 .navigation-list {
