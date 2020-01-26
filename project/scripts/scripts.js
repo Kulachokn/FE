@@ -91,79 +91,39 @@ class AssetRepository {
   }
 
   async search(request) {
-    request = this._normalizeSearchRequest(request);
-
     const left = (request.page - 1) * request.perPage;
     const right = left + request.perPage;
 
-    let reply;
-    if (request.query) {
-      reply = await this.db.search({
-        query: request.query,
-        fields: ['title', 'description', 'tags'],
-        include_docs: true,
-      });
-      reply.rows = reply.rows.map(row => row.doc).filter((doc) => {
-        if (request.types.length && !request.types.includes(doc.contentType)) return false;
-        if (request.levels.length && !request.levels.includes(doc.level)) return false;
-        if (request.languages.length && !request.languages.includes(doc.language)) return false;
+    let response;
+    if (request.isQuickSearchRequest()) {
+      response = await this.db.search(request.toQuickSearchRequest());
+      const assets = [];
 
-        return true;
-      });
-      reply.total_rows = reply.rows.length;
+      for (let row of response.rows) {
+        if (request.types.length && !request.types.includes(row.doc.contentType)) continue;
+        if (request.levels.length && !request.levels.includes(row.doc.level)) continue;
+        if (request.languages.length && !request.languages.includes(row.doc.language)) continue;
+        assets.push(row.doc);
+      }
 
-      reply.rows = reply.rows.slice(left, right);
+      response.total_rows = assets.length;
+
+      response.rows = assets.slice(left, right);
     } else {
-      const query = {selector: {}};
-      if (request.languages.length) {
-        query.selector.language = {$in: request.languages};
-      }
-      if (request.types.length) {
-        query.selector.contentType = {$in: request.types};
-      }
-      if (request.levels.length) {
-        query.selector.level = {$in: request.levels};
-      }
+      response = await this.db.find(request.toMangoRequest());
+      const totalCount = response.docs.length;
+      response.docs = response.docs.slice(left, right);
 
-      if (request.sortBy) {
-        query.sort = [{[request.sortBy]: request.sortDir}]
-      }
-
-      reply = await this.db.find(query);
-      const totalCount = reply.docs.length;
-      reply.docs = reply.docs.slice(left, right);
-
-      reply = {
+      response = {
         total_rows: totalCount,
-        rows: reply.docs
+        rows: response.docs
       }
     }
-    reply.page = request.page;
-    reply.perPage = request.perPage;
+    response.page = request.page;
+    response.perPage = request.perPage;
 
-    console.log(reply);
-    return reply;
-  }
-
-  _normalizeSearchRequest(request) {
-    if (!validator.isInt(request.page, {min: 1, max:  Number.MAX_SAFE_INTEGER})) {
-      request.page = 1;
-    } else {
-      request.page = Number(request.page);
-    }
-    if (!validator.isInt(request.perPage, {min: 5, max: 50})) {
-      request.perPage = 9;
-    } else {
-      request.perPage = Number(request.perPage);
-    }
-    if (!['asc', 'desc'].includes(request.sortDir)) {
-      request.sortDir = 'asc';
-    }
-    if (['createdAt', 'title'].includes(request.sortBy)) {
-      request.sortBy = 'title';
-    }
-
-    return request
+    console.log(response);
+    return response;
   }
 }
 
@@ -248,7 +208,8 @@ class AssetController {
     event.preventDefault();
     const searchParams = this._parseSearchForm();
     this._updateUrl(searchParams);
-    const searchRequest = this._searchParamsToSearchRequest(searchParams);
+    this._syncSort();
+    const searchRequest = new AssetRequest(searchParams);
     const searchResult = await this.assetRepository.search(searchRequest);
     this._renderSearchResult(searchResult);
   }
@@ -257,7 +218,8 @@ class AssetController {
     event.preventDefault();
     const searchParams = this._parseFilterForm();
     this._updateUrl(searchParams);
-    const searchRequest = this._searchParamsToSearchRequest(searchParams);
+    this._syncSort();
+    const searchRequest = new AssetRequest(searchParams);
     const searchResult = await this.assetRepository.search(searchRequest);
     this._renderSearchResult(searchResult);
   }
@@ -265,19 +227,10 @@ class AssetController {
   async initialIndexPageRender() {
     const searchParams = new URLSearchParams(location.search);
     this._syncSearchParamsWithPageFilters(searchParams);
-    const searchRequest = this._searchParamsToSearchRequest(searchParams);
+    this._syncSort();
+    const searchRequest = new AssetRequest(searchParams);
     const searchResult = await this.assetRepository.search(searchRequest);
     this._renderSearchResult(searchResult);
-  }
-
-  _syncSearchParamsWithPageFilters(searchParams) {
-    ['type', 'level', 'lang']
-      .forEach(queryParam => searchParams.getAll(queryParam)
-        .forEach(value => {
-          document.querySelector(`input[value=${value}]`).checked = true;
-        })
-      );
-    document.getElementById('search').value = searchParams.get('query');
   }
 
   async showContent(user) {
@@ -339,6 +292,16 @@ class AssetController {
     }
   }
 
+  _syncSearchParamsWithPageFilters(searchParams) {
+    ['type', 'level', 'lang']
+      .forEach(queryParam => searchParams.getAll(queryParam)
+        .forEach(value => {
+          document.querySelector(`input[value=${value}]`).checked = true;
+        })
+      );
+    document.getElementById('search').value = searchParams.get('query');
+  }
+
   _renderSearchResult(searchResult) {
     this._cleanList();
     this._renderAssetList(searchResult.rows);
@@ -378,7 +341,7 @@ class AssetController {
     thumbnail.width = 270;
     thumbnail.height = 214;
     thumbnail.classList.add('item-img');
-    thumbnail.src = asset.thumbnail.url;
+    thumbnail.src = asset.thumbnail && asset.thumbnail.url;
     innerWrapper.appendChild(thumbnail);
 
     const metadataContainer = document.createElement('div');
@@ -395,7 +358,7 @@ class AssetController {
     metadataContainer.appendChild(icon);
     const author = document.createElement('p');
     metadataContainer.appendChild(author);
-    author.textContent = `Автор: ${asset.createdBy.name}`;
+    author.textContent = `Автор: ${asset.createdBy && asset.createdBy.name}`;
     const language = document.createElement('p');
     metadataContainer.appendChild(language);
     language.textContent = `Язык: ${this.SUPPORTED_LANGUAGES[asset.language]}`;
@@ -480,7 +443,6 @@ class AssetController {
     }
     container.appendChild(prevButton.parentNode);
 
-// <li><a class="pagination-number-page" href="#3">2</a></li>
     pagination.pages.forEach(page => {
       const box = document.createElement('li');
       container.appendChild(box);
@@ -725,78 +687,78 @@ class AssetController {
     const contentType = asset.contentType.toLowerCase();
     const rating = document.querySelector(`.${contentType} .rating`);
     if (!user) {
-        rating.classList.add('hidden');
+      rating.classList.add('hidden');
       return;
     }
 
     const userPreviousScore = this._getUserPreviousScore(user, asset);
 
-      const ratingItem = rating.querySelectorAll('.rating-item');
+    const ratingItem = rating.querySelectorAll('.rating-item');
 
-      for (let i = 0; i < userPreviousScore; i++) {
-        ratingItem[i].classList.add('active');
-        if (i + 1 === userPreviousScore) {
-          ratingItem[i].classList.add('current-active');
+    for (let i = 0; i < userPreviousScore; i++) {
+      ratingItem[i].classList.add('active');
+      if (i + 1 === userPreviousScore) {
+        ratingItem[i].classList.add('current-active');
+      }
+    }
+
+    rating.onclick = async (event) => {
+      if (event.target.classList.contains('rating-item')) {
+        const score = Number(event.target.getAttribute('data-rate'));
+        await this.rateAsset(user, asset, score);
+        removeClass(ratingItem, 'current-active');
+        event.target.classList.add('active');
+        event.target.classList.add('current-active');
+      }
+    };
+
+    rating.onmouseover = function (event) {
+      if (event.target.classList.contains('rating-item')) {
+        removeClass(ratingItem, 'active');
+        event.target.classList.add('active');
+        mouseOverActiveClass(ratingItem)
+      }
+    };
+    rating.onmouseout = function () {
+      addClass(ratingItem, 'active');
+      mouseOutActiveClass(ratingItem);
+    };
+
+    function removeClass(arr) {
+      for (let i = 0, iLen = arr.length; i < iLen; i++) {
+        for (let j = 1; j < arguments.length; j++) {
+          ratingItem[i].classList.remove(arguments[j]);
         }
       }
+    }
 
-      rating.onclick = async (event) => {
-        if (event.target.classList.contains('rating-item')) {
-          const score = Number(event.target.getAttribute('data-rate'));
-          await this.rateAsset(user, asset, score);
-          removeClass(ratingItem, 'current-active');
-          event.target.classList.add('active');
-          event.target.classList.add('current-active');
-        }
-      };
-
-      rating.onmouseover = function (event) {
-        if (event.target.classList.contains('rating-item')) {
-          removeClass(ratingItem, 'active');
-          event.target.classList.add('active');
-          mouseOverActiveClass(ratingItem)
-        }
-      };
-      rating.onmouseout = function () {
-        addClass(ratingItem, 'active');
-        mouseOutActiveClass(ratingItem);
-      };
-
-      function removeClass(arr) {
-        for (let i = 0, iLen = arr.length; i < iLen; i++) {
-          for (let j = 1; j < arguments.length; j++) {
-            ratingItem[i].classList.remove(arguments[j]);
-          }
+    function addClass(arr) {
+      for (let i = 0, iLen = arr.length; i < iLen; i++) {
+        for (let j = 1; j < arguments.length; j++) {
+          ratingItem[i].classList.add(arguments[j]);
         }
       }
+    }
 
-      function addClass(arr) {
-        for (let i = 0, iLen = arr.length; i < iLen; i++) {
-          for (let j = 1; j < arguments.length; j++) {
-            ratingItem[i].classList.add(arguments[j]);
-          }
+    function mouseOverActiveClass(arr) {
+      for (let i = 0, iLen = arr.length; i < iLen; i++) {
+        if (arr[i].classList.contains('active')) {
+          break;
+        } else {
+          arr[i].classList.add('active');
         }
       }
+    }
 
-      function mouseOverActiveClass(arr) {
-        for (let i = 0, iLen = arr.length; i < iLen; i++) {
-          if (arr[i].classList.contains('active')) {
-            break;
-          } else {
-            arr[i].classList.add('active');
-          }
+    function mouseOutActiveClass(arr) {
+      for (let i = arr.length - 1; i >= 1; i--) {
+        if (arr[i].classList.contains('current-active')) {
+          break;
+        } else {
+          arr[i].classList.remove('active');
         }
       }
-
-      function mouseOutActiveClass(arr) {
-        for (let i = arr.length - 1; i >= 1; i--) {
-          if (arr[i].classList.contains('current-active')) {
-            break;
-          } else {
-            arr[i].classList.remove('active');
-          }
-        }
-      }
+    }
   }
 
   _getUserPreviousScore(user, asset) {
@@ -823,20 +785,6 @@ class AssetController {
     }
 
     return result;
-  }
-
-  _searchParamsToSearchRequest(searchParams) {
-    const request = {};
-    request.types = searchParams.getAll('type');
-    request.levels = searchParams.getAll('level');
-    request.languages = searchParams.getAll('lang');
-    request.query = searchParams.get('query');
-    request.page = searchParams.get('page') || '';
-    request.perPage = searchParams.get('perPage') || '';
-    request.sortBy = searchParams.get('sortBy') || '';
-    request.sortDir = searchParams.get('sortDir') || '';
-
-    return request;
   }
 
   _parseFilterForm() {
@@ -866,6 +814,52 @@ class AssetController {
     const searchParams = new URLSearchParams(location.search);
     searchParams.set('query', queryField.value);
     return searchParams;
+  }
+
+  _syncSort() {
+    let searchParams = new URLSearchParams(location.search);
+
+    const sortByCreatedAt = document.querySelector('.sort .sort-by_date a');
+    const sortByTitle = document.querySelector('.sort .sort-by_name a');  //selected-sort
+    const ascending = document.querySelector('.ascending a');
+    const descending = document.querySelector('.descending a');  //selected-mode
+
+    if (searchParams.has('sortBy')) {
+      const sortBy = searchParams.get('sortBy');
+      if (sortBy === 'title') {
+        sortByTitle.parentElement.classList.add('selected-sort');
+      } else {
+        sortByCreatedAt.parentElement.classList.add('selected-sort');
+      }
+    } else {
+      sortByCreatedAt.parentElement.classList.add('selected-sort');
+    }
+
+    if (searchParams.has('sortDir')) {
+      const sortDir = searchParams.get('sortDir');
+      if (sortDir === 'desc') {
+        descending.parentElement.classList.add('selected-mode');
+      } else {
+        ascending.parentElement.classList.add('selected-mode');
+      }
+    } else {
+      ascending.parentElement.classList.add('selected-mode');
+    }
+
+    searchParams.set('sortBy', 'createdAt');
+    sortByCreatedAt.href = `index.html?${searchParams}`;
+
+    searchParams = new URLSearchParams(location.search);
+    searchParams.set('sortBy', 'title');
+    sortByTitle.href = `index.html?${searchParams}`;
+
+    searchParams = new URLSearchParams(location.search);
+    searchParams.set('sortDir', 'asc');
+    ascending.href = `index.html?${searchParams}`;
+
+    searchParams = new URLSearchParams(location.search);
+    searchParams.set('sortDir', 'desc');
+    descending.href = `index.html?${searchParams}`;
   }
 }
 
@@ -1043,6 +1037,66 @@ class UserController {
     passwordField.value = '';
 
     document.location = 'index.html';
+  }
+}
+
+class AssetRequest {
+  constructor(searchParams) {
+    this.types = searchParams.getAll('type');
+    this.levels = searchParams.getAll('level');
+    this.languages = searchParams.getAll('lang');
+    this.query = searchParams.get('query');
+    this.page = searchParams.get('page') || '';
+    this.perPage = searchParams.get('perPage') || '';
+    this.sortBy = searchParams.get('sortBy') || '';
+    this.sortDir = searchParams.get('sortDir') || '';
+
+    if (!validator.isInt(this.page, {min: 1, max: Number.MAX_SAFE_INTEGER})) {
+      this.page = 1;
+    } else {
+      this.page = Number(this.page);
+    }
+    if (!validator.isInt(this.perPage, {min: 5, max: 50})) {
+      this.perPage = 9;
+    } else {
+      this.perPage = Number(this.perPage);
+    }
+    if (!['asc', 'desc'].includes(this.sortDir)) {
+      this.sortDir = 'asc';
+    }
+    if (!['createdAt', 'title'].includes(this.sortBy)) {
+      this.sortBy = 'createdAt';
+    }
+  }
+
+  toQuickSearchRequest() {
+    return {
+      query: this.query,
+      fields: ['title', 'description', 'tags'],
+      include_docs: true
+    }
+  }
+
+  toMangoRequest() {
+    const request = {selector: {}};
+    if (this.languages.length > 0) {
+      request.selector.language = {$in: this.languages};
+    }
+    if (this.types.length > 0) {
+      request.selector.contentType = {$in: this.types};
+    }
+    if (this.levels.length > 0) {
+      request.selector.level = {$in: this.levels};
+    }
+
+    request.sort = [{[this.sortBy]: this.sortDir}];
+    request.selector[this.sortBy] = {$gte: null};
+
+    return request;
+  }
+
+  isQuickSearchRequest() {
+    return !!this.query;
   }
 }
 
