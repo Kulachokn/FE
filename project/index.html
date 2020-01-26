@@ -158,10 +158,10 @@
                 <h3>Сортировка:</h3>
                 <ul class="sort">
                     <li class="sort-by sort-by_date"><a href="#">По дате</a></li>
-                    <li class="sort-by sort-by_name selected-sort"><a href="#">По имени</a></li>
+                    <li class="sort-by sort-by_name"><a href="#">По имени</a></li>
                 </ul>
-                <ul class="sort-function">
-                    <li class="ascending selected-mode"><a href="#">
+                <ul class="sort-function visually-hidden">
+                    <li class="ascending"><a href="#">
                         <span class="visually-hidden">По возрастанию</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10">
                             <path fill="#392e5c;" d="M5.5 0L0 10h11z"></path>
@@ -178,7 +178,8 @@
         </div>
     </section>
     <section class="main-content">
-        <div class="filter-catalog ">
+        <div class="filter-catalog">
+            <button class="filter-button" type="button">Фильтр</button>
             <div class="filters">
                 <form class="filter-form" method="get" action="#">
                     <fieldset>

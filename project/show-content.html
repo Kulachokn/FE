@@ -44,6 +44,7 @@
                     </ul>
                 </li>
             </ul>
+            <button type="button" class="navigation-tog">Открыть/Закрыть остновное меню</button>
         </nav>
         <div class="user-nav">
             <form class="site-search" method="get">
@@ -169,6 +170,22 @@
             <div id="viewer" class="spreads"></div>
             <div id="prev" class="arrow">‹</div>
             <div id="next" class="arrow">›</div>
+
+            <canvas id="pdf"></canvas>
+<!--            <div id="my_pdf_viewer">-->
+<!--                <div id="canvas_container">-->
+<!--                    <canvas id="pdf_renderer"></canvas>-->
+<!--                </div>-->
+<!--                <div id="navigation_controls">-->
+<!--                    <button id="go_previous">Previous</button>-->
+<!--                    <input id="current_page" value="1" type="number"/>-->
+<!--                    <button id="go_next">Next</button>-->
+<!--                </div>-->
+<!--                <div id="zoom_controls">-->
+<!--                    <button id="zoom_in">+</button>-->
+<!--                    <button id="zoom_out">-</button>-->
+<!--                </div>-->
+<!--            </div>-->
         </section>
         <section class="loading">
             <p class="loader"></p>
@@ -209,5 +226,7 @@
 <script src="scripts/jszip-3.1.5.min.js"></script>
 <script src="scripts/epub/epub.js"></script>
 <script src="scripts/scripts.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>-->
+<script src="scripts/pdf.js"></script>
 </body>
 </html>
