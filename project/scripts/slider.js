@@ -38,7 +38,7 @@ class airSlider {
   prev() {
     let currentSlide = document.querySelector('.active-slide');
     let prevSlide = document.querySelector('.active-slide').previousElementSibling;
-    if(prevSlide === undefined){
+    if(prevSlide === null){
       prevSlide = this.slider.children[this.length - 1];
     }
     currentSlide.className = 'slide';
