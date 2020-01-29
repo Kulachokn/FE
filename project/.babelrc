@@ -3,10 +3,14 @@
     [
       "@babel/preset-env",
       {
+        "debug": true,
         "modules": false,
         "targets": {
-          "chrome": "78"
-        }
+          "chrome": "54",
+          "ie": "11"
+        },
+        "useBuiltIns": "entry",
+        "corejs": 3
       }
     ]
   ],

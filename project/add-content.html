@@ -2,8 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YourLib</title>
 </head>
@@ -18,41 +16,43 @@
         <nav class="navigation">
             <a class="main-logo" href="index.html">YourLib</a>
             <ul class="navigation-list">
-                <li class="navigation-item">Аудиоконтент
+                <li class="navigation-item"><a href="#">Аудиоконтент</a>
                     <ul class="sub-menu">
-                        <li class="sub-item">Frontend
+                        <li class="sub-item"><a href="#">Frontend</a>
                             <ul class="sub-menu-child">
-                                <li class="sub-item">React.js</li>
-                                <li class="sub-item">Angular</li>
-                                <li class="sub-item">Vue</li>
+                                <li class="sub-item"><a href="#">React.js</a></li>
+                                <li class="sub-item"><a href="#">Angular</a></li>
+                                <li class="sub-item"><a href="#">Vue</a></li>
                             </ul>
                         </li>
-                        <li class="sub-item">Backend</li>
+                        <li class="sub-item"><a href="#">Backend</a></li>
                     </ul>
                 </li>
-                <li class="navigation-item">Видеоконтент
+                <li class="navigation-item"><a href="#">Видеоконтент</a>
                     <ul class="sub-menu">
-                        <li class="sub-item">PHP</li>
-                        <li class="sub-item">Python</li>
+                        <li class="sub-item"><a href="#">PHP</a></li>
+                        <li class="sub-item"><a href="#">Python</a></li>
                     </ul>
                 </li>
-                <li class="navigation-item">Книги
+                <li class="navigation-item"><a href="#">Книги</a>
                     <ul class="sub-menu">
-                        <li class="sub-item">React Native</li>
-                        <li class="sub-item">Swift</li>
-                        <li class="sub-item">Core Data</li>
+                        <li class="sub-item"><a href="#">React Native</a></li>
+                        <li class="sub-item"><a href="#">Swift</a></li>
+                        <li class="sub-item"><a href="#">Core Data</a></li>
                     </ul>
                 </li>
             </ul>
             <button type="button" class="navigation-tog">Открыть/Закрыть остновное меню</button>
         </nav>
         <div class="user-nav">
-            <form class="site-search" method="get">
+            <form class="site-search" method="get" action="index.html">
                 <label class="visually-hidden" for="search">Поиск по сайту</label>
-                <input class="search-field" type="search" name="search" id="search" placeholder="Поиск">
+                <input class="search-field" type="search" name="query" id="search" placeholder="Поиск">
                 <button class="search-submit button-decoration" type="submit">Найти</button>
             </form>
-            <a class="add-content button-decoration" href="add-content.html">Добавить</a>
+            <a class="add-content button-decoration" href="add-content.html">
+                <i class="fas fa-plus"></i>
+                <span class="add-content-setting">Добавить</span></a>
             <a class="sign-in-button" href="sign-in.html">Войти</a>
             <div class="user-profile-menu">
                 <button type="button" class="user-button">
@@ -162,10 +162,5 @@
         </div>
     </div>
 </footer>
-<script src="scripts/pouchdb/pouchdb.js"></script>
-<script src="scripts/pouchdb/pouchdb.find.js"></script>
-<script src="scripts/date-fns.js"></script>
-<script src="scripts/scripts.js"></script>
-<script src="scripts/input-test.js"></script>
 </body>
 </html>

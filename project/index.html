@@ -2,8 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
     <title>YourLib</title>
 </head>
 <body>
@@ -46,12 +44,14 @@
             <button type="button" class="navigation-tog">Открыть/Закрыть остновное меню</button>
         </nav>
         <div class="user-nav">
-            <form class="site-search" method="get">
+            <form class="site-search" method="get" action="index.html">
                 <label class="visually-hidden" for="search">Поиск по сайту</label>
-                <input class="search-field" type="search" name="search" id="search" placeholder="Поиск">
+                <input class="search-field" type="search" name="query" id="search" placeholder="Поиск">
                 <button class="search-submit button-decoration" type="submit">Найти</button>
             </form>
-            <a class="add-content button-decoration" href="add-content.html">Добавить</a>
+            <a class="add-content button-decoration" href="add-content.html">
+                <i class="fas fa-plus"></i>
+                <span class="add-content-setting">Добавить</span></a>
             <a class="sign-in-button" href="sign-in.html">Войти</a>
             <div class="user-profile-menu">
                 <button type="button" class="user-button">
@@ -76,9 +76,8 @@
                 <div class="about-product about-video">
                     <h3 class="slide-title">ES6 для всех</h3>
                     <p class="slide-description">Цель этого курса проста: значительно укрепить основные навыки
-                        JavaScript и подготовить вас до
-                        написания современного JavaScript.</p>
-                    <p><i class="fas fa-video"></i></p>
+                        JavaScript и подготовить вас до написания современного JavaScript.</p>
+                    <p class="content-type"><i class="fas fa-video"></i></p>
                     <div class="feature">
                         <p class="feature-language">Русский</p>
                         <p class="feature-date">06/10/2018</p>
@@ -90,10 +89,9 @@
                 <img src="img/slide2.jpg" width="320" height="214" alt="Слайд 2">
                 <div class="about-product about-audio">
                     <h3 class="slide-title">WEB стандарты</h3>
-                    <p class="slide-description">Еженедельный подкаст, посвящённый обсуждению свежих новостей из
-                        мира
+                    <p class="slide-description">Еженедельный подкаст, посвящённый обсуждению свежих новостей из мира
                         фронтенд-разработки.</p>
-                    <p><i class="fas fa-headphones"></i></p>
+                    <p class="content-type"><i class="fas fa-headphones"></i></p>
                     <div class="feature">
                         <p class="feature-language">Русский</p>
                         <p class="feature-date">12/03/2019</p>
@@ -105,11 +103,9 @@
                 <img src="img/slide3.jpg" width="320" height="214" alt="Слайд 3">
                 <div class="about-product about-book">
                     <h3 class="slide-title">​​​​Machine Learning Systems</h3>
-                    <p class="slide-description">Если вы разрабатываете проекты, основанные на машинном обучении, и
-                        вам
-                        нужна надёжность и хороший
-                        пользовательский опыт, эта книга для вас.</p>
-                    <p><i class="fas fa-book"></i></p>
+                    <p class="slide-description">Если вы разрабатываете проекты, основанные на машинном обучении, и вам
+                        нужна надёжность и хороший пользовательский опыт, эта книга для вас.</p>
+                    <p class="content-type"><i class="fas fa-book"></i></p>
                     <div class="feature">
                         <p class="feature-language">Английский</p>
                         <p class="feature-date">06/10/2017</p>
@@ -120,6 +116,7 @@
         </ul>
     </section>
     <section class="popular-categories container">
+        <h3 class="popular-category-title">Популярные категории</h3>
         <div class="popular-categories-list">
             <a class="popular-category-item" href="index.html?query=React">
                 <img src="img/icons/react-icon.png" width="36" height="36" alt="react">
@@ -459,22 +456,8 @@
                 </a></li>
             </ul>
         </div>
-        <div class="change-theme">
-            <h3>Темы:</h3>
-            <button class="light" type="button">Белая</button>
-            <button class="button-decoration dark" type="button">Темная</button>
-        </div>
+        <p class="footer-promo"><span>YourLib</span> - бери знания своего профиля у нас <i class="far fa-smile-wink"></i></p>
     </div>
 </footer>
-<script src="scripts/pouchdb/pouchdb.js"></script>
-<script src="scripts/pouchdb/pouchdb.find.js"></script>
-<script src="scripts/pouchdb/pouchdb.quick-search.js"></script>
-<script src="scripts/date-fns.js"></script>
-<script src="scripts/scripts.js"></script>
-<script src="scripts/slider.js"></script>
-<script src="scripts/faker.js"></script>
-<script src="scripts/lodash.min.js"></script>
-<script src="scripts/seed-data.js"></script>
-<script src="scripts/navigation-menu.js"></script>
 </body>
 </html>
