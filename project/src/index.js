@@ -67,8 +67,6 @@ class airSlider {
     // }
 }
 
-new airSlider();
-
 const tog = document.querySelector(".navigation-tog");
 const nav =  document.querySelector(".navigation-list");
 
@@ -98,6 +96,7 @@ function initializePage() {
     logoutButton.onclick = userController.logOut;
 
     if (page.includes('index.html')) {
+        new airSlider();
         return initializeIndexPage();
     }
 
