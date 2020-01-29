@@ -304,6 +304,7 @@ export default class AssetController {
         } else {
             searchParams.set('page', pagination.currentPage - 1);
             prevButton.href = `index.html?${searchParams.toString()}`;
+            prevButton.classList.remove('disabled');
         }
 
         if (pagination.currentPage === pagination.totalPages) {
@@ -311,6 +312,7 @@ export default class AssetController {
         } else {
             searchParams.set('page', pagination.currentPage + 1);
             nextButton.href = `index.html?${searchParams.toString()}`;
+            nextButton.classList.remove('disabled');
         }
 
         const container = document.querySelector('.pagination');

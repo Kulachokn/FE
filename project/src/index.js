@@ -29,11 +29,12 @@ class airSlider {
         controls.innerHTML = '<button id="prev"><</button><button id="next">></button>';
         this.slider.appendChild(controls);
         //Controls Listeners
+        const self = this;
         document.querySelector('#prev').addEventListener('click', function(){
-            slider.prev();
+            self.prev();
         });
         document.querySelector('#next').addEventListener('click', function(){
-            slider.next();
+            self.next();
         });
         //AutoPlay
         // if(e.autoPlay === true){
