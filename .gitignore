@@ -63,3 +63,5 @@ typings/
 # ide settings
 .idea
 .DS_Store
+
+dist
