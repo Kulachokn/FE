@@ -248,7 +248,7 @@
     }
 
     .pagination {
-        margin-left: 0;
+        /*margin-left: 0;*/
     }
 
     .pagination-page-prev {
@@ -289,11 +289,11 @@
     .wrapper {
         flex-direction: column;
         padding: 0;
+        align-items: center;
     }
 
     video {
         width: 100%;
-        max-height: 160px;
     }
 
     #toc:active {
@@ -433,12 +433,17 @@
         padding: 10px 0;
     }
 
+    .slide {
+        justify-content: normal;
+    }
+
     .slide img {
-        width: 300px;
+        width: 330px;
+        margin-right: 90px;
     }
 
     .about-product {
-        width: 330px;
+        width: 365px;
     }
 
     .slide-description {
@@ -469,4 +474,8 @@
     .pagination-page-next {
         margin-left: 55px;
     }
+
+    /*video {*/
+    /*    max-height: 215px;*/
+    /*}*/
 }

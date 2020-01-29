@@ -30,7 +30,7 @@
 
 .sort-content-by {
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     align-items: center;
     background-color: #562D84;
     width: 70%;
@@ -51,7 +51,7 @@
 .sort {
     display: flex;
     flex-wrap: wrap;
-    width: 500px;
+    /*width: 500px;*/
     /*margin: 18px 0 0;*/
     padding: 0;
 }

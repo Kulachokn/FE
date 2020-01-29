@@ -46,6 +46,8 @@ body {
     line-height: 20px;
     display: flex;
     flex-direction: column;
+    color: #dad8de;
+    background: #201c2b;
 }
 
 body, html {
@@ -73,10 +75,10 @@ body, html {
 /*    box-sizing: border-box;*/
 /*}*/
 
-.theme_dark {
-    color: #dad8de;
-    background: #201c2b;
-}
+/*.theme_dark {*/
+/*    color: #dad8de;*/
+/*    background: #201c2b;*/
+/*}*/
 
 /*.button-decoration {*/
 /*    border-radius: 2px;*/

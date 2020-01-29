@@ -8,20 +8,54 @@
     align-items: center;
     padding-top: 40px;
     padding-bottom: 50px;
+    position: relative;
 }
 
 .logo-footer {
-    margin-top: 20px;
+    font-family: "Oswald", "Arial", sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    /*margin-top: 20px;*/
     margin-left: 25px;
+}
+
+.social {
+    position: absolute;
+    left: 50%;
 }
 
 .social-list {
     margin: 0;
     padding: 0;
     display: flex;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+}
+
+.social-item path {
+    fill: #bababa;
 }
 
 .social-item:not(last-child) {
     margin-right: 20px;
+}
+
+.footer-promo {
+    margin: 0;
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 28%;
+    text-align: right;
+}
+
+.footer-promo span {
+    font-family: "Oswald", "Arial", sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.fa-smile-wink {
+    font-size: 25px;
 }

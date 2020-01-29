@@ -583,7 +583,6 @@ class AssetController {
   }
 
   _showVideoContent(asset) {
-    // TODO change width, height
     return this._showMediaContent(asset, 'video', {preload: 'auto', controls: true, width: 1000, height: 900});
   }
 

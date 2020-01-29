@@ -10,10 +10,6 @@
     display: flex;
 }
 
-.filter-button {
-    display: none;
-}
-
 .filters {
     /*width: 328px;*/
     width: 30%;

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <title>YourLib</title>
 </head>
-<body class="theme_dark">
+<body>
 <section class="modal-error">
     <p class="modal-error-text">Упс, что-то пошло не так</p>
     <i class="far fa-frown-open"></i>
@@ -17,29 +17,29 @@
         <nav class="navigation">
             <a class="main-logo" href="index.html">YourLib</a>
             <ul class="navigation-list">
-                <li class="navigation-item"><a href="#">Аудиоконтент</a>
+                <li class="navigation-item"><a href="index.html?type=AUDIO">Аудиоконтент</a>
                     <ul class="sub-menu">
-                        <li class="sub-item"><a href="#">Frontend</a>
+                        <li class="sub-item"><a href="index.html?query=Frontend">Frontend</a>
                             <ul class="sub-menu-child">
-                                <li class="sub-item"><a href="#">React.js</a></li>
-                                <li class="sub-item"><a href="#">Angular</a></li>
-                                <li class="sub-item"><a href="#">Vue</a></li>
+                                <li class="sub-item"><a href="index.html?query=React">React.js</a></li>
+                                <li class="sub-item"><a href="index.html?query=Angular">Angular</a></li>
+                                <li class="sub-item"><a href="index.html?query=Vue">Vue</a></li>
                             </ul>
                         </li>
-                        <li class="sub-item"><a href="#">Backend</a></li>
+                        <li class="sub-item"><a href="index.html?query=Backend">Backend</a></li>
                     </ul>
                 </li>
-                <li class="navigation-item"><a href="#">Видеоконтент</a>
+                <li class="navigation-item"><a href="index.html?type=VIDEO">Видеоконтент</a>
                     <ul class="sub-menu">
-                        <li class="sub-item"><a href="#">PHP</a></li>
-                        <li class="sub-item"><a href="#">Python</a></li>
+                        <li class="sub-item"><a href="index.html?query=PHP">PHP</a></li>
+                        <li class="sub-item"><a href="index.html?query=Python">Python</a></li>
                     </ul>
                 </li>
-                <li class="navigation-item"><a href="#">Книги</a>
+                <li class="navigation-item"><a href="index.html?type=BOOK">Книги</a>
                     <ul class="sub-menu">
-                        <li class="sub-item"><a href="#">React Native</a></li>
-                        <li class="sub-item"><a href="#">Swift</a></li>
-                        <li class="sub-item"><a href="#">Core Data</a></li>
+                        <li class="sub-item"><a href="index.html?query=React+Native">React Native</a></li>
+                        <li class="sub-item"><a href="index.html?query=Swift">Swift</a></li>
+                        <li class="sub-item"><a href="index.html?query=Core+Data">Core Data</a></li>
                     </ul>
                 </li>
             </ul>
@@ -179,7 +179,6 @@
     </section>
     <section class="main-content">
         <div class="filter-catalog">
-            <button class="filter-button" type="button">Фильтр</button>
             <div class="filters">
                 <form class="filter-form" method="get" action="#">
                     <fieldset>
@@ -440,7 +439,7 @@
 </main>
 <footer class="footer">
     <div class="footer-main container">
-        <a class="main-logo logo-footer" href="index.html">YourLib</a>
+        <a class="logo-footer" href="index.html">YourLib</a>
         <div class="social">
             <ul class="social-list">
                 <li class="social-item"><a class="facebook" href="#">

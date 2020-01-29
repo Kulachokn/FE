@@ -81,6 +81,10 @@
     margin-right: 15px;
 }
 
+.navigation-item a:hover {
+    color: #5d38db;
+}
+
 .sub-menu {
     display: none;
     margin: 0;
