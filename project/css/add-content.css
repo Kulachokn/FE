@@ -3,14 +3,12 @@
 }
 
 .add-content-title {
-    margin: 0;
-    padding: 0;
     text-align: center;
     font-size: 36px;
     line-height: 38px;
     color: #dad8de;
-    padding-top: 25px;
-    margin-bottom: 50px;
+    padding: 25px 0 0;
+    margin: 0 0 50px;
 }
 
 .add-content-form {
@@ -30,7 +28,6 @@
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    /*justify-content: space-between;*/
 }
 
 .form-content-input {
@@ -42,9 +39,7 @@
     display: block;
     max-width: 485px;
     width: 100%;
-    /*border: none;*/
     border-radius: 0;
-    /*border-bottom: 1px solid #d8d8d8;*/
     border: 1px solid #d8d8d8;
 }
 
@@ -52,10 +47,6 @@
     background: #392e5c;
     border: 1px solid #d8d8d8;
     color: #ffffff;
-}
-
-.form-content-fieldset {
-    /*border: none;*/
 }
 
 .filter-input-add-content + label::before {
@@ -91,7 +82,6 @@
 .add-content-name,
 .add-content-text,
 .add-content-tag {
-    margin: 0;
     padding: 0;
     font-family: 'PT Gilroy', Arial, sans-serif;
     font-size: 18px;
@@ -99,7 +89,7 @@
     font-weight: bold;
     color: #ffffff;
     outline: none;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
 }
 
 .add-content-level {
@@ -128,8 +118,6 @@
     align-self: center;
 }
 
-
-
 .inputfile,
 .inputimg {
     width: 0.1px;
@@ -145,11 +133,8 @@
     font-size: 14px;
     font-weight: 700;
     color: white;
-    /*background-color: #7f00ac;*/
     display: inline-block;
     cursor: pointer;
-    /*padding: 10px;*/
-
     border: 1px solid #7f00ac;
     background-color: #fff;
     padding: 0;
@@ -159,7 +144,6 @@
 .inputfile + label:hover,
 .inputimg:focus + label,
 .inputimg + label:hover {
-    /*background-color: #5d38db;*/
     border-color: #5d38db;
     outline: 1px dotted #7f00ac;
 }

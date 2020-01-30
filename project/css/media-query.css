@@ -23,15 +23,10 @@
         padding-left: 50px;
     }
 
-    /*.navigation {*/
-    /*    flex-direction: row-reverse;*/
-    /*}*/
-
     .navigation-list {
         display: none;
         flex-direction: column;
         padding-left: 0;
-        /*width: 295px;*/
         margin: 0 auto;
         position: absolute;
         top: 60px;
@@ -53,8 +48,7 @@
         width: 24px;
         height: 18px;
         font-size: 0;
-        background: 0 0;
-        background-image: linear-gradient(180deg,transparent 8px,#fff 8px,#fff 10px,transparent 10px);
+        background: linear-gradient(180deg, transparent 8px, #fff 8px, #fff 10px, transparent 10px) 0 0;
         border: 0;
         cursor: pointer;
     }
@@ -62,7 +56,6 @@
     .navigation-tog::before {
         top: 0;
         transition: top ease .5s,transform ease .5s;
-
         display: block;
         content: "";
         position: absolute;
@@ -131,23 +124,13 @@
         display: none;
     }
 
-    /*.search-field:focus ~ .search-submit,*/
-    /*.search-field:active ~ .search-submit {*/
-    /*    z-index: 10;*/
-    /*    position: absolute;*/
-    /*    right: -99px;*/
-    /*    top: 1px;*/
-    /*}*/
     .add-content-setting {
         display: none;
     }
 
     .add-content {
         margin-right: 5px;
-        padding-top: 13px;
-        padding-right: 0;
-        padding-left: 0;
-        padding-bottom: 13px;
+        padding: 13px 0;
     }
 
     .fa-user {
@@ -166,50 +149,20 @@
         display: none;
     }
 
-
-    /*.slider-list {*/
-    /*    min-height: 450px;*/
-    /*    height: 100%;*/
-    /*}*/
-    /*.slide {*/
-    /*    flex-direction: column;*/
-    /*    min-height: 450px;*/
-    /*    height: 100%;*/
-    /*}*/
-    /*.slide img {*/
-    /*    margin: 0 auto;*/
-    /*}*/
-    /*.about-product {*/
-    /*    margin: 0 auto;*/
-    /*    !*min-width: 320px;*!*/
-    /*    max-width: 100%;*/
-    /*}*/
-    /*.slide-description {*/
-    /*    display: block;*/
-    /*    !*max-width: 500px;*!*/
-    /*    padding: 10px;*/
-    /*}*/
-    /*.content-type {*/
-    /*    display: block;*/
-    /*}*/
     .popular-category-item {
         margin-right: 0;
     }
 
     .content-title {
-        /*background: #562D84;*/
         background: none;
     }
 
     .stock-keeping-unit {
-        margin-right: 0;
-        margin: auto;
-        margin-bottom: 20px;
+        margin: auto auto 20px;
     }
 
     .stock-keeping-unit:nth-child(3n) {
-        margin: auto;
-        margin-bottom: 20px;
+        margin: auto auto 20px;
     }
 
     .content-title {
@@ -233,22 +186,13 @@
     }
 
     .catalog-pagination {
-        /*min-width: 300px;*/
-        /*max-width: 540px;*/
         width: 100%;
-        /*padding-right: 20px;*/
-        /*padding-left: 20px;*/
         margin: 0 auto;
         box-sizing: border-box;
     }
 
     .items-list {
-        /*flex-direction: column;*/
         margin: 20px auto;
-    }
-
-    .pagination {
-        /*margin-left: 0;*/
     }
 
     .pagination-page-prev {
@@ -277,8 +221,7 @@
     }
 
     .logo-footer {
-        margin: 0;
-        margin-bottom: 20px;
+        margin: 0 0 20px;
         font-size: 20px;
     }
 
@@ -328,13 +271,20 @@
         font-size: 30px;
     }
 
+    .social {
+        position: static;
+    }
 
+    .footer-promo {
+        font-size: 16px;
+        text-align: center;
+        max-width: 100%;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
 
     .container {
-        /*max-width: 840px;*/
         max-width: 1300px;
         padding-right: 30px;
         padding-left: 30px;
@@ -348,8 +298,6 @@
     .navigation-list {
         display: none;
         flex-direction: column;
-        /*padding-left: 0;*/
-        /*width: 295px;*/
         margin: 0 auto;
         position: absolute;
         top: 60px;
@@ -369,13 +317,11 @@
         display: block;
         position: absolute;
         top: 30px;
-        /*right: 20px;*/
         left: 25px;
         width: 24px;
         height: 18px;
         font-size: 0;
-        background: 0 0;
-        background-image: linear-gradient(180deg,transparent 8px,#fff 8px,#fff 10px,transparent 10px);
+        background: linear-gradient(180deg, transparent 8px, #fff 8px, #fff 10px, transparent 10px) 0 0;
         border: 0;
         cursor: pointer;
     }
@@ -456,7 +402,6 @@
     }
 
     .slider-list .controls {
-        /*bottom: 55px;*/
         width: 15%;
         left: 41%;
         top: 83%;
@@ -474,8 +419,4 @@
     .pagination-page-next {
         margin-left: 55px;
     }
-
-    /*video {*/
-    /*    max-height: 215px;*/
-    /*}*/
 }

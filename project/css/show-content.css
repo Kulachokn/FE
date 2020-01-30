@@ -2,7 +2,6 @@
     background: #392e5c;
     padding-top: 25px;
     color: #ffffff;
-    /*width: 100%;*/
 }
 
 .video,
@@ -14,7 +13,6 @@
 
 .wrapper {
     display: flex;
-    /*justify-content: space-between;*/
     justify-content: space-around;
     margin-bottom: 20px;
     box-shadow: 0 3px 21px hsla(0,0%,46%,.2);
@@ -23,10 +21,8 @@
 
 .show-content-about {
     max-width: 500px;
-    /*width: 70%;*/
     padding-left: 30px;
     padding-right: 20px;
-    /*max-width: 100%;*/
 }
 
 .show-content-img {
@@ -47,7 +43,6 @@
 
 .show-content-feature {
     display: flex;
-    /*justify-content: space-around;*/
     flex-direction: column;
 }
 

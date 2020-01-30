@@ -16,7 +16,6 @@
     font-size: 28px;
     font-weight: bold;
     color: #ffffff;
-    /*margin-top: 20px;*/
     margin-left: 25px;
 }
 
@@ -29,20 +28,20 @@
     margin: 0;
     padding: 0;
     display: flex;
-    /*margin-top: 10px;*/
-}
-
-.social-item path {
-    fill: #bababa;
 }
 
 .social-item:not(last-child) {
     margin-right: 20px;
 }
 
+.fa-facebook,
+.fa-twitter-square,
+.fa-telegram {
+    font-size: 25px;
+}
+
 .footer-promo {
-    margin: 0;
-    margin-top: 20px;
+    margin: 20px 0 0;
     font-size: 18px;
     line-height: 1.5;
     max-width: 28%;

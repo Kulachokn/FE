@@ -4,7 +4,6 @@
 }
 
 .registration-title {
-    /*font-family: "Oswald", "Arial", sans-serif;*/
     text-align: center;
     margin: 0;
     padding: 0;
@@ -97,7 +96,6 @@
 
 .registration-additional-link:hover {
     color: #5d38db;
-    /*text-decoration: underline;*/
 }
 
 .registration-button-group {
@@ -111,7 +109,6 @@
     font-size: .9375rem;
     line-height: 16px;
     padding: 11px 20px;
-    /*min-width: 130px;*/
     min-width: 80px;
     display: inline-block;
     text-decoration: none;
@@ -129,7 +126,6 @@
     line-height: 1;
     font-size: .875rem;
     padding: 14px 31px;
-    /*min-width: 130px;*/
     display: inline-block;
     text-decoration: none;
 }
