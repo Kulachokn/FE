@@ -21,7 +21,7 @@
     "@babel/runtime": "^7.8.3",
     "core-js": "^3.6.4",
     "date-fns": "^2.9.0",
-    "epubjs": "^0.3.85",
+    "epubjs": "^0.3.89",
     "faker": "^4.1.0",
     "lodash-es": "^4.17.15",
     "pouchdb": "^7.1.1",
